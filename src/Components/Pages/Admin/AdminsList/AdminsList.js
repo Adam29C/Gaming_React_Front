@@ -34,8 +34,8 @@ const AdminsList = () => {
       if (res?.status === 200) {
         setUserData(res?.data?.list);
       }
-    } catch (error) {
-    } finally {
+    } catch (error) {} 
+    finally {
       setLoading(false);
     }
   };

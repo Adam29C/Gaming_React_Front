@@ -1108,7 +1108,7 @@ h6 {
   padding-bottom: 0;
   top: 17px !important;
   left: inherit !important;
-  right: -18px !important;
+  /* right: -18px !important; */
 }
 .header-nav .profile .dropdown-header {
   background: var(--theme-primary-color);

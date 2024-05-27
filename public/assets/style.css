@@ -1782,7 +1782,8 @@ a.dropdown-item.preview-item {
   left: 0;
   width: 230px;
   height: 100%;
-  background-color: #0e0b2b;
+  /* background-color: #0e0b2b; */
+  background-color: #4bb6b9;
   -webkit-transition-duration: 500ms;
   -o-transition-duration: 500ms;
   transition-duration: 500ms;
@@ -2020,7 +2021,8 @@ a.dropdown-item.preview-item {
   align-items: center;
   width: 100%;
   padding: 0rem 1.25rem;
-  color: #9799ac;
+  /* color: #9799ac; */
+  color: #000000;
   font-size: 14px;
   font-weight: 500;
   height: 45px;
@@ -2041,7 +2043,8 @@ ul.sidebar-menu.tree {
   max-width: 25px;
   width: 25px;
   font-size: 18px;
-  color: #6a7186;
+  /* color: #6a7186; */
+  color: #000000;
   font-weight: 400;
 }
 
@@ -2080,7 +2083,8 @@ span.flag-thumb-cu {
 
 .sidebar-menu li .treeview-menu li a {
   font-size: 14px;
-  color: #9799ac;
+  /* color: #9799ac; */
+  color: #000000;
   margin-left: 0;
   margin-right: 0;
   position: relative;
