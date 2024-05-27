@@ -1,0 +1,1153 @@
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPDcZTIAOhVxoMyOr9n_E7ffAzHGIVzY5abuWIGxA.woff2)
+    format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPDcZTIAOhVxoMyOr9n_E7ffAzHGItzY5abuWI.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPecZTIAOhVxoMyOr9n_E7fdM3mDaZRbryhsA.woff2)
+    format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPecZTIAOhVxoMyOr9n_E7fdMPmDaZRbrw.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPDcZTIAOhVxoMyOr9n_E7ffBzCGIVzY5abuWIGxA.woff2)
+    format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPDcZTIAOhVxoMyOr9n_E7ffBzCGItzY5abuWI.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPDcZTIAOhVxoMyOr9n_E7ffHjDGIVzY5abuWIGxA.woff2)
+    format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/titilliumweb/v17/NaPDcZTIAOhVxoMyOr9n_E7ffHjDGItzY5abuWI.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  background-color: #eee !important;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Titillium Web", sans-serif;
+}
+
+@media (min-width: 1200px) {
+}
+
+@media (max-width: 991px) {
+}
+
+@media (max-width: 320px) {
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+input.bito-email-input:-webkit-autofill,
+input.bito-email-input:-webkit-autofill:hover,
+input.bito-email-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#bito-body::-webkit-scrollbar,
+#emptyDiv-inner::-webkit-scrollbar,
+#loginParentDiv-outer::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 24px;
+  color: #7a8084;
+}
+
+#bito-body::-webkit-scrollbar-thumb,
+#emptyDiv-inner::-webkit-scrollbar-thumb,
+#loginParentDiv-outer::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+#bito-body::-webkit-scrollbar-thumb:hover,
+#emptyDiv-inner::-webkit-scrollbar-thumb:hover,
+#loginParentDiv-outer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.login-network-error-container {
+  padding: 10px 16px 8px;
+  color: rgb(255 0 0);
+}
+
+#loader {
+  background-color: #00000085;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  z-index: 3002;
+  opacity: 9999;
+}
+
+.spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: text-bottom;
+  border: 1.75px solid #fff;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
+  margin-top: -30px;
+}
+
+@keyframes spinner-border {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.modal-content-padding-custom[_ngcontent-nsr-c54] {
+  margin-top: 30%;
+}
+
+.ab_rae_btns[_ngcontent-nsr-c54] {
+  text-align: center;
+  padding: 5px 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.ab_rae_btns[_ngcontent-nsr-c54] button[_ngcontent-nsr-c54] {
+  width: 70%;
+  display: block;
+}
+
+.ab_btns[_ngcontent-nsr-c54] {
+  border: 1px solid var(--theme-color);
+  padding: 2px;
+  font-size: 11px;
+}
+
+.ab_btns[_ngcontent-nsr-c54],
+.ab_btns[_ngcontent-nsr-c54] span[_ngcontent-nsr-c54] {
+  color: var(--theme-color);
+}
+
+.rae_btns[_ngcontent-nsr-c54] {
+  background: var(--theme-color);
+}
+
+.balance-information[_ngcontent-nsr-c54] {
+  margin: 10px 0;
+}
+
+.balance-row[_ngcontent-nsr-c54] {
+  display: flex;
+  justify-content: left;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.balance-text-left[_ngcontent-nsr-c54] {
+  width: 50%;
+  color: #000;
+  font-weight: 500;
+}
+
+.balance-price[_ngcontent-nsr-c54] {
+  margin-left: 10px;
+  width: 50%;
+  color: #000;
+  font-weight: 600;
+}
+
+li.ab_rae_btns[_ngcontent-nsr-c54] {
+  text-align: center;
+  padding: 5px 0;
+}
+
+li.ab_rae_btns[_ngcontent-nsr-c54] button[_ngcontent-nsr-c54] {
+  width: 80%;
+}
+
+.ab_btns[_ngcontent-nsr-c54] {
+  border: 1px solid var(--theme-primary-color);
+  background: none;
+  text-transform: uppercase;
+  border-radius: 100px;
+  color: var(--theme-primary-color);
+  padding: 5px;
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+.ab_btns[_ngcontent-nsr-c54] span[_ngcontent-nsr-c54] {
+  margin-left: 15px;
+}
+
+.rae_btns[_ngcontent-nsr-c54] {
+  background: var(--theme-primary-color);
+  text-transform: uppercase;
+  border-radius: 100px;
+  color: #fff;
+  padding: 5px 18px;
+  font-size: 12px;
+  margin: 5px auto 0;
+  border: none;
+}
+
+.deposit-withdraw-sidebar-title[_ngcontent-nsr-c54] img[_ngcontent-nsr-c54] {
+  width: 7.5%;
+  margin-right: 7px;
+  line-height: 0;
+}
+
+a.whatsapp_link[_ngcontent-nsr-c54] {
+  position: fixed;
+  right: 4%;
+  bottom: 3%;
+}
+
+a.whatsapp_link[_ngcontent-nsr-c54] img[_ngcontent-nsr-c54] {
+  width: 75px;
+  animation: simple-scale 1s linear 1s infinite alternate;
+}
+
+@keyframes simple-scale {
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.fp[_ngcontent-nsr-c51] {
+  color: #fff;
+  font-size: 13px;
+}
+
+.sign-up-page[_ngcontent-nsr-c51] {
+  width: 100%;
+  height: 100vh;
+}
+
+.home-animated[_ngcontent-nsr-c73] {
+  position: absolute;
+  padding: 5px 14px;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--theme-primary-color);
+  left: 15px;
+  bottom: 15px;
+  font-size: 9px;
+  text-transform: uppercase;
+  animation: zoom-in-zoom-out 1s ease-out infinite;
+  font-weight: 700;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.home-animated[_ngcontent-nsr-c73]:hover {
+  color: #000;
+}
+
+.home-animated[_ngcontent-nsr-c73] i[_ngcontent-nsr-c73] {
+  color: darkred;
+}
+
+.home-animated[_ngcontent-nsr-c73] span[_ngcontent-nsr-c73] {
+  border-radius: 10px;
+}
+
+.home-animated[_ngcontent-nsr-c73] span[_ngcontent-nsr-c73]:first-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #fff400, #fff);
+  animation: animate1 2s linear infinite;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.home-animated[_ngcontent-nsr-c73] span[_ngcontent-nsr-c73]:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(180deg, #05fb33, #fff);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.home-animated[_ngcontent-nsr-c73] span[_ngcontent-nsr-c73]:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, #ff7d88, #fff);
+  animation: animate3 2s linear infinite;
+}
+
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.home-animated[_ngcontent-nsr-c73] span[_ngcontent-nsr-c73]:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(0deg, #05d8fb, #fff);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.popularDiv[_ngcontent-nsr-c73] {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.popularDiv[_ngcontent-nsr-c73] svg[_ngcontent-nsr-c73] {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #02020282;
+}
+
+.popularDiv[_ngcontent-nsr-c73]
+  svg[_ngcontent-nsr-c73]
+  text[_ngcontent-nsr-c73] {
+  text-transform: uppercase;
+  animation: stroke 3s infinite alternate;
+  stroke-width: 3;
+  stroke: red;
+  font-size: 90px;
+  font-family: fangsong;
+}
+
+.popularDiv[_ngcontent-nsr-c73] i[_ngcontent-nsr-c73] {
+  position: absolute;
+  right: 20%;
+  top: 4px;
+  font-size: 30px;
+  color: #fff;
+  animation: bounce 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  height: auto;
+  padding: 0;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translate(-15px);
+    color: #ff0;
+  }
+}
+
+@keyframes stroke {
+  0% {
+    fill: #fff700;
+    stroke: #fff;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 4;
+  }
+
+  70% {
+    fill: #fff200;
+    stroke: #fff;
+  }
+
+  80% {
+    fill: #00ff07;
+    stroke: #fff;
+    stroke-width: 4px;
+  }
+
+  to {
+    fill: #d4ff00;
+    stroke: #fff;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
+}
+
+.egc_second[_ngcontent-nsr-c73] .exchangeGames-img-body[_ngcontent-nsr-c73] {
+  border-radius: 1px;
+  height: 110px;
+}
+
+.exchangeGames-img-body[_ngcontent-nsr-c73] {
+  background-size: 100% 100%;
+}
+
+@media (max-width: 991px) {
+  .exchangeGames-img-body[_ngcontent-nsr-c73] {
+    background-size: 100% 100%;
+  }
+
+  .popularDiv[_ngcontent-nsr-c73] i[_ngcontent-nsr-c73] {
+    right: 10%;
+    top: -3px;
+    font-size: 15px;
+  }
+
+  .home-animated[_ngcontent-nsr-c73] {
+    padding: 1px 5px;
+    right: 2px;
+    bottom: 2px;
+    left: inherit;
+    font-size: 7px;
+    font-weight: 500;
+  }
+}
+
+.spinner[_ngcontent-nsr-c58] {
+  width: 25px;
+  height: 25px;
+  margin: 20px auto;
+  border-left: 4px solid #0000001a;
+  border-right: 4px solid #0000001a;
+  border-color: #0000001a darkred;
+  border-style: solid;
+  border-width: 4px;
+  animation: spinner 1s linear infinite forwards;
+  border-radius: 50%;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+ul.ks-cboxtags[_ngcontent-nsr-c70] {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  float: right;
+  margin: 0 30% 0 0;
+}
+
+ul.ks-cboxtags[_ngcontent-nsr-c70] li[_ngcontent-nsr-c70] {
+  display: inline;
+}
+
+ul.ks-cboxtags[_ngcontent-nsr-c70]
+  li[_ngcontent-nsr-c70]
+  label[_ngcontent-nsr-c70] {
+  display: inline-block;
+  border: 1px solid var(--theme-primary-color);
+  color: var(--theme-primary-color);
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 1px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.ks-cboxtags[_ngcontent-nsr-c70]
+  li[_ngcontent-nsr-c70]
+  label[_ngcontent-nsr-c70]:before {
+  display: inline-block;
+  font-style: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: bootstrap-icons;
+  font-weight: 400;
+  font-size: 12px;
+  padding-right: 2px;
+  content: "\f4fe";
+  transition: transform 0.3s ease-in-out;
+}
+
+ul.ks-cboxtags[_ngcontent-nsr-c70]
+  li[_ngcontent-nsr-c70]
+  input[type="checkbox"][_ngcontent-nsr-c70]:checked
+  + label[_ngcontent-nsr-c70]:before {
+  content: "\f633";
+  transform: rotate(-1turn);
+  transition: transform 0.3s ease-in-out;
+}
+
+ul.ks-cboxtags[_ngcontent-nsr-c70]
+  li[_ngcontent-nsr-c70]
+  input[type="checkbox"][_ngcontent-nsr-c70]:checked
+  + label[_ngcontent-nsr-c70] {
+  border: 1px solid #00ad6f;
+  background-color: #00ad6f;
+  color: #fff;
+  transition: all 0.2s;
+}
+
+ul.ks-cboxtags[_ngcontent-nsr-c70]
+  li[_ngcontent-nsr-c70]
+  input[type="checkbox"][_ngcontent-nsr-c70] {
+  display: absolute;
+  position: absolute;
+  opacity: 0;
+}
+
+.event_highlight[_ngcontent-nsr-c70] {
+  position: relative;
+  border-bottom: none;
+  border-top: none;
+}
+
+.event_highlight[_ngcontent-nsr-c70]:after {
+  content: "";
+  animation: bottom 5s linear infinite;
+  background: #0a0;
+  height: 3px;
+  display: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes bottom {
+  0% {
+    transform: scaleX(0);
+    transform-origin: bottom left;
+  }
+
+  50% {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  to {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+}
+
+@media (max-width: 767px) {
+  ul.ks-cboxtags[_ngcontent-nsr-c70]
+    li[_ngcontent-nsr-c70]
+    label[_ngcontent-nsr-c70] {
+    padding: 3px 10px;
+  }
+
+  ul.ks-cboxtags[_ngcontent-nsr-c70] {
+    margin-right: 0;
+  }
+}
+
+ul li {
+  list-style: none !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.bankingUi .card {
+  background: #fff;
+  box-shadow: none;
+  border: 1px solid #eee;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  padding: 5px;
+  margin-bottom: 12px;
+}
+.bankingUi .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 5px 0 #ddd;
+}
+.bankingUi .card .card-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+}
+.bankingUi .card .card-title:after {
+  content: "";
+  width: 20%;
+  display: block;
+  background: #d5d5d5;
+  height: 1px;
+  margin: 0 auto;
+  bottom: -7px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.bankingUi .card .card-body {
+  text-align: center;
+}
+.bankingUi .card .card-body p {
+  margin-bottom: 2px;
+}
+.bankingUi .card .card-text {
+  font-weight: 300;
+  font-size: 15px;
+  position: relative;
+  margin-bottom: 2px;
+  text-align: left;
+  padding: 2px 8px;
+  color: #222;
+}
+.bankingUi .card .card-text:hover {
+  color: #000;
+}
+.bankingUi .account-data {
+  background: #f3f2f6;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+.bankingUi .account-data img {
+  margin-top: 10px;
+  width: 150px;
+}
+.bankingUi .card .card-text button {
+  border: 1px solid #f3f2f6;
+  background: none;
+  padding: 0;
+  font-size: 15px;
+  position: absolute;
+  right: 10%;
+  color: var(--theme-secondary);
+  width: 20px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+.bankingUi .card .card-text button:hover {
+  color: var(--theme-primary);
+}
+.bankingUi .card .btn-primary {
+  border-color: var(--theme-secondary);
+  background: var(--theme-secondary);
+  text-align: center;
+  margin: 0 auto;
+}
+.bankingUi .card .btn-primary:hover {
+  box-shadow: 0 0 10px 5px #ddd;
+  background: none;
+  color: var(--theme-secondary);
+}
+.bankingUi .account-table {
+  padding: 10px;
+  border-radius: 16px;
+  background: #fff;
+}
+.bankingUi .table {
+  width: 100%;
+  overflow-y: overlay;
+  max-height: 585px;
+  display: inline-block;
+  border: none;
+  margin-bottom: 0;
+}
+.bankingUi .table thead th {
+  padding: 7px;
+  text-align: center;
+  border: none;
+  background-color:#4BB6B9;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+.bankingUi .table tbody td {
+  padding: 7px;
+  text-align: center;
+  font-size: 13px;
+  white-space: nowrap;
+  border-color: #f5f5f5;
+}
+.bankingUi .table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+.bankingUi .table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+.bankingUi .table tbody tr:hover {
+  background: #f3f2f6;
+}
+.bankingUi .table .badge-success {
+  background: none;
+  border: 1px solid #28a745;
+  color: #28a745;
+  padding: 5px 0;
+  width: 70px;
+  text-transform: uppercase;
+}
+.bankingUi .table .badge-success:hover {
+  background: #28a745;
+  color: #000;
+}
+.bankingUi .table .badge-warning {
+  background: none;
+  border: 1px solid #ffc107;
+  color: #ffc107;
+  width: 70px;
+  padding: 5px 0;
+  text-transform: uppercase;
+}
+.bankingUi .table .badge-warning:hover {
+  background: #ffc107;
+  color: #000;
+}
+.bankingUi .table .badge-danger {
+  background: none;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  width: 70px;
+  padding: 5px 0;
+  text-transform: uppercase;
+}
+
+.bankingUi .table .badge-danger:hover {
+  background: #dc3545;
+  color: #000;
+}
+.bankingUi .nav-tabs button {
+  font-size: 14px;
+  background: none;
+  border-radius: 15px;
+  border: 1px solid #d5d5d5;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.bankingUi .nav-tabs button.active,
+.bankingUi .nav-tabs button.active:hover {
+  background: var(--theme-secondary);
+  color: #fff;
+}
+.bankingUi .nav-tabs button:hover {
+  background: #f3f2f6;
+}
+.bankingUi .nav-tabs button img {
+  /* height: 25px; */
+  display: block;
+  margin: 0 auto;
+  width: 40px;
+  object-fit: contain;
+}
+.bankingUi .nav-tabs button.active img {
+  /* filter: invert(1); */
+}
+.bankingUi .nav-tabs {
+  justify-content: center;
+  margin-bottom: 10px;
+  border: none;
+  background: #fff;
+  flex-wrap: nowrap;
+  border-radius: 15px;
+  padding: 10px 0;
+  border-bottom: 5px solid #e4e4e4;
+}
+.bankingUi form {
+  position: relative;
+}
+.bankingUi form::before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background: #d5d5d5;
+  position: absolute;
+  left: -15px;
+  top: 0;
+}
+.withdrawalForm::before {
+  display: none;
+}
+.bankingUi form .depositBtn {
+  background: #00b800;
+  border-color: #00b800;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: 200;
+  border-radius: 2px;
+  width: 100%;
+}
+.bankingUi form .depositBtn:hover {
+  background: green;
+}
+.bankingUi form .withdrawBtn {
+  background: var(--theme-primary-color);
+  color: white;
+  /* border-bottom: 4px solid var(--theme-secondary-color); */
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: 200;
+  border-radius: 2px;
+  width: 100%;
+  margin-top: 10px;
+}
+.bankingUi form .withdrawBtn:hover {
+  /* background: red; */
+  background: var(--theme-secondary-color);
+    /* border-bottom: 4px solid var(--theme-secondary-color); */
+  color: white;
+
+}
+.bankingUi form label {
+  text-align: left;
+  display: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+.bankingUi form input {
+  border-radius: 5px;
+  font-size: 13px;
+  color: #000;
+  font-weight: 300;
+  height: 50px;
+  text-align: left;
+}
+.bankingUi form .btn-group {
+  margin-top: 10px;
+}
+.bankingUi form .btn-group button {
+  border: none;
+  background: var(--theme-secondary);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 8px 0;
+  cursor: pointer;
+  width: 32%;
+  margin-bottom: 2px;
+}
+.bankingUi form .btn-group {
+}
+.bankingUi form .btn-group {
+  display: block;
+  text-align: left;
+}
+.bankingUi form .form-check {
+  /* padding: 0; */
+}
+.bankingUi form .form-check input {
+  display: block;
+  height: auto;
+}
+.bankingUi form .custom-control-label {
+  font-size: 13px;
+}
+.bankingUi form .custom-control-label a {
+  color: var(--theme-secondary);
+}
+.bankingUi form .custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: var(--theme-primary);
+  background-color: var(--theme-primary);
+}
+.bankingUi form .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 0.2rem var(--theme-opacity);
+}
+
+.custom-control {
+  position: relative;
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.delete-account-btn {
+  top: 4px;
+  right: 4px;
+  position: absolute;
+  border-top-right-radius: 15px;
+}
+
+/* .bankingUi .card .card-text {
+  font-weight: 300;
+  font-size: 15px;
+  position: relative;
+  margin-bottom: 2px;
+  text-align: left;
+  padding: 2px 8px;
+  color: #222;
+} */
+
+.transaction-table{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+
+.user-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--bs-modal-color);
+  pointer-events: auto;
+  background-color: var(--bs-modal-bg);
+  background-clip: padding-box;
+  border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+  border-radius: var(--bs-modal-border-radius);
+  outline: 0;
+
+}
+
+
+.user-card {
+  /* margin-bottom: 30px; */
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+#accordion .accordion-button {
+  color: black; 
+  font-weight: bold; 
+  background-color:#49B3B8;
+  font-size: 16px;
+  position: relative;
+}
+
+#accordion .accordion-body {
+  background-color: #ffffff; 
+  font-weight: 500; 
+  color: black; 
+  height: 100px;
+  overflow-y: auto; 
+  font-size: 15px;
+}
+
+
+
+#accordion .accordion-button::after {
+  display: none; 
+}
+
+.user-loading-main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.no-record-text{
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+
+.custom-switch .form-check-input {
+  width: 30px;
+  height: 15px;
+  background-color: #d1d1d1;
+  border-radius: 15px;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+border: none;
+}
+
+.custom-switch .form-check-input:checked {
+  background-color: #4E3896; 
+}
+
+
