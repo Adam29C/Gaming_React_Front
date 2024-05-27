@@ -77,12 +77,7 @@ const GameRuleAdd = () => {
         console.log(`${key}:`, value);
       }
 
-      //   const res = await ADD_ADMIN_ACCOUNT_DETAILS(formData, token);
-      //   // Log FormData contents for debugging
-      //   for (let [key, value] of formData.entries()) {
-      //     console.log(`${key}:`, value);
-      //   }
-      // }
+    
     },
   });
 

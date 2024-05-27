@@ -10,17 +10,24 @@ const Data_Table = ({ columns, data, tableStyle, isLoading }) => {
     rows: {
       background: "#4E3896",
       color: "#fff",
+      
     },
     headCells: {
       style: {
-        background: "#4E3896",
+        // background: "#4E3896",
       
-        color: "#fff",
+        // color: "#fff",
+        backgroundColor: '#4BB6B9',
+        fontSize: '16px',
+        fontWeight: 'bold',
       },
     },
     cells: {
-      background: "#4E3896",
-      color: "#fff",
+      style: {
+        fontSize: '14px',
+        fontWeight: '500',
+        color:"black"
+      },
     },
   };
 
@@ -71,7 +78,9 @@ const Data_Table = ({ columns, data, tableStyle, isLoading }) => {
           defaultSortAsc={false}
           pagination
           highlightOnHover
-          tableStyle={tableStyle ? adminStyles : userStyles}
+          // tableStyle={tableStyle ? adminStyles : userStyles}
+          customStyles={adminStyles}
+
           noDataComponent={
             isLoading ? (
               <div className="user-loading-main">
