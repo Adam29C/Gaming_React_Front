@@ -225,7 +225,7 @@ const Header = (props) => {
                       </a>{" "}
                       <ul
                         _ngcontent-mmi-c54=""
-                        className="dropdown-menu header-ul  dropdown-menu-end dropdown-menu-arrow profile"
+                        className="dropdown-menu header-ul  dropdown-menu-end dropdown-menu-arrow profile "
                       >
                         <li _ngcontent-mmi-c54="" className="dropdown-header ">
                           <h6 _ngcontent-mmi-c54="">
