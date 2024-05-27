@@ -177,7 +177,7 @@ const Add_User = () => {
                 <div className={`col-lg-4 mt-2`}>
                   <div className="row ">
                     <div className="col-lg-12 ">
-                      <div class="form-check custom-checkbox mb-3">
+                      <div class="form-check custom-checkbox mb-3 main-check-box">
                         <input
                           type="checkbox"
                           className="form-check-input"
