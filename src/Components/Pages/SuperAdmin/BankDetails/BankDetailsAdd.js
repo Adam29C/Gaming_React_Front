@@ -18,15 +18,19 @@ const GameRuleAdd = () => {
   const location = useLocation();
   const { state } = location;
 
+  console.log("state?.bankName", state);
   const formik = useFormik({
     initialValues: {
-      upiId: "",
-      upiName: "",
-      image: "",
-      accountNumber: "",
-      accountHolderName: "",
-      ifscCode: "",
-      bankName: "",
+      upiId: state?.upiId ? state?.upiId : "",
+      upiName: state?.upiName ? state?.upiName : "",
+      image: state?.barCodeImage ? state?.barCodeImage : "",
+      accountNumber: state?.accountNumber ? state?.accountNumber : "",
+      accountHolderName: state?.accountHolderName
+        ? state?.accountHolderName
+        : "",
+      ifscCode: state?.ifscCode ? state?.ifscCode : "",
+      bankName: state?.bankName ? state?.bankName : "",
+      isBank: state?.isBank ? state?.isBank : "" ,
     },
 
     validate: (values) => {

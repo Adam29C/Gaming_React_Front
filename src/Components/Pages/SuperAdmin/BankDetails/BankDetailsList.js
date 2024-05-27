@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Content from "../../../Layout/Content/Content";
 import Data_Table from "../../../Helpers/Datatable";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,25 +7,57 @@ import { useDispatch, useSelector } from "react-redux";
 import Form from "react-bootstrap/Form";
 import ToastButton from "../../../Helpers/Toast";
 import toast from "react-hot-toast";
-import { GameRuleDeleteApi , GameRuleListStatus } from "../../../Service/superadmin.service";
+import {
+  All_ACCOUNT_LIST,
+  REMOVE_BANK_DETAILS,
+  GameRuleListStatus,
+} from "../../../Service/superadmin.service";
 
 const GameRuleList = () => {
   const token = localStorage.getItem("token");
-  const { getGameRuleState, isLoading } = useSelector(
-    (state) => state.CommonSlice
-  );
+  const userId = JSON.parse(localStorage.getItem("user_details")).id;
+
+  const [BankDetails, setgetBankDetails] = useState([]);
+  const [UPIDetails, setUPIDetails] = useState([]);
+  const [Refresh, setRefresh] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const columns = [
     {
-      name: "Title",
-      selector: (row) => row.title,
+      name: "Bank Name",
+      selector: (row) => row.bankName,
+    },
+    {
+      name: "Acount Holder",
+      selector: (row) => row.accountHolderName,
     },
 
     {
-      name: "Description",
-      selector: (row) => row.description,
+      name: "Acount Number",
+      selector: (row) => row.accountNumber,
+    },
+
+    {
+      name: "IFSC Number",
+      selector: (row) => row.ifscCode,
+    },
+
+    {
+      name: "Image",
+      cell: (row) => (
+        <img height="84px" width="56px" alt={row.name} src={row.bankImage} />
+      ),
+    },
+    {
+      name: "Min Amount",
+      selector: (row) => row.minAmount,
+    },
+
+    {
+      name: "Max Amount",
+      selector: (row) => row.maxAmount,
     },
     {
       name: "Status",
@@ -46,13 +78,13 @@ const GameRuleList = () => {
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>
-            <Link to={`/super/rules/add`} state={cell}>
+            <Link to={`/super/bankdetail/add`} state={cell}>
               <span data-toggle="tooltip" data-placement="top" title="Edit">
                 <i class="ti-marker-alt fs-5 mx-1"></i>
               </span>
             </Link>
 
-            <Link href="#" onClick={() => handleDeleteGameRule(cell?._id)}>
+            <Link href="#" onClick={() => handleDeleteGameRule(cell)}>
               <span data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="ti-trash fs-5 mx-1"></i>
               </span>
@@ -63,21 +95,95 @@ const GameRuleList = () => {
     },
   ];
 
+  const UpiColumns = [
+    {
+      name: "UPI Name",
+      selector: (row) => row.upiName,
+    },
+    {
+      name: "UPI Id",
+      selector: (row) => row.upiId,
+    },
+
+    {
+      name: "Image",
+      cell: (row) => (
+        <img height="84px" width="56px" alt={row.name} src={row.barCodeImage} />
+      ),
+    },
+    {
+      name: "Min Amount",
+      selector: (row) => row.minAmount,
+    },
+
+    {
+      name: "Max Amount",
+      selector: (row) => row.maxAmount,
+    },
+    {
+      name: "Status",
+      selector: (row) => (
+        <>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            defaultChecked={row?.status}
+            onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
+            className="custom-switch"
+          />
+        </>
+      ),
+    },
+    {
+      name: "actions",
+      selector: (cell, row) => (
+        <div style={{ width: "120px" }}>
+          <div>
+            <Link to={`/super/bankdetail/add`} state={cell}>
+              <span data-toggle="tooltip" data-placement="top" title="Edit">
+                <i class="ti-marker-alt fs-5 mx-1"></i>
+              </span>
+            </Link>
+
+            <Link href="#" onClick={() => handleDeleteGameRule(cell)}>
+              <span data-toggle="tooltip" data-placement="top" title="Delete">
+                <i class="ti-trash fs-5 mx-1"></i>
+              </span>
+            </Link>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  const getBanksDetails = async () => {
+    const response = await All_ACCOUNT_LIST(userId, token);
+
+    if (response.statusCode === 200) {
+      console.log(response.bankList);
+      setgetBankDetails(response.data.bankList);
+      setUPIDetails(response.data.upiList);
+    }
+  };
   useEffect(() => {
-    dispatch(getGameRule(token));
-  }, []);
+    getBanksDetails();
+  }, [Refresh]);
 
-  const data = getGameRuleState?.data;
-
-  const handleDeleteGameRule = async (id) => {
+  const handleDeleteGameRule = async (rowData) => {
     const confirmed = window.confirm(
       "Do You Really Want To Remove This  Game Rule"
     );
     if (confirmed) {
-      const response = await GameRuleDeleteApi(id, token);
+      const request = {
+        adminId: userId,
+        isBank: rowData.isBank,
+        id: rowData._id,
+      };
+      const response = await REMOVE_BANK_DETAILS(request, token);
       if (response.statusCode == 200) {
         toast.success(response.msg);
         dispatch(getGameRule(token));
+        setRefresh(!Refresh);
       } else {
         toast.error(response.msg);
       }
@@ -99,7 +205,6 @@ const GameRuleList = () => {
     } else {
       toast.error(response.msg);
     }
-
   };
   const handleAdd = () => {
     navigate("/super/bankdetail/add");
@@ -112,7 +217,9 @@ const GameRuleList = () => {
         handleAdd={handleAdd}
         col_size={12}
       >
-        <Data_Table isLoading={isLoading} columns={columns} data={data} />
+        <Data_Table columns={columns} data={BankDetails && BankDetails} />
+        <h4>UPI List</h4>
+        <Data_Table columns={UpiColumns} data={UPIDetails && UPIDetails} />
         <ToastButton />
       </Content>
     </>

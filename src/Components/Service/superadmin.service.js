@@ -49,8 +49,7 @@ export async function GET_ALL_ADMINS(data, token) {
 }
 //game rule list status change api
 export async function REMOVE_ADMINS(data, token) {
-
-  console.log("data" ,data);
+  console.log("data", data);
   try {
     const res = await axios.delete(
       `${baseurl}adminRouter/deleteSubAdmin`,
@@ -119,51 +118,60 @@ export async function GameRuleListStatus(data, token) {
 // add admin account details
 export async function ADD_ADMIN_ACCOUNT_DETAILS(data, token) {
   try {
-    const res = await axios.post(`${baseurl}adminRouter/addAdminAccountDetail`, data, {
-      headers: {
-        ...header(token),
-        'Content-Type': 'multipart/form-data'
+    const res = await axios.post(
+      `${baseurl}adminRouter/addAdminAccountDetail`,
+      data,
+      {
+        headers: {
+          ...header(token),
+          "Content-Type": "multipart/form-data",
+        },
       }
-    })
-    return await res?.data
+    );
+    return await res?.data;
   } catch (error) {
     return error;
   }
 }
 
+export async function All_ACCOUNT_LIST(data, token) {
+  try {
+    const res = await axios.get(
+      `${baseurl}adminRouter/adminAccountsList?adminId=${data}`,
+      { headers: header(token) }
+    );
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
 
-
-
-
-
-
-
-// //get profile api data
-// export async function ProfileGet(token){
-
+//delete rule api
+// export async function REMOVE_BANK_DETAILS(data, token) {
 //   try {
-//     const res = await axios.get(`${baseurl}authRouter/getUserProfile`,{
-//       headers: header(token),
-//     })
-
+//     const res = await axios.delete(
+//       `${baseurl}adminRouter/deleteAdminAccountDetail`,
+//       data,
+//       { headers: header(token) }
+//     );
 //     return await res?.data;
-
 //   } catch (error) {
 //     return error;
 //   }
 // }
 
-// //change password
 
-// export async function ChangePasswordApi(data,token){
-//   try {
-//     const res = await axios.post(`${baseurl}authRouter/changePassword`,data ,{
-//       headers : header(token)
-//     })
-//     return res
+export async function REMOVE_BANK_DETAILS(data, token) {
+  try {
+    const res = await axios.request({
+      url: `${baseurl}adminRouter/deleteAdminAccountDetail`,
+      method: "DELETE",
+      headers: header(token),
+      data: data,
+    });
+    return res?.data;
+  } catch (error) {
+    return error?.response?.data || error;
+  }
+}
 
-//   } catch (error) {
-//     return error
-
-//   }
-// }
