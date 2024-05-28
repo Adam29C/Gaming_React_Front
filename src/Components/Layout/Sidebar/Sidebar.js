@@ -16,10 +16,9 @@ const Sidebar = () => {
   );
   const dispatch = useDispatch();
   const canViewUser =
-    (getSubAdminPermissionState.viewUser &&
-      getSubAdminPermissionState.viewUser)
-      console.log(canViewUser)
+    getSubAdminPermissionState.viewUser && getSubAdminPermissionState.viewUser;
   const [ShowSubMenu, setShowSubMenu] = useState(false);
+
   const { handleMouseLeave, handleMouseEnter } = useAppContext();
 
   const MouserExit = () => {
@@ -34,6 +33,7 @@ const Sidebar = () => {
     sidebarTabs = superadmin_sidebar;
   } else if (parseInt(ROLES) == 1) {
     sidebarTabs = admin_sidebar;
+    getPermission();
   }
 
   const getPermission = async () => {
@@ -41,13 +41,8 @@ const Sidebar = () => {
       id: userId,
       token: token,
     };
-    await dispatch(subAdminPermissionGet(data));
+    dispatch(subAdminPermissionGet(data));
   };
-
-  useEffect(() => {
-    getPermission();
-  }, []);
-
 
   return (
     <>

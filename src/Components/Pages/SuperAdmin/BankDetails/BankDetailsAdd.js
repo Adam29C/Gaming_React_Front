@@ -8,7 +8,10 @@ import toast from "react-hot-toast";
 import { getGameRule } from "../../../Redux/Slice/common/common.slice";
 import { useDispatch } from "react-redux";
 import ToastButton from "../../../Helpers/Toast";
-import { ADD_ADMIN_ACCOUNT_DETAILS } from "../../../Service/superadmin.service";
+import {
+  ADD_ADMIN_ACCOUNT_DETAILS,
+  UPDATE_ADMIN_ACCOUNT_DETAILS,
+} from "../../../Service/superadmin.service";
 
 const GameRuleAdd = () => {
   const token = localStorage.getItem("token");
@@ -18,19 +21,25 @@ const GameRuleAdd = () => {
   const location = useLocation();
   const { state } = location;
 
-  console.log("state?.bankName", state);
+  // console.log("state?.bankName", state);
   const formik = useFormik({
     initialValues: {
       upiId: state?.upiId ? state?.upiId : "",
       upiName: state?.upiName ? state?.upiName : "",
-      image: state?.barCodeImage ? state?.barCodeImage : "",
+      image: state?.barCodeImage
+        ? state?.barCodeImage
+        : state?.bankImage
+        ? state?.bankImage
+        : "",
       accountNumber: state?.accountNumber ? state?.accountNumber : "",
       accountHolderName: state?.accountHolderName
         ? state?.accountHolderName
         : "",
       ifscCode: state?.ifscCode ? state?.ifscCode : "",
       bankName: state?.bankName ? state?.bankName : "",
-      isBank: state?.isBank ? state?.isBank : "" ,
+      isBank: state?.isBank ? state?.isBank : "",
+      minAmount: state?.minAmount ? state?.minAmount : "",
+      maxAmount: state?.maxAmount ? state?.maxAmount : "",
     },
 
     validate: (values) => {
@@ -48,12 +57,18 @@ const GameRuleAdd = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       let formData = new FormData();
-      formData.append("id", userId);
+
       formData.append("isBank", values.isBank === "true");
       formData.append("image", values.image);
       formData.append("minAmount", values.minAmount);
       formData.append("maxAmount", values.maxAmount);
 
+      if (state) {
+        formData.append("adminId", userId);
+        formData.append("id", state._id);
+      } else {
+        formData.append("id", userId);
+      }
       if (values.isBank === "true") {
         formData.append("bankName", values.bankName);
         formData.append("accountHolderName", values.accountHolderName);
@@ -63,9 +78,13 @@ const GameRuleAdd = () => {
         formData.append("upiName", values.upiName);
         formData.append("upiId", values.upiId);
       }
+      let res;
+      if (state) {
+        res = await UPDATE_ADMIN_ACCOUNT_DETAILS(formData, token);
+      } else {
+        res = await ADD_ADMIN_ACCOUNT_DETAILS(formData, token);
+      }
 
-      const res = await ADD_ADMIN_ACCOUNT_DETAILS(formData, token);
-      console.log(res, "check res");
       if (res?.statusCode === 200 || 201) {
         toast.success(res?.msg);
         resetForm();
@@ -75,13 +94,6 @@ const GameRuleAdd = () => {
       } else {
         toast.error(res?.msg);
       }
-
-      // Log FormData contents for debugging
-      for (let [key, value] of formData.entries()) {
-        console.log(`${key}:`, value);
-      }
-
-    
     },
   });
 
@@ -149,16 +161,6 @@ const GameRuleAdd = () => {
       showWhen: (values) => values.isBank && values.isBank === "false",
     },
     {
-      name: "image",
-      label:
-        formik.values.isBank && formik.values.isBank === "false"
-          ? "QR Code"
-          : "Somthing Else",
-      type: "file",
-      label_size: 12,
-      col_size: 6,
-    },
-    {
       name: "minAmount",
       label: "Min Amount",
       type: "text",
@@ -169,6 +171,16 @@ const GameRuleAdd = () => {
       name: "maxAmount",
       label: "Max Amount",
       type: "text",
+      label_size: 12,
+      col_size: 6,
+    },
+    {
+      name: "image",
+      label:
+        formik.values.isBank && formik.values.isBank === "false"
+          ? "QR Code"
+          : "Somthing Else",
+      type: "file",
       label_size: 12,
       col_size: 6,
     },

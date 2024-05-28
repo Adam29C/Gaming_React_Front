@@ -41,20 +41,20 @@ const ReusableForm = ({
   const [previews, setPreviews] = useState([]); // Array to store individual previews
 
   const handleFileChange = (event, index, name) => {
-    console.log(event.target.files[0]);
     const file = event.target.files[0];
-    const newPreviews = [...previews]; // Create a copy of the previews array
+    if (file) {
+      const newPreviews = [...previews]; // Create a copy of the previews array
+      newPreviews[index] = URL.createObjectURL(file); // Set the preview for the specific index
+      setPreviews(newPreviews); // Update the previews array
 
-    newPreviews[index] = URL.createObjectURL(file); // Set the preview for the specific index
-    setPreviews(newPreviews); // Update the previews array
+      const reader = new FileReader();
+      reader.onload = () => {
+        formik.setFieldValue(`${name}_base64`, reader.result);
+      };
+      reader.readAsDataURL(file);
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      // setPreviewImage(reader.result);
-      // formik.setFieldValue(name, reader.result); // Set Formik field value for the specific index
-    };
-    reader.readAsDataURL(file);
-    return formik.setFieldValue(name, file);
+      formik.setFieldValue(name, file);
+    }
   };
 
   const getCurrentDate = () => {
@@ -398,7 +398,14 @@ const ReusableForm = ({
                       </div>
 
                       <img
-                        src={formik.getFieldProps(field.name).value}
+                        src={
+                          formik.getFieldProps(`${field.name}_base64`).value ||
+                          formik.getFieldProps(field.name).value
+                        }
+                        style={{
+                          height: "150px",
+                          objectFit: "contain",
+                        }}
                         name={field.name}
                         id={field.name}
                         alt={`Preview ${index}`}

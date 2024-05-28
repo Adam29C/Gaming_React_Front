@@ -10,23 +10,21 @@ const Data_Table = ({ columns, data, tableStyle, isLoading }) => {
     rows: {
       background: "#4E3896",
       color: "#fff",
-      
     },
     headCells: {
       style: {
         // background: "#4E3896",
-      
-        // color: "#fff",
-        backgroundColor: '#4BB6B9',
-        fontSize: '16px',
-        fontWeight: 'bold',
+        color: "#fff",
+        backgroundColor: "#4BB6B9",
+        fontSize: "16px",
+        fontWeight: "600",
       },
     },
     cells: {
       style: {
-        fontSize: '14px',
-        fontWeight: '500',
-        color:"black"
+        fontSize: "14px",
+        fontWeight: "500",
+        color: "black",
       },
     },
   };
@@ -80,7 +78,6 @@ const Data_Table = ({ columns, data, tableStyle, isLoading }) => {
           highlightOnHover
           // tableStyle={tableStyle ? adminStyles : userStyles}
           customStyles={adminStyles}
-
           noDataComponent={
             isLoading ? (
               <div className="user-loading-main">

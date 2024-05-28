@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useAppContext } from "../../Context/CreateContext";
 import { Link, useNavigate } from "react-router-dom";
-import Dropdown from "react-bootstrap/Dropdown";
 
 const Headers = () => {
   const { toggleMenuCollapsed } = useAppContext();
@@ -27,7 +26,7 @@ const Headers = () => {
         localStorage.removeItem("user_details");
         localStorage.removeItem("roles");
         setTimeout(() => {
-          navigate("/tokenexpiry");
+          navigate("/tokenexpiry", { replace: true });
         }, 1000);
       }
     };
@@ -46,7 +45,7 @@ const Headers = () => {
     localStorage.removeItem("user_details");
     localStorage.removeItem("roles");
     setTimeout(() => {
-      navigate("/");
+      navigate("/"  , { replace: true });
     }, 1000);
   };
   return (
@@ -274,7 +273,6 @@ const Headers = () => {
               </div>
             </li>
 
-           
             <li className="nav-item dropdown">
               <button
                 type="button"

@@ -146,6 +146,25 @@ export async function All_ACCOUNT_LIST(data, token) {
   }
 }
 
+// update Bank Details 
+export async function UPDATE_ADMIN_ACCOUNT_DETAILS(data, token) {
+  try {
+    const res = await axios.put(
+      `${baseurl}adminRouter/updateAdminAccountDetail`,
+      data,
+      {
+        headers: {
+          ...header(token),
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+
 //delete rule api
 // export async function REMOVE_BANK_DETAILS(data, token) {
 //   try {
@@ -160,7 +179,6 @@ export async function All_ACCOUNT_LIST(data, token) {
 //   }
 // }
 
-
 export async function REMOVE_BANK_DETAILS(data, token) {
   try {
     const res = await axios.request({
@@ -174,4 +192,3 @@ export async function REMOVE_BANK_DETAILS(data, token) {
     return error?.response?.data || error;
   }
 }
-

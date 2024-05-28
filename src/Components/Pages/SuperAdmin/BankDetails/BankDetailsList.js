@@ -59,20 +59,20 @@ const GameRuleList = () => {
       name: "Max Amount",
       selector: (row) => row.maxAmount,
     },
-    {
-      name: "Status",
-      selector: (row) => (
-        <>
-          <Form.Check
-            type="switch"
-            id="custom-switch"
-            defaultChecked={row?.status}
-            onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
-            className="custom-switch"
-          />
-        </>
-      ),
-    },
+    // {
+    //   name: "Status",
+    //   selector: (row) => (
+    //     <>
+    //       <Form.Check
+    //         type="switch"
+    //         id="custom-switch"
+    //         defaultChecked={row?.status}
+    //         onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
+    //         className="custom-switch"
+    //       />
+    //     </>
+    //   ),
+    // },
     {
       name: "actions",
       selector: (cell, row) => (
@@ -120,20 +120,20 @@ const GameRuleList = () => {
       name: "Max Amount",
       selector: (row) => row.maxAmount,
     },
-    {
-      name: "Status",
-      selector: (row) => (
-        <>
-          <Form.Check
-            type="switch"
-            id="custom-switch"
-            defaultChecked={row?.status}
-            onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
-            className="custom-switch"
-          />
-        </>
-      ),
-    },
+    // {
+    //   name: "Status",
+    //   selector: (row) => (
+    //     <>
+    //       <Form.Check
+    //         type="switch"
+    //         id="custom-switch"
+    //         defaultChecked={row?.status}
+    //         onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
+    //         className="custom-switch"
+    //       />
+    //     </>
+    //   ),
+    // },
     {
       name: "actions",
       selector: (cell, row) => (
@@ -176,7 +176,10 @@ const GameRuleList = () => {
     if (confirmed) {
       const request = {
         adminId: userId,
-        isBank: rowData.isBank,
+        isBank:
+          rowData.isBank == "true"
+            ? Boolean(rowData.isBank)
+            : Boolean(!rowData.isBank),
         id: rowData._id,
       };
       const response = await REMOVE_BANK_DETAILS(request, token);

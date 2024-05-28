@@ -14,13 +14,15 @@ import { subAdminPermissionGet } from "../../../Redux/Slice/Admin/admin.slice";
 
 const AdminsList = () => {
   const token = localStorage.getItem("token");
+  const ROLES = JSON.parse(localStorage.getItem("roles"));
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
+
   const { getSubAdminPermissionState } = useSelector(
     (state) => state.AdminSlice
   );
   const canCreateUser =
-    (getSubAdminPermissionState.createUser &&
-      getSubAdminPermissionState.createUser)
+    getSubAdminPermissionState.createUser &&
+    getSubAdminPermissionState.createUser;
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -34,8 +36,8 @@ const AdminsList = () => {
       if (res?.status === 200) {
         setUserData(res?.data?.list);
       }
-    } catch (error) {} 
-    finally {
+    } catch (error) {
+    } finally {
       setLoading(false);
     }
   };
@@ -45,12 +47,12 @@ const AdminsList = () => {
       id: userId,
       token: token,
     };
-    await dispatch(subAdminPermissionGet(data));
+    dispatch(subAdminPermissionGet(data));
   };
 
   useEffect(() => {
     getUserList();
-    getPermission();
+    ROLES == 1 && getPermission();
   }, []);
 
   const columns = [

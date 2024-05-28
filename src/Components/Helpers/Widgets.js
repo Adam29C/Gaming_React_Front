@@ -3,6 +3,7 @@ import React from "react";
 const Widgets = ({ sm  ,color}) => {
   return (
     <>
+    
       <div class={sm}>
         <div class={`widget-content-style ${color} full-height`}>
           <div class="row align-items-center p-20">
