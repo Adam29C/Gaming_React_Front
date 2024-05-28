@@ -16366,3 +16366,12 @@ border-bottom-style: 0px;
 }
 
 /* admin check box css end */
+
+.error-text{
+  color: #eb3030;
+    font-family: "inter-medium";
+    font-size: 14px;
+    line-height: 16px;
+    margin: 5px 0 0;
+ 
+}

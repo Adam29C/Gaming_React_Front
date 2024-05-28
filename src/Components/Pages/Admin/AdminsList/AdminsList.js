@@ -115,7 +115,7 @@ const AdminsList = () => {
   ];
 
   const handleDeleteUser = async (id) => {
-    console.log(id);
+
     const confirmed = window.confirm("Do You Really Want To Remove This User");
     if (confirmed) {
       let data = {

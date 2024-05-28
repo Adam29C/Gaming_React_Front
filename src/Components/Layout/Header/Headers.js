@@ -20,7 +20,7 @@ const Headers = () => {
   useEffect(() => {
     const checkTokenExpiry = () => {
       const tokenExpiry = getTokenExpiryTime();
-      console.log("tokenExpiry", tokenExpiry);
+     
       if (tokenExpiry && new Date() > tokenExpiry) {
         localStorage.removeItem("token");
         localStorage.removeItem("user_details");

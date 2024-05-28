@@ -49,9 +49,7 @@ const ShowWithdrawList = () => {
       } else {
         toast.error(response.msg);
       }
-    } else {
-      console.log("");
-    }
+    } 
   };
 
   // COPY TO CLIPBOARD

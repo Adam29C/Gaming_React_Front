@@ -12,7 +12,7 @@ import { GameAddApi, GameUpdateApi } from "../../../Service/admin.service";
 const GameAdd = ({ show, setShow, updateData }) => {
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
-
+  const [disable, setDisable] = useState(false);
   const formik = useFormik({
     initialValues: {
       gamename: updateData?.gameName ? updateData?.gameName : "",
@@ -30,39 +30,43 @@ const GameAdd = ({ show, setShow, updateData }) => {
       return errors;
     },
     onSubmit: async (values, { resetForm }) => {
+      setDisable(true);
+      const data = {
+        gameName: values.gamename,
+        isShow: values.status,
+        ...(updateData ? { gameId: updateData._id } : {}),
+      };
 
-      if (updateData) {
-        const data = {
-          gameId: updateData?._id,
-          gameName: values.gamename,
-          isShow: values.status,
-        };
-        const res = await GameUpdateApi(data, token);
-        console.log(res?.response?.data?.msg,"check updated data")
-  if (res?.data?.statusCode === 200 ) {
-          toast.success(res.data.msg);
-          resetForm();
-          setShow(false);
-          dispatch(getGame(token));
+try {
+        const res = updateData
+          ? await GameUpdateApi(data, token)
+          : await GameAddApi(data, token);
+        if (updateData) {
+          if (res?.data?.statusCode === 200) {
+            toast.success(res.data.msg);
+            resetForm();
+            setShow(false);
+            dispatch(getGame(token));
+          } else {
+            toast.error(res?.response?.data?.msg);
+          }
         } else {
-          toast.error(res?.response?.data?.msg);
+          if (res?.data?.statusCode === 201) {
+            toast.success(res?.data?.msg);
+            setShow(false);
+            dispatch(getGame(token));
+            resetForm();
+          } else {
+            toast.error(res?.response?.data?.msg);
+          }
         }
-
-
-      } else {
-        const data = {
-          gameName: values.gamename,
-          isShow: values.status,
-        };
-        const res = await GameAddApi(data, token);
-        if (res?.data?.statusCode === 201) {
-          toast.success(res?.data?.msg);
-          setShow(false);
-          dispatch(getGame(token));
-          resetForm();
-        } else {
-          toast.error(res?.response?.data?.msg);
-        }
+      } catch (error) {
+        
+        console.log(error);
+      } finally {
+        setTimeout(() => {
+          setDisable(false);
+        }, 1000);
       }
     },
   });
@@ -117,6 +121,7 @@ const GameAdd = ({ show, setShow, updateData }) => {
                 fieldtype={fields.filter((field) => !field.showWhen)}
                 formik={formik}
                 btn_name={updateData ? "Update" : "Add"}
+                Disable_Submit={disable}
               />
               <ToastButton />
             </div>

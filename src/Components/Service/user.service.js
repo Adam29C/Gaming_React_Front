@@ -46,9 +46,7 @@ export async function SeriesListApi(token) {
 //get match details 
 export async function MATCH_DETAILS_API(id,token) {
   try {
-    console.log(id,"id")
-    console.log(token,"token")
-    const res = await axios.get(`${baseurl}sports/matchDetails/${id}`, {
+const res = await axios.get(`${baseurl}sports/matchDetails/${id}`, {
       headers: header(token),
     });
     return await res?.data;

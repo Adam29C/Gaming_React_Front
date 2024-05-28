@@ -28,3 +28,14 @@ export async function GetGameListApi(token) {
     return error;
   }
 }
+
+
+//game status update api
+export async function GAME_STATUS_UPDATE_API(data,token){
+  try {
+    const res = await axios.patch(`${baseurl}adminRouter/updateGameStatus`,data,{headers:header(token)})
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}

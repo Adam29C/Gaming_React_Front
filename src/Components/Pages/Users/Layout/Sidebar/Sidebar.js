@@ -81,8 +81,8 @@ const Sidebar = (props) => {
               </span>
             </a>
           </li>
-          {/**/}
-          {/**/}
+         
+         
           {/* {(role == 2 ) && (      <li className="nav-item">
             {" "}
             <Link to='/deposit' className="nav-link" aria-expanded="false">
@@ -177,13 +177,13 @@ const Sidebar = (props) => {
               ))}
             </ul>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a data-bs-toggle="collapse" className="nav-link" href="#collapse1">
               <img src="/assets/images/events/menu-1.png" />
               <span>Football</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
+           
             <ul className="nav-content collapse" id="collapse1">
               <li>
                 <a data-bs-toggle="collapse" href="#collapse10">
@@ -207,7 +207,7 @@ const Sidebar = (props) => {
                         <span>Marseille v Atalanta</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -233,7 +233,7 @@ const Sidebar = (props) => {
                         <span>Dortmund v Paris St-G</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -264,7 +264,7 @@ const Sidebar = (props) => {
                         <span>Fleetwood Town U21 v Colchester United U21</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -280,7 +280,7 @@ const Sidebar = (props) => {
                         <span>Meizhou Hakka v Qingdao Youth Island</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -296,7 +296,7 @@ const Sidebar = (props) => {
                         <span>Dekernes v Abo Qair Semads</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -312,7 +312,7 @@ const Sidebar = (props) => {
                         <span>Hapoel Nof HaGalil v Maccabi Petach Tikva</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -338,7 +338,7 @@ const Sidebar = (props) => {
                         <span>Spvgg Quierschied v SV Auersmacher</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -354,7 +354,7 @@ const Sidebar = (props) => {
                         <span>Skovde AIK v Oddevold</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -370,7 +370,7 @@ const Sidebar = (props) => {
                         <span>Richards Bay FC v Amazulu</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -386,7 +386,7 @@ const Sidebar = (props) => {
                         <span>Al-Ittihad v Al-Hilal</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -407,7 +407,7 @@ const Sidebar = (props) => {
                         <span>Molinos El Pirata v Club ADA Jaén</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -428,7 +428,7 @@ const Sidebar = (props) => {
                         <span>Santos U20 v Fluminense U20</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -444,7 +444,7 @@ const Sidebar = (props) => {
                         <span>Pacos Ferreira v AVS Futebol SAD</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -460,7 +460,7 @@ const Sidebar = (props) => {
                         <span>Coventry v Ipswich</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -481,7 +481,7 @@ const Sidebar = (props) => {
                         <span>Tigres FC Zipaquira v Bogota</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -499,7 +499,7 @@ const Sidebar = (props) => {
                         </span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -525,7 +525,7 @@ const Sidebar = (props) => {
                         <span>Atletico MG v Sport Recife</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -541,7 +541,7 @@ const Sidebar = (props) => {
                         <span>Estudiantes v Boca Juniors</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -557,7 +557,7 @@ const Sidebar = (props) => {
                         <span>Libertad FC v LDU</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -573,7 +573,7 @@ const Sidebar = (props) => {
                         <span>Pachuca v CF America</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -589,7 +589,7 @@ const Sidebar = (props) => {
                         <span>Central Coast Mariners v Adelaide United</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -605,7 +605,7 @@ const Sidebar = (props) => {
                         <span>Chelsea v Tottenham</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -626,24 +626,24 @@ const Sidebar = (props) => {
                         <span>Aston Villa v Olympiakos</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
-          </li>
-          <li className="nav-item">
-            {/**/}
-            {/**/}
+           
+           
+          </li> */}
+          {/* <li className="nav-item">
+           
+           
             <a data-bs-toggle="collapse" className="nav-link" href="#collapse2">
               <img src="/assets/images/events/menu-2.png" />
               <span>Tennis</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
+           
             <ul className="nav-content collapse" id="collapse2">
               <li>
                 <a data-bs-toggle="collapse" href="#collapse20">
@@ -672,7 +672,7 @@ const Sidebar = (props) => {
                         <span>Putintseva v E Rybakina</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -708,7 +708,7 @@ const Sidebar = (props) => {
                         <span>Rafael Nadal v Jiri Lehecka</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -739,7 +739,7 @@ const Sidebar = (props) => {
                         <span>Gjorcheska v Car Martinez Cirez</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -760,7 +760,7 @@ const Sidebar = (props) => {
                         <span>Zsombor Piros v Zachary Svajda</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -786,7 +786,7 @@ const Sidebar = (props) => {
                         <span>Sharma v Emil Arango</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -807,7 +807,7 @@ const Sidebar = (props) => {
                         <span>Stan Wawrinka v Albert Ramos Vinolas</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -888,7 +888,7 @@ const Sidebar = (props) => {
                         <span>Juan Bautista Torres v Guilherme Clezar</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
@@ -904,18 +904,18 @@ const Sidebar = (props) => {
                         <span>Yu Hsiou Hsu v Yan Bai</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
-          </li>
-          <li className="nav-item">
-            {/**/}
-            {/**/}
+           
+           
+          </li> */}
+          {/* <li className="nav-item">
+           
+           
             <a
               data-bs-toggle="collapse"
               className="nav-link collapsed"
@@ -926,7 +926,7 @@ const Sidebar = (props) => {
               <span>Politics</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
+           
             <ul className="nav-content collapse" id="collapse3">
               <li>
                 <a data-bs-toggle="collapse" href="#collapse30">
@@ -940,25 +940,25 @@ const Sidebar = (props) => {
                         <span>LOK SABHA 2024</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
+           
+           
           </li>
           <li className="nav-item">
-            {/**/}
-            {/**/}
+           
+           
             <a data-bs-toggle="collapse" className="nav-link" href="#collapse4">
               <img src="/assets/images/events/menu-7.png" />
               <span>Horse Racing</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
-            {/**/}
+           
+           
             <ul className="nav-content collapse" id="collapse4">
               <li>
                 <a href="#(0);" className="final-link">
@@ -1050,20 +1050,20 @@ const Sidebar = (props) => {
                   <span>Finger Lakes (US) 30th Apr (00:17)</span>
                 </a>
               </li>
-              {/**/}
+             
             </ul>
-            {/**/}
+           
           </li>
           <li className="nav-item">
-            {/**/}
-            {/**/}
+           
+           
             <a data-bs-toggle="collapse" className="nav-link" href="#collapse5">
               <img src="/assets/images/events/menu-4339.png" />
               <span>Greyhound Racing</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
-            {/**/}
+           
+           
             <ul className="nav-content collapse" id="collapse5">
               <li>
                 <a href="#(0);" className="final-link">
@@ -1325,34 +1325,34 @@ const Sidebar = (props) => {
                   <span>Swindon 30th Apr (00:19)</span>
                 </a>
               </li>
-              {/**/}
+             
             </ul>
-            {/**/}
+           
           </li>
           <li className="nav-item">
-            {/**/}
-            {/**/}
+           
+           
             <a data-bs-toggle="collapse" className="nav-link" href="#collapse6">
               <img src="/assets/images/events/menu-99994.png" />
               <span>Kabaddi</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
+           
             <ul className="nav-content collapse" id="collapse6">
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
+           
+           
           </li>
           <li className="nav-item">
-            {/**/}
-            {/**/}
+           
+           
             <a data-bs-toggle="collapse" className="nav-link" href="#collapse7">
               <img src="/assets/images/events/menu-99999.png" />
               <span>Casino</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
+           
             <ul className="nav-content collapse" id="collapse7">
               <li>
                 <a data-bs-toggle="collapse" href="#collapse70">
@@ -1576,46 +1576,46 @@ const Sidebar = (props) => {
                         <span>Roulette (Virtual)</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
+           
+           
           </li>
           <li className="nav-item">
-            {/**/}
+           
             <a href="#(0)" className="nav-link final-link">
               <img src="/assets/images/events/menu-99991.png" />
               <span>Sports book</span>
             </a>
-            {/**/}
-            {/**/}
+           
+           
             <ul className="nav-content collapse" id="collapse8">
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
+           
+           
           </li>
           <li className="nav-item">
             <a href="#(0)" className="nav-link final-link hightlight-smenu">
               <img src="/assets/images/events/menu-99998.png" />
               <span>Int Casino</span>
             </a>
-            {/**/}
-            {/**/}
-            {/**/}
+           
+           
+           
             <ul className="nav-content collapse" id="collapse9">
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
+           
+           
           </li>
           <li className="nav-item">
-            {/**/}
-            {/**/}
+           
+           
             <a
               data-bs-toggle="collapse"
               className="nav-link"
@@ -1625,7 +1625,7 @@ const Sidebar = (props) => {
               <span>Binary</span>
               <i className="bi bi-caret-down ms-auto" />
             </a>
-            {/**/}
+           
             <ul className="nav-content collapse" id="collapse10">
               <li>
                 <a data-bs-toggle="collapse" href="#collapse100">
@@ -1639,23 +1639,23 @@ const Sidebar = (props) => {
                         <span>Binary / 2024-04-30</span>
                       </a>
                     </li>
-                    {/**/}
+                   
                   </ul>
                 </div>
               </li>
-              {/**/}
+             
             </ul>
-            {/**/}
-            {/**/}
-          </li>
-          {/**/}
-          <li className="d-block d-sm-none nav-item">
+           
+           
+          </li> */}
+       
+          {/* <li className="d-block d-sm-none nav-item">
             <a href="#(0)" className="nav-link final-link">
               <img src="/assets/images/menu-rules.png" />
               <span>rules</span>
             </a>
-          </li>
-          {/**/}
+          </li> */}
+        
         </ul>
         <div
           id="carouselExampleIndicators"

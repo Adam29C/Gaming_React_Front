@@ -21,7 +21,7 @@ const GameRuleAdd = () => {
   const location = useLocation();
   const { state } = location;
 
-  // console.log("state?.bankName", state);
+
   const formik = useFormik({
     initialValues: {
       upiId: state?.upiId ? state?.upiId : "",

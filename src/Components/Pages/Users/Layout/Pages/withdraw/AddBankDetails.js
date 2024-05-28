@@ -64,7 +64,6 @@ const WithdrawModel = ({ show, setShow }) => {
       }
 
 
-      console.log("errors", errors);
       return errors;
     },
     onSubmit: async (values) => {
