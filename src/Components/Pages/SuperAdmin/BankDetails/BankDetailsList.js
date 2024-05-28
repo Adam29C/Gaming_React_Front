@@ -160,7 +160,7 @@ const GameRuleList = () => {
     const response = await All_ACCOUNT_LIST(userId, token);
 
     if (response.statusCode === 200) {
-      console.log(response.bankList);
+    
       setgetBankDetails(response.data.bankList);
       setUPIDetails(response.data.upiList);
     }
@@ -187,9 +187,7 @@ const GameRuleList = () => {
       } else {
         toast.error(response.msg);
       }
-    } else {
-      console.log("");
-    }
+    } 
   };
 
   const handleStatusUpdate = async (value, id) => {

@@ -18,7 +18,7 @@ const GameRuleAdd = () => {
   const location = useLocation();
   const { state } = location;
 
-  console.log("state?.bankName", state);
+
   const formik = useFormik({
     initialValues: {
       upiId: state?.upiId ? state?.upiId : "",
@@ -65,7 +65,7 @@ const GameRuleAdd = () => {
       }
 
       const res = await ADD_ADMIN_ACCOUNT_DETAILS(formData, token);
-      console.log(res, "check res");
+  
       if (res?.statusCode === 200 || 201) {
         toast.success(res?.msg);
         resetForm();
@@ -76,10 +76,7 @@ const GameRuleAdd = () => {
         toast.error(res?.msg);
       }
 
-      // Log FormData contents for debugging
-      for (let [key, value] of formData.entries()) {
-        console.log(`${key}:`, value);
-      }
+   
 
     
     },

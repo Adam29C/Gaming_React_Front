@@ -41,7 +41,7 @@ const ReusableForm = ({
   const [previews, setPreviews] = useState([]); // Array to store individual previews
 
   const handleFileChange = (event, index, name) => {
-    console.log(event.target.files[0]);
+  
     const file = event.target.files[0];
     const newPreviews = [...previews]; // Create a copy of the previews array
 
@@ -116,11 +116,16 @@ const ReusableForm = ({
                             </option>
                           ))}
                         </select>
-                        {formik.errors[field.name] && (
-                          <div style={{ color: "red" }}>
-                            {formik.errors[field.name]}
-                          </div>
-                        )}
+
+                      
+                          {" "}
+                          {formik.errors[field.name] && (
+                             
+                            <div className="error-text" style={{ color: "red" }}>
+                              {formik.errors[field.name]}
+                            </div>
+                          )}{" "}
+                        
                       </div>
                     </div>
                   </div>
@@ -153,9 +158,11 @@ const ReusableForm = ({
                                     </label>
                                   </div>
                                   {formik.errors[field.name] && (
-                                    <div style={{ color: "red" }}>
+                                    
+                                    <div className="error-text">
                                       {formik.errors[field.name]}
                                     </div>
+                                   
                                   )}
                                 </div>
                               </div>
@@ -186,9 +193,11 @@ const ReusableForm = ({
                               </label>
                             </div>
                             {formik.errors[field.name] && (
-                              <div style={{ color: "red" }}>
+                              
+                                <div className="error-text">
                                 {formik.errors[field.name]}
                               </div>
+                             
                             )}
                           </div>
                         </div>
@@ -278,11 +287,15 @@ const ReusableForm = ({
                             }))
                           }
                         ></i>
-                        {formik.errors[field.name] && (
-                          <div style={{ color: "red" }}>
-                            {formik.errors[field.name]}
-                          </div>
-                        )}
+                       
+                          {" "}
+                          {formik.errors[field.name] && (
+                            
+                            <div className="error-text" style={{ color: "red" }}>
+                              {formik.errors[field.name]}
+                            </div> 
+                          )}{" "}
+                      
                       </div>
                     </div>
                   </div>
@@ -309,11 +322,16 @@ const ReusableForm = ({
                             }
                           />
                         </div>
-                        {formik.errors[field.name] && (
-                          <div style={{ color: "red" }}>
-                            {formik.errors[field.name]}
-                          </div>
-                        )}
+                       
+                          {" "}
+                          {formik.errors[field.name] && (
+                            
+                            <div className="error-text" style={{ color: "red" }}>
+                              {formik.errors[field.name]}
+                            </div>
+                             
+                          )}{" "}
+                      
                       </div>
                     </div>
                   </div>
@@ -341,9 +359,11 @@ const ReusableForm = ({
                             placeholder={field.label}
                           ></textarea>
                           {formik.errors[field.name] && (
-                            <div style={{ color: "red" }}>
+                           
+                            <div className="error-text">
                               {formik.errors[field.name]}
                             </div>
+                            
                           )}
                         </div>
                       </div>
@@ -451,9 +471,11 @@ const ReusableForm = ({
                         </div>
                       </div>
                       {formik.errors[field.name] && (
-                        <div style={{ color: "red" }}>
+                         
+                         <div className="error-text">
                           {formik.errors[field.name]}
                         </div>
+                       
                       )}
                     </div>
                   </div>
@@ -468,7 +490,7 @@ const ReusableForm = ({
           <div className="form-group mb-0">
             <button
               style={{ background: "#4e3897" }}
-              className={`btn btn-primary ${button_Size} ${
+              className={`btn btn-primary mt-2 ${button_Size} ${
                 location.pathname === "resetpassword" ? "col-md-11" : ""
               }`}
               type="submit"

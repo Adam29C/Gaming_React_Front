@@ -92,14 +92,8 @@ export const getMatchDetails = createAsyncThunk(
   "user/getMatchDetails",
   async (data) => {
     try {
-      console.log(data)
-      let { id,token } = data;
-      // let getData = {
-      //   userId :userId ,
-      //   paymentstatus:paymentstatus
-      // }
-   
-      const res = await MATCH_DETAILS_API(id, token)
+let { id,token } = data;
+  const res = await MATCH_DETAILS_API(id, token)
       return await res
     } catch (error) {
       return error;

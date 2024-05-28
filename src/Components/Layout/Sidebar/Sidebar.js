@@ -16,9 +16,8 @@ const Sidebar = () => {
   );
   const dispatch = useDispatch();
   const canViewUser =
-    (getSubAdminPermissionState.viewUser &&
-      getSubAdminPermissionState.viewUser)
-      console.log(canViewUser)
+    getSubAdminPermissionState.viewUser && getSubAdminPermissionState.viewUser;
+
   const [ShowSubMenu, setShowSubMenu] = useState(false);
   const { handleMouseLeave, handleMouseEnter } = useAppContext();
 
@@ -47,7 +46,6 @@ const Sidebar = () => {
   useEffect(() => {
     getPermission();
   }, []);
-
 
   return (
     <>
@@ -88,7 +86,14 @@ const Sidebar = () => {
                           } treeview-menu `}
                         >
                           {item.Data.map((subItem) => (
-                            <li key={subItem.id}>
+                            <li
+                              key={subItem.id}
+                              className={
+                                location.pathname === subItem.route
+                                  ? ` active`
+                                  : ""
+                              }
+                            >
                               <Link to={subItem.route}>{subItem.name}</Link>
                             </li>
                           ))}

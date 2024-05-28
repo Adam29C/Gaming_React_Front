@@ -92,9 +92,7 @@ const GameRuleList = () => {
       } else {
         toast.error(response.msg);
       }
-    } else {
-      console.log("");
-    }
+    } 
   };
 
   const handleStatusUpdate = async (value, id) => {

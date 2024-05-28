@@ -11,7 +11,6 @@ const MatchDetails = () => {
   const { id } = useParams();
   const [token, setToken] = useState("");
   const dispatch = useDispatch();
-console.log(getMatchDetailsState,"getMatchDetailsState")
 // Generate token and set it in state
 useEffect(() => {
   const generateTokenApi = async () => {

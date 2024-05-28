@@ -49,7 +49,7 @@ export async function GET_ALL_ADMINS(data, token) {
 }
 //game rule list status change api
 export async function REMOVE_ADMINS(data, token) {
-  console.log("data", data);
+ 
   try {
     const res = await axios.delete(
       `${baseurl}adminRouter/deleteSubAdmin`,

@@ -17,7 +17,6 @@ const Withdraw = ({ abbb }) => {
   const { getPaymentHistorytState, isLoading } = useSelector(
     (state) => state.UserSlice
   );
-  console.log(getPaymentHistorytState?.paymentInfo, 500);
   const [show, setShow] = useState(false);
   const [showCreatePassword, setShowCreatePassword] = useState(false);
 

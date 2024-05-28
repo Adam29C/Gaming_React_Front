@@ -110,7 +110,7 @@ const Users = () => {
         toast.error(response.msg);
       }
     } else {
-      console.log("");
+
     }
   };
 
