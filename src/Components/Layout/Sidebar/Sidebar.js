@@ -17,10 +17,6 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const canViewUser =
     getSubAdminPermissionState.viewUser && getSubAdminPermissionState.viewUser;
-<<<<<<< HEAD
-=======
-
->>>>>>> c314d533c1963032a11cc11f53ce58655aad0d19
   const [ShowSubMenu, setShowSubMenu] = useState(false);
 
   const { handleMouseLeave, handleMouseEnter } = useAppContext();
