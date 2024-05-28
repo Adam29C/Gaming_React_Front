@@ -12,7 +12,7 @@ import {
   ADD_ADMIN_ACCOUNT_DETAILS,
   UPDATE_ADMIN_ACCOUNT_DETAILS,
 } from "../../../Service/superadmin.service";
-
+import { No_Negetive_Input_regex } from "../../../Utils/Valid_Rejex";
 const GameRuleAdd = () => {
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
@@ -20,7 +20,6 @@ const GameRuleAdd = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { state } = location;
-
 
   const formik = useFormik({
     initialValues: {
@@ -43,17 +42,49 @@ const GameRuleAdd = () => {
     },
 
     validate: (values) => {
-      // const errors = {};
-      // if (!values.title) {
-      //   errors.title = valid_err.TITLE_ERROR;
-      // }
-      // if (!values.description) {
-      //   errors.description = valid_err.DESCRIPTION_ERROR;
-      // }
-      // if (!values.status) {
-      //   errors.status = valid_err.STATUS_ERROR;
-      // }
-      // return errors;
+      const errors = {};
+
+      if (!values.isBank) {
+        errors.isBank = valid_err.EMPTY_SELECT_BANK_ERROR;
+      }
+      if (values.isBank === "false") {
+        if (values.image === "") {
+          errors.image = valid_err.EMPTY_IMAGE_ERROR;
+        }
+        if (values.upiName === "") {
+          errors.upiName = valid_err.EMPTY_UPI_NAME_ERROR;
+        }
+        if (values.upiId === "") {
+          errors.upiId = valid_err.EMPTY_UPI_ERROR;
+        }
+      } else if (values.isBank === "true") {
+        if (values.accountNumber === "") {
+          errors.accountNumber = valid_err.EMPTY_ACOUNT_HOLDER_NAME_ERROR;
+        }
+        if (values.accountHolderName === "") {
+          errors.accountHolderName = valid_err.EMPTY_UPI_ERROR;
+        }
+        if (values.ifscCode === "") {
+          errors.ifscCode = valid_err.EMPTY_BANK_IFSC_ERROR;
+        }
+        if (values.bankName === "") {
+          errors.bankName = valid_err.EMPTY_BANK_NAME_ERROR;
+        }
+      }
+      if (!values.minAmount) {
+        errors.minAmount = valid_err.MIN_AMOUNT_ERROR;
+      } else if (!No_Negetive_Input_regex(values.minAmount)) {
+        errors.minAmount = valid_err.AMOUNT_GRATER_ZERO_ERROR;
+      }
+      if (!values.maxAmount) {
+        errors.maxAmount = valid_err.MAX_AMOUNT_ERROR;
+      } else if (!No_Negetive_Input_regex(values.maxAmount)) {
+        errors.maxAmount = valid_err.AMOUNT_GRATER_ZERO_ERROR;
+      } else if (parseInt(values.minAmount) > parseInt(values.maxAmount)) {
+        errors.maxAmount = valid_err.AMOUNT_MIN_GRATER_MAX_ERROR;
+      }
+
+      return errors;
     },
     onSubmit: async (values, { resetForm }) => {
       let formData = new FormData();

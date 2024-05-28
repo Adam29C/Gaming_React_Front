@@ -33,7 +33,6 @@ const Sidebar = () => {
     sidebarTabs = superadmin_sidebar;
   } else if (parseInt(ROLES) == 1) {
     sidebarTabs = admin_sidebar;
-    getPermission();
   }
 
   const getPermission = async () => {
@@ -43,6 +42,10 @@ const Sidebar = () => {
     };
     dispatch(subAdminPermissionGet(data));
   };
+
+  useEffect(() => {
+    parseInt(ROLES) == 1 && getPermission();
+  }, []);
 
   return (
     <>

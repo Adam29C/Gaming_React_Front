@@ -39,3 +39,17 @@ export async function GAME_STATUS_UPDATE_API(data,token){
     return error
   }
 }
+
+
+// ----------------------------------------  SHOW ADMIN ACCOUNT DETAILS  -------------
+//get payment history
+export async function AVAILABLE_ADMIN_ACCOUNT_DETAILS(data, token) {
+  try {
+    const res = await axios.get(`${baseurl}userRouter/adminAccountsList?userId=${data}`, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}

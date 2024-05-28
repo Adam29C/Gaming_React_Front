@@ -8,6 +8,7 @@ import Dashboard from "../Pages/SuperAdmin/Dashboard/Dashboard";
 
 import AddUsers from "../Pages/SuperAdmin/Admins/AddUsers";
 import Users from "../Pages/SuperAdmin/Admins/Users";
+import SignUpUsers from "../Pages/SuperAdmin/SignUpUsers/SignUpUsers";
 import Profile from "../Pages/SuperAdmin/Profile/Profile";
 
 import GameRuleList from "../Pages/SuperAdmin/GameRules/GameRuleList";
@@ -43,6 +44,7 @@ const Admin = () => {
         <Route exact path="/user/add" element={<AddUsers />} />
         {/* <Route exact path="/user/edit/1" element={<EditUsers />} /> */}
         <Route exact path="/users" element={<Users />} />
+        <Route exact path="/signupusers" element={<SignUpUsers />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/rules" element={<GameRuleList />} />
         <Route exact path="/rules/add" element={<GameRuleAdd />} />
