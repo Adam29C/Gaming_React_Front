@@ -212,17 +212,19 @@ const Users = () => {
   const renderButton = (buttonProps) => {
     return (
       <button
-        className="btn btn-primary   text-light mx-1"
+        className="resend-otp-button mt-2 mx-1"
         {...buttonProps}
         onClick={(e) => {
           e.preventDefault();
           Send_Opt_Function();
         }}
-        s
+        
       >
-        {buttonProps.remainingTime !== 0
-          ? `Resend ${buttonProps.remainingTime} Sec`
-          : "Resend"}
+       {buttonProps.remainingTime !== 0 ? (
+        <span>Resend {buttonProps.remainingTime} Sec</span>
+      ) : (
+        "Resend"
+      )}
       </button>
     );
   };
@@ -259,7 +261,7 @@ const Users = () => {
                         name="VerifyOTP"
                         onChange={setOTP}
                         autoFocus
-                        OTPLength={5}
+                        OTPLength={4}
                         otpType="number"
                         disabled={false}
                         // className="col-6 col-sm-12 mb-3 "
@@ -274,7 +276,7 @@ const Users = () => {
                       </div>
                       <div>
                         <button
-                          className="btn btn-primary"
+                          className="verify-otp-button mt-2"
                           onClick={(e) => Verify_OTP_Function(e)}
                         >
                           Verify

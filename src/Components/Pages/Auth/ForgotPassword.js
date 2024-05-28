@@ -162,7 +162,7 @@ const ForgetPassword = () => {
   const renderButton = (buttonProps) => {
     return (
       <button
-        className="btn btn-primary   text-light mx-1"
+        className="resend-otp-button mt-2 mx-1"
         {...buttonProps}
         onClick={(e) => {
           e.preventDefault();
@@ -170,7 +170,7 @@ const ForgetPassword = () => {
         }}
       >
         {buttonProps.remainingTime !== 0
-          ? `Resend ${buttonProps.remainingTime} Sec`
+          ?  <span>Resend {buttonProps.remainingTime} Sec</span>
           : "Resend"}
       </button>
     );
@@ -203,7 +203,7 @@ const ForgetPassword = () => {
                         name="VerifyOTP"
                         onChange={setOTP}
                         autoFocus
-                        OTPLength={5}
+                        OTPLength={4}
                         otpType="number"
                         disabled={false}
                       />
@@ -217,8 +217,8 @@ const ForgetPassword = () => {
                       </div>
                       <div>
                         <button
-                          style={{ background: "#4e3897" }}
-                          className="btn btn-primary"
+                        
+                          className="verify-otp-button mt-2"
                           onClick={(e) => Verify_OTP_Function(e)}
                           disabled={DisabledVerifyOtp}
                         >

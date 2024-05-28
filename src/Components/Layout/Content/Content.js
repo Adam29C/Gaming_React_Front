@@ -24,7 +24,7 @@ const Content = ({
                   <div className="card">
                     <div className="card-body">
                       <div class="admin-add-main">
-                        <h3 className="card-titl1e mb-4">{title}</h3>
+                        <h3 className="card-titl1e mb-4 ">{title}</h3>
                         {addtitle ? (
                           <button
                             onClick={handleAdd}

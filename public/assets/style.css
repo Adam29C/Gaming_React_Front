@@ -16375,3 +16375,44 @@ border-bottom-style: 0px;
     margin: 5px 0 0;
  
 }
+
+.superadmin-preview-img{
+  border-radius: 4px;
+  height: 120px;
+  margin-right: 15px;
+  object-fit: contain;
+  width: 200px;
+}
+
+.resend-otp-button{
+  width: 100px;
+  height: 38px;
+  text-align: center;
+  font-size: 14px;
+  background-color: #4e3897;
+  color: white;
+  border-radius: 7px;
+  border: 1px solid skyblue;
+}
+
+.resend-otp-button span{
+  font-size: 11px;
+}
+
+.verify-otp-button{
+  width: 60px;
+  height: 38px;
+  text-align: center;
+  font-size: 14px;
+  background-color: #4e3897;
+  color: white;
+  border-radius: 7px;
+  border: 1px solid skyblue;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .verify-otp-button{
+    width: 55px;
+  }
+}
