@@ -30,7 +30,7 @@ export const Available_Admin_Acount_Details = createAsyncThunk(
   async (data) => {
     const { userId, token } = data;
     try {
-      const res = await AVAILABLE_ADMIN_ACCOUNT_DETAILS(userId , token);
+      const res = await AVAILABLE_ADMIN_ACCOUNT_DETAILS(userId ,token);
       return res;
     } catch (error) {
       return error;
