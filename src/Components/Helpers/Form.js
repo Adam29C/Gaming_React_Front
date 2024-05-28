@@ -138,7 +138,7 @@ const ReusableForm = ({
                             >
                               <div className="row d-flex">
                                 <div className={`col-lg-${field.col_size}`}>
-                                  <div class="form-check custom-checkbox mb-3">
+                                  <div class="form-check custom-checkbox mb-2">
                                     <input
                                       type={field.type}
                                       className="form-check-input"
@@ -170,7 +170,7 @@ const ReusableForm = ({
                           <div
                           //  className={`col-lg-${field.col_size}`}
                           >
-                            <div class="form-check custom-checkbox mb-3">
+                            <div class="form-check custom-checkbox mb-2">
                               <input
                                 type={field.type}
                                 className="form-check-input"
@@ -215,7 +215,7 @@ const ReusableForm = ({
                   <div className="col-lg-3">
                     <div className="row d-flex">
                       <div className="col-lg-12 ">
-                        <div class="form-check custom-checkbox mb-3">
+                        <div class="form-check custom-checkbox mb-2">
                           <input
                             type={field.type}
                             name={field.name}
@@ -292,7 +292,7 @@ const ReusableForm = ({
                   <div className="col-lg-3">
                     <div className="row d-flex">
                       <div className="col-lg-12 ">
-                        <div class="form-check custom-checkbox mb-3">
+                        <div class="form-check custom-checkbox mb-2">
                           <label className="col-lg-6 " for={field.name}>
                             {field.name}
                           </label>
@@ -355,7 +355,7 @@ const ReusableForm = ({
                   <div className="col-lg-3">
                     <div className="row d-flex">
                       <div className="col-lg-12 ">
-                        <div class="form-check custom-checkbox mb-3">
+                        <div class="form-check custom-checkbox mb-2">
                           <input
                             type={field.type}
                             name={field.name}
@@ -407,14 +407,15 @@ const ReusableForm = ({
                           formik.getFieldProps(`${field.name}_base64`).value ||
                           formik.getFieldProps(field.name).value
                         }
-                        style={{
-                          height: "150px",
-                          objectFit: "contain",
-                        }}
+                        // style={{
+                        //   height: "150px",
+                        //   objectFit: "contain",
+                        // }}
+                       
                         name={field.name}
                         id={field.name}
                         alt={`Preview ${index}`}
-                        className="mb-3"
+                        className="superadmin-preview-img"
                       />
                     </div>
                    
@@ -446,7 +447,7 @@ const ReusableForm = ({
                         />
                         {field.showButton ? (
                           <button
-                            style={{ background: "#4e3897" }}
+                            style={{ background: "#4e3897",width:"100px" }}
                             className="btn btn-primary ms-3 col-4"
                             onClick={(e) => {
                               e.preventDefault();

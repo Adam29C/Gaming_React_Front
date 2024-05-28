@@ -9,14 +9,14 @@ const Data_Table = ({ columns, data, tableStyle, isLoading }) => {
   const adminStyles = {
     rows: {
       background: "#4E3896",
-      color: "#fff",
+      // color: "#fff",
     },
     headCells: {
       style: {
         // background: "#4E3896",
-        color: "#fff",
+        color: "#000000",
         backgroundColor: "#4BB6B9",
-        fontSize: "16px",
+        fontSize: "15px",
         fontWeight: "600",
       },
     },

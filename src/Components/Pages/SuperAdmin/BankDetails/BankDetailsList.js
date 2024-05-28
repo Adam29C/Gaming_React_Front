@@ -47,7 +47,11 @@ const GameRuleList = () => {
     {
       name: "Image",
       cell: (row) => (
-        <img height="84px" width="56px" alt={row.name} src={row.bankImage} />
+        row?.bankImage ? (
+          <img height="84px" width="56px" alt={row?.name} src={row?.bankImage} />
+        ) : (
+          " _ "
+        )
       ),
     },
     {
@@ -108,7 +112,12 @@ const GameRuleList = () => {
     {
       name: "Image",
       cell: (row) => (
-        <img height="84px" width="56px" alt={row.name} src={row.barCodeImage} />
+
+        row?.barCodeImage ? (
+          <img height="84px" width="56px" alt={row?.name} src={row?.barCodeImage} />
+        ) : (
+          " _ "
+        )
       ),
     },
     {

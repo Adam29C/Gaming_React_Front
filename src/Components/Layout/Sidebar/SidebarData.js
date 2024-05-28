@@ -1,7 +1,7 @@
 export const superadmin_sidebar = [
   {
     id: 1,
-    name: "SuperAdmin Dashboard",
+    name: "Super Admin Dashboard",
     Icon: "bx bx-home-heart",
     route: "/super/dashboard",
     Data: [],
@@ -28,7 +28,7 @@ export const superadmin_sidebar = [
     Data: [
       {
         id: 1,
-        name: "Games Create",
+        name: "Games",
         route: "/super/game",
       },
       {

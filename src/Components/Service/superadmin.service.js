@@ -203,3 +203,16 @@ export async function REMOVE_BANK_DETAILS(data, token) {
     return error?.response?.data || error;
   }
 }
+
+//super admin get dashboard count api 
+export async function ADMIN_DASHBOARD_COUNT_API(id, token) {
+  try {
+    const res = await axios.get(
+      `${baseurl}adminRouter/countDashboard?adminId=${id}`,
+      { headers: header(token) }
+    );
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}

@@ -22,7 +22,7 @@ const Content = ({ title, children, col_size, responsive_col }) => {
             <div className={` ${responsive_col} box-margin`}>
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-titl1e mb-5">{title}</h5>
+                  <h5 className="card-titl1e my-1 ">{title}</h5>
                   {children}
                 </div>
               </div>
