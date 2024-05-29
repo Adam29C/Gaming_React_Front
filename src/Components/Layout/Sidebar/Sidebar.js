@@ -9,7 +9,7 @@ import { subAdminPermissionGet } from "../../Redux/Slice/Admin/admin.slice";
 const Sidebar = () => {
   const location = useLocation();
   const token = localStorage.getItem("token");
-  const userId = JSON.parse(localStorage.getItem("user_details")).id;
+  const userId = JSON.parse(localStorage.getItem("user_details"))?.id;
   const ROLES = JSON.parse(localStorage.getItem("roles"));
   const { getSubAdminPermissionState } = useSelector(
     (state) => state.AdminSlice
@@ -33,7 +33,6 @@ const Sidebar = () => {
     sidebarTabs = superadmin_sidebar;
   } else if (parseInt(ROLES) == 1) {
     sidebarTabs = admin_sidebar;
-    getPermission();
   }
 
   const getPermission = async () => {
@@ -43,6 +42,10 @@ const Sidebar = () => {
     };
     dispatch(subAdminPermissionGet(data));
   };
+
+  useEffect(() => {
+    parseInt(ROLES) == 1 && getPermission();
+  }, []);
 
   return (
     <>

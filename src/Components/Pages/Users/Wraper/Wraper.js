@@ -11,7 +11,6 @@ import "../theme_style.css";
 const Layout = () => {
   const [open, setOpen] = useState(true);
 
-
   return (
     <>
       <app-root _nghost-nsr-c9="" ng-version="12.1.5">

@@ -5,10 +5,15 @@ import Deposite_request from "./Deposite_request";
 import Available_Option from "./Deposit_Details/Available_Option";
 import Available_Option_Details from "./Deposit_Details/Available_Option_Details";
 import TransactionInfo from "./Deposit_Details/TransactionInfo";
+import { AVAILABLE_ADMIN_ACCOUNT_DETAILS_BY_ID } from "../../../../../Service/common.service";
 const Deposit = () => {
+  const token = localStorage.getItem("token");
+  const userId = JSON.parse(localStorage.getItem("user_details")).id;
   const [show, setShow] = useState(false);
   const [amount, setAmount] = useState("");
   const [error, setError] = useState("");
+  const [data,setData]=useState({})
+// console.log(data)
 
   const handleTransactionSubmit = () => {
     if (!amount) {
@@ -22,6 +27,18 @@ const Deposit = () => {
     setError("");
     setAmount(amount);
   };
+
+  const handleShowPaymentDetails = async(row) => {
+    let data = {
+      userId:userId,
+      isBank: row?.isBank === "true" ? Boolean(row?.isBank) : !Boolean(row?.isBank) ,
+      id: row?._id
+    }
+    const res = await AVAILABLE_ADMIN_ACCOUNT_DETAILS_BY_ID(data,token)
+    // console.log(res, "check  data")
+    setData(res?.data)
+
+  }
 
   return (
     <>
@@ -59,7 +76,7 @@ const Deposit = () => {
                                   &lt; Back
                                 </button>
 
-                                <Available_Option />
+                                <Available_Option handleShowPaymentDetails={handleShowPaymentDetails} />
                               </nav>
                               <div className="tab-content" id="nav-tabContent">
                              
@@ -83,7 +100,7 @@ const Deposit = () => {
                                             PhonePe
                                           </h5>
                                           <div className="row">
-                                            <Available_Option_Details/>
+                                            <Available_Option_Details data={data}/>
                                             <TransactionInfo  amount={amount}/>
                                           </div>
                                         </div>

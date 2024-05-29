@@ -41,7 +41,6 @@ const ReusableForm = ({
   const [previews, setPreviews] = useState([]); // Array to store individual previews
 
   const handleFileChange = (event, index, name) => {
-  
     const file = event.target.files[0];
     if (file) {
       const newPreviews = [...previews]; // Create a copy of the previews array
@@ -116,17 +115,12 @@ const ReusableForm = ({
                               {option.label}
                             </option>
                           ))}
-                        </select>
-
-                      
-                          {" "}
-                          {formik.errors[field.name] && (
-                             
-                            <div className="error-text" style={{ color: "red" }}>
-                              {formik.errors[field.name]}
-                            </div>
-                          )}{" "}
-                        
+                        </select>{" "}
+                        {formik.errors[field.name] && (
+                          <div className="error-text" style={{ color: "red" }}>
+                            {formik.errors[field.name]}
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -159,11 +153,9 @@ const ReusableForm = ({
                                     </label>
                                   </div>
                                   {formik.errors[field.name] && (
-                                    
                                     <div className="error-text">
                                       {formik.errors[field.name]}
                                     </div>
-                                   
                                   )}
                                 </div>
                               </div>
@@ -194,11 +186,9 @@ const ReusableForm = ({
                               </label>
                             </div>
                             {formik.errors[field.name] && (
-                              
-                                <div className="error-text">
+                              <div className="error-text">
                                 {formik.errors[field.name]}
                               </div>
-                             
                             )}
                           </div>
                         </div>
@@ -287,16 +277,12 @@ const ReusableForm = ({
                               [field.name]: !prevState[field.name],
                             }))
                           }
-                        ></i>
-                       
-                          {" "}
-                          {formik.errors[field.name] && (
-                            
-                            <div className="error-text" style={{ color: "red" }}>
-                              {formik.errors[field.name]}
-                            </div> 
-                          )}{" "}
-                      
+                        ></i>{" "}
+                        {formik.errors[field.name] && (
+                          <div className="error-text" style={{ color: "red" }}>
+                            {formik.errors[field.name]}
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -322,17 +308,12 @@ const ReusableForm = ({
                                 : getCurrentDate()
                             }
                           />
-                        </div>
-                       
-                          {" "}
-                          {formik.errors[field.name] && (
-                            
-                            <div className="error-text" style={{ color: "red" }}>
-                              {formik.errors[field.name]}
-                            </div>
-                             
-                          )}{" "}
-                      
+                        </div>{" "}
+                        {formik.errors[field.name] && (
+                          <div className="error-text" style={{ color: "red" }}>
+                            {formik.errors[field.name]}
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -360,11 +341,9 @@ const ReusableForm = ({
                             placeholder={field.label}
                           ></textarea>
                           {formik.errors[field.name] && (
-                           
                             <div className="error-text">
                               {formik.errors[field.name]}
                             </div>
-                            
                           )}
                         </div>
                       </div>
@@ -417,7 +396,12 @@ const ReusableForm = ({
                           />
                         </div>
                       </div>
-
+                      {formik.errors[field.name] && (
+                      <div className="error-text">
+                        {formik.errors[field.name]}
+                      </div>
+                    )}
+                    
                       <img
                         src={
                           formik.getFieldProps(`${field.name}_base64`).value ||
@@ -434,6 +418,7 @@ const ReusableForm = ({
                         className="superadmin-preview-img"
                       />
                     </div>
+                   
                   </div>
                 </>
               ) : (
@@ -480,11 +465,9 @@ const ReusableForm = ({
                         </div>
                       </div>
                       {formik.errors[field.name] && (
-                         
-                         <div className="error-text">
+                        <div className="error-text">
                           {formik.errors[field.name]}
                         </div>
-                       
                       )}
                     </div>
                   </div>

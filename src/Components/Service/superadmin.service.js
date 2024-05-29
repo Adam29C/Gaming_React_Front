@@ -49,7 +49,6 @@ export async function GET_ALL_ADMINS(data, token) {
 }
 //game rule list status change api
 export async function REMOVE_ADMINS(data, token) {
- 
   try {
     const res = await axios.delete(
       `${baseurl}adminRouter/deleteSubAdmin`,
@@ -146,7 +145,7 @@ export async function All_ACCOUNT_LIST(data, token) {
   }
 }
 
-// update Bank Details 
+// update Bank Details
 export async function UPDATE_ADMIN_ACCOUNT_DETAILS(data, token) {
   try {
     const res = await axios.put(
@@ -158,6 +157,18 @@ export async function UPDATE_ADMIN_ACCOUNT_DETAILS(data, token) {
           "Content-Type": "multipart/form-data",
         },
       }
+    );
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+// update Bank Details
+export async function SIGN_UP_USERLIST(data, token) {
+  try {
+    const res = await axios.get(
+      `${baseurl}adminRouter/userList?adminId=${data}`,
+      { headers: header(token) }
     );
     return await res?.data;
   } catch (error) {

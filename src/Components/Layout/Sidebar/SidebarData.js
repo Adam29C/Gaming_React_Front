@@ -8,9 +8,16 @@ export const superadmin_sidebar = [
   },
   {
     id: 3,
-    name: "Clients",
+    name: "Admins",
     Icon: " fa fa-user-plus",
     route: "/super/users",
+    Data: [],
+  },
+  {
+    id: 3,
+    name: "Sign-Up Users",
+    Icon: " fa fa-user-plus",
+    route: "/super/signupusers",
     Data: [],
   },
   {

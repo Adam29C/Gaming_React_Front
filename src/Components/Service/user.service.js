@@ -43,10 +43,10 @@ export async function SeriesListApi(token) {
   }
 }
 
-//get match details 
-export async function MATCH_DETAILS_API(id,token) {
+//get match details
+export async function MATCH_DETAILS_API(id, token) {
   try {
-const res = await axios.get(`${baseurl}sports/matchDetails/${id}`, {
+    const res = await axios.get(`${baseurl}sports/matchDetails/${id}`, {
       headers: header(token),
     });
     return await res?.data;
@@ -127,7 +127,6 @@ export async function AccountDetailsList(id, token, navigate) {
     return error;
   }
 }
-
 
 //  Remove Account Details
 export async function RemoveAccountDetails(data, token) {
@@ -219,16 +218,19 @@ export async function UpdateResetPassword(data, token) {
   }
 }
 
-
 //get payment history
 export async function PaymentHistory(data, token) {
-try {
-    const res = await axios.post(`${baseurl}userRouter/filterPaymentHistory`,data, {
-      headers: header(token),
-    });
-return await res?.data;
+  try {
+    const res = await axios.post(
+      `${baseurl}userRouter/filterPaymentHistory`,
+      data,
+      {
+        headers: header(token),
+      }
+    );
+    return await res?.data;
   } catch (error) {
     return error;
   }
-
 }
+

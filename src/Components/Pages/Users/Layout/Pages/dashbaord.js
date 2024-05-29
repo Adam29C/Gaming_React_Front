@@ -25,7 +25,7 @@ useEffect(() => {
         await dispatch(getAllMatches(token)).unwrap();
       }
     } catch (error) {
-      console.error('Error:', error);
+    
     }
   };
 

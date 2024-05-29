@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   GameRuleGetApi,
   GetGameListApi,
+  AVAILABLE_ADMIN_ACCOUNT_DETAILS,
 } from "../../../Service/common.service";
 
 export const getGameRule = createAsyncThunk(
@@ -24,6 +25,18 @@ export const getGame = createAsyncThunk("common/getGame", async (token) => {
     return error;
   }
 });
+export const Available_Admin_Acount_Details = createAsyncThunk(
+  "common/accountdetails",
+  async (data) => {
+    const { userId, token } = data;
+    try {
+      const res = await AVAILABLE_ADMIN_ACCOUNT_DETAILS(userId ,token);
+      return res?.data;
+    } catch (error) {
+      return error;
+    }
+  }
+);
 
 const CommonSlice = createSlice({
   name: "CommonSlice",
@@ -39,6 +52,7 @@ const CommonSlice = createSlice({
         return {
           ...state,
           getGameRuleState: [],
+          account_details: [],
           isLoading: true,
         };
       })
@@ -74,6 +88,27 @@ const CommonSlice = createSlice({
         return {
           ...state,
           getGameListState: [],
+          isLoading: false,
+        };
+      })
+      .addCase(Available_Admin_Acount_Details.pending, (state, action) => {
+        return {
+          ...state,
+          account_details: [],
+          isLoading: true,
+        };
+      })
+      .addCase(Available_Admin_Acount_Details.fulfilled, (state, action) => {
+        return {
+          ...state,
+          account_details: action.payload,
+          isLoading: false,
+        };
+      })
+      .addCase(Available_Admin_Acount_Details.rejected, (state, action) => {
+        return {
+          ...state,
+          account_details: [],
           isLoading: false,
         };
       });

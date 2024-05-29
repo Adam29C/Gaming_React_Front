@@ -152,3 +152,32 @@ export async function SUB_ADMIN_PERMISSION_GET_API(id,token) {
     return error;
   }
 }
+
+
+//in super admin penal admin list deactivateUser api
+export async function SUPER_ADMIN_DEACTIVE_USER_API(data, token) {
+  try {
+    const res = await axios.patch(
+      `${baseurl}adminRouter/deactivateUser`,data,
+      { headers: header(token) }
+    );
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+
+//sub admin get dashboard count api 
+export async function SUB_ADMIN_DASHBOARD_COUNT_API(id, token) {
+  try {
+    const res = await axios.get(
+      `${baseurl}subAdminRouter/countDashboardUser?subAdminId=${id}`,
+      { headers: header(token) }
+    );
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAppContext } from "../../Context/CreateContext";
 import { Link, useNavigate } from "react-router-dom";
+import Notification from "../../Helpers/Notification";
 
 const Headers = () => {
   const { toggleMenuCollapsed } = useAppContext();
@@ -98,40 +99,8 @@ const Headers = () => {
           </div>
           {/* Top Bar Nav */}
           <ul className="right-side-content d-flex align-items-center">
-            <li className="nav-item dropdown">
-              <button
-                type="button"
-                className="btn dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <span>
-                  <i className="bx bx-world" />
-                </span>
-              </button>
-              <div className="dropdown-menu language-dropdown dropdown-menu-right">
-                <div className="user-profile-area">
-                  <a href="#" className="dropdown-item mb-15">
-                    <img src="img/core-img/f1.jpg" alt="Image" />
-                    <span>Ind</span>
-                  </a>
-                  <a href="#" className="dropdown-item mb-15">
-                    <img src="img/core-img/f2.jpg" alt="Image" />
-                    <span>German</span>
-                  </a>
-                  <a href="#" className="dropdown-item mb-15">
-                    <img src="img/core-img/f3.jpg" alt="Image" />
-                    <span>Italian</span>
-                  </a>
-                  <a href="#" className="dropdown-item">
-                    <img src="img/core-img/f4.jpg" alt="Image" />
-                    <span>Russian</span>
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li className="nav-item dropdown">
+     {/* Message Area */}
+            {/* <li className="nav-item dropdown">
               <button
                 type="button"
                 className="btn dropdown-toggle"
@@ -142,9 +111,9 @@ const Headers = () => {
                 <i className="bx bx-envelope" />
               </button>
               <div className="dropdown-menu dropdown-menu-right">
-                {/* Message Area */}
+               
                 <div className="top-message-area">
-                  {/* Heading */}
+                
                   <div className="message-heading">
                     <div className="heading-title">
                       <h6 className="mb-0">All Messages</h6>
@@ -200,78 +169,9 @@ const Headers = () => {
                   </div>
                 </div>
               </div>
-            </li>
-            <li className="nav-item dropdown">
-              <button
-                type="button"
-                className="btn dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i className="bx bx-bell bx-tada" />{" "}
-                <span className="active-status" />
-              </button>
-              <div className="dropdown-menu dropdown-menu-right">
-                {/* Top Notifications Area */}
-                <div className="top-notifications-area">
-                  {/* Heading */}
-                  <div className="notifications-heading">
-                    <div className="heading-title">
-                      <h6>Notifications</h6>
-                    </div>
-                    <span>11</span>
-                  </div>
-                  <div className="notifications-box" id="notificationsBox">
-                    <a href="#" className="dropdown-item">
-                      <i className="bx bx-shopping-bag" />
-                      <div>
-                        <span>Your order is placed</span>
-                        <p className="mb-0 font-12">
-                          Consectetur adipisicing elit. Ipsa, porro!
-                        </p>
-                      </div>
-                    </a>
-                    <a href="#" className="dropdown-item">
-                      <i className="bx bx-wallet-alt" />
-                      <div>
-                        <span>Haslina Obeta</span>
-                        <p className="mb-0 font-12">
-                          Consectetur adipisicing elit. Ipsa, porro!
-                        </p>
-                      </div>
-                    </a>
-                    <a href="#" className="dropdown-item">
-                      <i className="bx bx-dollar-circle" />
-                      <div>
-                        <span>Your order is Dollar</span>
-                        <p className="mb-0 font-12">
-                          Consectetur adipisicing elit. Ipsa, porro!
-                        </p>
-                      </div>
-                    </a>
-                    <a href="#" className="dropdown-item">
-                      <i className="bx bx-border-all" />
-                      <div>
-                        <span>Your order is placed</span>
-                        <p className="mb-0 font-12">
-                          Consectetur adipisicing elit. Ipsa, porro!
-                        </p>
-                      </div>
-                    </a>
-                    <a href="#" className="dropdown-item">
-                      <i className="bx bx-wallet-alt" />
-                      <div>
-                        <span>Haslina Obeta</span>
-                        <p className="mb-0 font-12">
-                          Consectetur adipisicing elit. Ipsa, porro!
-                        </p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </li>
+            </li> */}
+                 {/* Message Area */}
+        <Notification/>
 
             <li className="nav-item dropdown">
               <button
@@ -286,7 +186,7 @@ const Headers = () => {
               <div className="dropdown-menu profile dropdown-menu-right">
                 {/* User Profile Area */}
                 <div className="user-profile-area">
-                  <Link to="/super/profile" className="dropdown-item">
+                  {/* <Link to="/super/profile" className="dropdown-item">
                     <i className="bx bx-user font-15" aria-hidden="true" /> My
                     profile
                   </Link>
@@ -297,7 +197,7 @@ const Headers = () => {
                   <a href="#" className="dropdown-item">
                     <i className="bx bx-wrench font-15" aria-hidden="true" />{" "}
                     settings
-                  </a>
+                  </a> */}
                   <button
                     onClick={() => handleLogout()}
                     className="dropdown-item"

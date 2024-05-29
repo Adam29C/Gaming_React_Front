@@ -910,7 +910,7 @@ a {
 }
 .bankingUi .nav-tabs button.active,
 .bankingUi .nav-tabs button.active:hover {
-  background: var(--theme-secondary);
+  background: var(--theme-secondary-color);
   color: #fff;
 }
 .bankingUi .nav-tabs button:hover {
@@ -1062,6 +1062,21 @@ a {
   color: #222;
 } */
 
+.custom-control {
+  position: relative;
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.custom-control-input {
+  position: absolute;
+  z-index: -1;
+ 
+  left: 5px;
+  bottom: 5px;
+}
+
 .transaction-table{
   display: flex;
   align-items: center;
@@ -1150,4 +1165,22 @@ border: none;
   background-color: #4E3896; 
 }
 
+
+.m-l-0 .form-check-input{
+  margin-left: 0px;
+}
+
+
+.custom-switch .form-check-input:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: none;
+}
+
+.user-bank-details-loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   width: 100px;
+}
 

@@ -3,8 +3,9 @@ import Content from "../../../Layout/Content/Content";
 import Data_Table from "../../../Helpers/Datatable";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { SUPER_ADMIN_DEACTIVE_USER_API } from "../../../Service/admin.service";
 import {
-  GET_ALL_ADMINS,
+  SIGN_UP_USERLIST,
   REMOVE_ADMINS,
 } from "../../../Service/superadmin.service";
 import ToastButton from "../../../Helpers/Toast";
@@ -13,7 +14,6 @@ import { show } from "../../../Utils/Common_Date";
 import { Tooltip } from "bootstrap";
 import { useDispatch } from "react-redux";
 import { fDateTimeSuffix } from "../../../Helpers/Date_formet";
-import { SUPER_ADMIN_DEACTIVE_USER_API } from "../../../Service/admin.service";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -25,11 +25,13 @@ const Users = () => {
   const [GetData, setGetData] = useState([]);
   const [ShowEdit, setShowEdit] = useState(false);
 
+
+
   const getRules = async () => {
-    const response = await GET_ALL_ADMINS(userId, token);
+    const response = await SIGN_UP_USERLIST(userId, token);
 
     if (response.statusCode == 200) {
-      setGetData(response.list);
+      setGetData(response.data);
     } else {
       toast.error(response.msg);
     }
@@ -69,13 +71,14 @@ const Users = () => {
             id="custom-switch"
             defaultChecked={row?.isActive}
             onChange={(e) =>
-              handleStatusUpdate(e.target.checked, row?.subAdminId)
+              handleStatusUpdate(e.target.checked, row?.userId)
             }
             className="custom-switch m-l-0"
           />
         </>
       ),
     },
+
     {
       name: "Create At",
       selector: (cell) => (
@@ -128,25 +131,28 @@ const Users = () => {
         toast.error(response.msg);
       }
     } else {
+
     }
   };
 
   const handleStatusUpdate = async (value, id) => {
-    
+    // console.log(id)
     let data = {
       adminId: userId,
       id: id,
       isActive: value,
     };
-
+// console.log(data)
     const response = await SUPER_ADMIN_DEACTIVE_USER_API(data, token);
+    // console.log(response)
     if (response?.statusCode === 200) {
       toast.success(response.msg);
-     
+      // dispatch(getGameRule(token));
     } else {
       toast.error(response.msg);
     }
   };
+
 
   const handleAdd = () => {
     navigate("/super/user/add");
