@@ -80,7 +80,6 @@ const Users = () => {
 
       if (res.status) {
         toast.success(res.msg);
-
         localStorage.setItem("user_details", JSON.stringify(res.details));
         localStorage.setItem("roles", JSON.stringify(res.details.role));
         localStorage.setItem("token", res.token);
@@ -95,7 +94,7 @@ const Users = () => {
         if (ROLES === "superadmin") {
           setTimeout(() => {
             navigate("/super/dashboard");
-          }, 500);
+          }, 1000);
         } else if (ROLES === "admin") {
           setTimeout(() => {
             navigate("/admin/dashboard");
@@ -106,16 +105,16 @@ const Users = () => {
           toast.error(res.msg);
         }
       } else {
-        if (!res.status) {
-          toast.error(res.msg);
-        }
+        // if (!res.status) {
+        //   toast.error(res.msg);
+        // }
         if (!res.response.data.isVerified) {
           toast.error(res.response.data.msg);
           setTimeout(() => {
             navigate("/_verify_");
-          }, 1000);
+          }, 2000);
         } else {
-          toast.error(res.response.data.msg);
+          // toast.error(res.response.data.msg);
         }
       }
     },

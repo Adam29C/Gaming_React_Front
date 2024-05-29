@@ -104,7 +104,7 @@ const GameRuleList = () => {
     const response = await GameRuleListStatus(data, token);
     if (response?.statusCode === 200) {
       toast.success(response.msg);
-      dispatch(getGameRule(token));
+    
     } else {
       toast.error(response.msg);
     }

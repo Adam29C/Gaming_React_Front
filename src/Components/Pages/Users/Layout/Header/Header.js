@@ -356,6 +356,26 @@ const Header = (props) => {
             </nav>
           </div>
         </header>
+        <div _ngcontent-gnl-c54="" className="de_wi_btns ng-star-inserted">
+  <a
+    _ngcontent-gnl-c54=""
+    href="/deposit"
+    routerlink="/deposit"
+    className="btn-deposit"
+  >
+    <img _ngcontent-gnl-c54="" src="assets/images/deposit-icon.png" /> deposit
+  </a>
+  <a
+    _ngcontent-gnl-c54=""
+    href="/withdraw"
+    routerlink="/withdraw"
+    className="btn-withdrawal"
+  >
+    <img _ngcontent-gnl-c54="" src="assets/images/withdrawal-icon.png" />{" "}
+    withdrawal
+  </a>
+</div>
+
         <SubHeader />
       </app-topnav>
       <Model show={show} setShow={setShow}>

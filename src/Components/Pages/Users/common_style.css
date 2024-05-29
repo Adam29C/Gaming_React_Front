@@ -3277,11 +3277,11 @@ p.detail-title {
     margin-right: 5px;
   }
   .btn-deposit {
-    background: darkgreen;
+    background: var(--theme-secondary-color);;
     color: #fff !important;
   }
   .btn-withdrawal {
-    background: darkred;
+    background: var(--theme-primary-color);;
     color: #fff !important;
   }
   .btn-withdrawal img,
@@ -3452,10 +3452,10 @@ p.detail-title {
     display: block;
     position: fixed;
     right: 0;
-    top: 60px;
+    top: 98px;
     z-index: 999;
     background: #fff !important;
-    padding: 3px 13px;
+    padding: 3px 19px;
     font-size: 23px;
     color: #000 !important;
   }

@@ -9,7 +9,7 @@ import { subAdminPermissionGet } from "../../Redux/Slice/Admin/admin.slice";
 const Sidebar = () => {
   const location = useLocation();
   const token = localStorage.getItem("token");
-  const userId = JSON.parse(localStorage.getItem("user_details")).id;
+  const userId = JSON.parse(localStorage.getItem("user_details"))?.id;
   const ROLES = JSON.parse(localStorage.getItem("roles"));
   const { getSubAdminPermissionState } = useSelector(
     (state) => state.AdminSlice

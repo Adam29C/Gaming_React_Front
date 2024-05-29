@@ -53,3 +53,30 @@ export async function AVAILABLE_ADMIN_ACCOUNT_DETAILS(data, token) {
     return error;
   }
 }
+
+
+//get payment history by id 
+export async function AVAILABLE_ADMIN_ACCOUNT_DETAILS_BY_ID(data, token) {
+  
+  try {
+    const res = await axios.post(`${baseurl}userRouter/accountById`,data, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+//add credit api in payment history
+export async function ADMIN_ACCOUNT_ADD_CREDIT_REQUEST(data, token) {
+  
+  try {
+    const res = await axios.post(`${baseurl}userRouter/addCreditRequest`,data, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}

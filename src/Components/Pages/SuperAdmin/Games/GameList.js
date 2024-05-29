@@ -91,7 +91,7 @@ const GameList = () => {
     const response = await GAME_STATUS_UPDATE_API(data, token);
     if (response?.statusCode === 200) {
       toast.success(response.msg);
-      dispatch(getGame(token));
+    
     } else {
       toast.error(response.msg);
     }

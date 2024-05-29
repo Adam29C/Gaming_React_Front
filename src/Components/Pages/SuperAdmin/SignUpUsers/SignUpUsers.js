@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Content from "../../../Layout/Content/Content";
 import Data_Table from "../../../Helpers/Datatable";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import { SUPER_ADMIN_DEACTIVE_USER_API } from "../../../Service/admin.service";
 import {
   SIGN_UP_USERLIST,
   REMOVE_ADMINS,
@@ -11,6 +13,7 @@ import toast from "react-hot-toast";
 import { show } from "../../../Utils/Common_Date";
 import { Tooltip } from "bootstrap";
 import { useDispatch } from "react-redux";
+import { fDateTimeSuffix } from "../../../Helpers/Date_formet";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -23,7 +26,6 @@ const Users = () => {
   const [ShowEdit, setShowEdit] = useState(false);
 
 
-  console.log(GetData) ;
 
   const getRules = async () => {
     const response = await SIGN_UP_USERLIST(userId, token);
@@ -60,12 +62,28 @@ const Users = () => {
         </span>
       ),
     },
+    {
+      name: "Active/Deactive",
+      selector: (row) => (
+        <>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            defaultChecked={row?.isActive}
+            onChange={(e) =>
+              handleStatusUpdate(e.target.checked, row?.userId)
+            }
+            className="custom-switch m-l-0"
+          />
+        </>
+      ),
+    },
 
     {
       name: "Create At",
       selector: (cell) => (
         <span data-toggle="tooltip" data-placement="top" title="Edit">
-          {show(cell)}
+          {fDateTimeSuffix(cell?.createdAt)}
         </span>
       ),
     },
@@ -116,6 +134,25 @@ const Users = () => {
 
     }
   };
+
+  const handleStatusUpdate = async (value, id) => {
+    // console.log(id)
+    let data = {
+      adminId: userId,
+      id: id,
+      isActive: value,
+    };
+// console.log(data)
+    const response = await SUPER_ADMIN_DEACTIVE_USER_API(data, token);
+    // console.log(response)
+    if (response?.statusCode === 200) {
+      toast.success(response.msg);
+      // dispatch(getGameRule(token));
+    } else {
+      toast.error(response.msg);
+    }
+  };
+
 
   const handleAdd = () => {
     navigate("/super/user/add");

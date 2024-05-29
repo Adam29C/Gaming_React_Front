@@ -16335,7 +16335,7 @@ border-bottom-style: 0px;
 /* admin check box css start */
 
 /* src/styles/custom-checkbox.css */
-.custom-checkbox .form-check-input {
+/* .custom-checkbox .form-check-input {
   width: 18px;
   height: 18px;
   background-color: #f0f0f0;
@@ -16351,7 +16351,7 @@ border-bottom-style: 0px;
 
 .custom-checkbox .form-check-input:focus {
   outline: none;
-  box-shadow: 0 0 3px  #8177a1;
+  box-shadow: none;
 }
 
 .custom-checkbox .form-check-label {
@@ -16363,7 +16363,7 @@ border-bottom-style: 0px;
 
 .custom-checkbox.mb-3 {
   margin-bottom: 16px;
-}
+} */
 
 /* admin check box css end */
 

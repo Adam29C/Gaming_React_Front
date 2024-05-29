@@ -8,7 +8,7 @@ const Loader = ({lodersize}) => {
   };
 
   return (
-    <div>
+    <div >
       <ClipLoader margin={5} color="#4bb6b9" size={lodersize ? lodersize : 15} cssOverride={override} />
     </div>
   );

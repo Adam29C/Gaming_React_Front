@@ -77,10 +77,11 @@ const Add_User = () => {
         role: 1,
         permission1: Permisstion,
         adminId: userId,
+        isActive: true
       };
 
       const response = await ADD_ADMINS(req, token);
-
+      // console.log(response?.response?.data?.statusCode)
       if (response.status === 409) {
         toast.error(response.data.msg);
       } else if (response.status) {
@@ -88,10 +89,12 @@ const Add_User = () => {
         setTimeout(() => {
           navigate("/super/users");
         }, 1000);
-      } else if (!response.status) {
-        toast.error(response.msg);
+      } else {
+        toast.error(response?.response?.data?.msg);
+        // console.log(response)
+        
       }
-    },
+    }
   });
 
   const fields = [
