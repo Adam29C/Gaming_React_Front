@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Available_Admin_Acount_Details } from "../../../../../../Redux/Slice/common/common.slice";
 import { useDispatch, useSelector } from "react-redux";
-
+import Loader from "../../../../../../Helpers/Loader";
 const Available_Option = ({handleShowPaymentDetails}) => {
   const dispatch = useDispatch();
 
