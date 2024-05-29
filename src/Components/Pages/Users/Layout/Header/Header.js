@@ -43,7 +43,6 @@ const Header = (props) => {
   };
 
   const openSidebar = (e) => {
-  
     if (props.open) {
       document.body.classList.add("toggle-sidebar");
     } else {
@@ -54,7 +53,6 @@ const Header = (props) => {
 
   return (
     <>
-      {" "}
       <app-topnav _ngcontent-nsr-c57="" _nghost-nsr-c54="">
         <header
           _ngcontent-nsr-c54=""
@@ -142,7 +140,7 @@ const Header = (props) => {
                   <img
                     _ngcontent-mmi-c54=""
                     src="/assets/images/deposit-icon.png"
-                  />{" "}
+                  />
                   deposit
                 </Link>
 
@@ -222,7 +220,7 @@ const Header = (props) => {
                         >
                           {user_details?.name}
                         </span>
-                      </a>{" "}
+                      </a>
                       <ul
                         _ngcontent-mmi-c54=""
                         className="dropdown-menu header-ul  dropdown-menu-end dropdown-menu-arrow profile "
@@ -353,11 +351,31 @@ const Header = (props) => {
                       </li>
                     </ul>
                   </li>
-                )}{" "}
+                )}
               </ul>
             </nav>
           </div>
         </header>
+        <div _ngcontent-gnl-c54="" className="de_wi_btns ng-star-inserted">
+  <a
+    _ngcontent-gnl-c54=""
+    href="/deposit"
+    routerlink="/deposit"
+    className="btn-deposit"
+  >
+    <img _ngcontent-gnl-c54="" src="assets/images/deposit-icon.png" /> deposit
+  </a>
+  <a
+    _ngcontent-gnl-c54=""
+    href="/withdraw"
+    routerlink="/withdraw"
+    className="btn-withdrawal"
+  >
+    <img _ngcontent-gnl-c54="" src="assets/images/withdrawal-icon.png" />{" "}
+    withdrawal
+  </a>
+</div>
+
         <SubHeader />
       </app-topnav>
       <Model show={show} setShow={setShow}>

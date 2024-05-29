@@ -1,14 +1,15 @@
 import React from 'react'
 
-const Available_Option_Details = ({amount}) => {
+const Available_Option_Details = ({data}) => {
+
+  
   return (
     <div className="col-md-6">
     <div className="row justify-content-center">
       <div className="col-md-11">
         <div className="account-data">
           <p className="card-text">
-            <b>Name</b>: Swami cake
-            and pastry
+            <b>{data?.isBank === "true" ? "Name" : "Upi Name"}</b>: {data?.isBank === "true" ? data?.accountHolderName : data?.upiName}
             <button
               className="btn btn-sm btn-success"
               data-clipboard-text="Swami cake and pastry"
@@ -19,7 +20,7 @@ const Available_Option_Details = ({amount}) => {
             </button>
           </p>
           <p className="card-text">
-            <b>Number</b>: Q066817666
+            <b>{data?.isBank === "true" ? "Account Number" : "Upi Id"}</b>: {data?.isBank === "true" ? data?.accountNumber  : data?.upiId}
             <button
               className="btn btn-sm btn-success"
               data-clipboard-text="Q066817666"
@@ -31,7 +32,7 @@ const Available_Option_Details = ({amount}) => {
           </p>
           <p className="card-text">
             <b> Min Amount </b>
-            : 100
+            : {data?.minAmount ? data?.minAmount : 0 }
             <button
               className="btn btn-sm btn-success"
               data-clipboard-text={
@@ -42,23 +43,25 @@ const Available_Option_Details = ({amount}) => {
             />
             <br />
           </p>
+
           <p className="card-text">
             <b> Max Amount </b>
-            : 5000
+            :{data?.maxAmount ? data?.maxAmount : 0 }
             <button
               className="btn btn-sm btn-success"
-              data-clipboard-text={
-                5000
-              }
+              data-clipboard-text={data?.maxAmount ? data?.maxAmount : 0 }
               data-original-title=""
               title=""
             />
             <br />
           </p>
-          <img
-            className="qr-code"
-            src="https://panel-data-all.s3.ap-south-1.amazonaws.com/images/qr_code/1716304433.jpeg"
-          />
+          {
+            ( data?.bankImage || data?.barCodeImage) && (     <img
+              className="qr-code"
+              src={data?.isBank === "true" ? data?.bankImage  : data?.barCodeImage}
+            />)
+          }
+     
         </div>
       </div>
       <div className="col-md-11">

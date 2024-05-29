@@ -1,12 +1,27 @@
 import React, { useEffect } from "react";
 import { Available_Admin_Acount_Details } from "../../../../../../Redux/Slice/common/common.slice";
-import { useDispatch } from "react-redux";
-
-const Available_Option = () => {
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../../../../../Helpers/Loader";
+const Available_Option = ({handleShowPaymentDetails}) => {
   const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
+  const { account_details, isLoading } = useSelector((state) => state.CommonSlice)
+
+  const bankList = account_details?.bankList || [];
+  const upiList = account_details?.upiList || [];
+
+  const mergeArray = [...bankList, ...upiList];
+
+
+  // const { account_details, isLoading } = useSelector(
+  //   (state) => state.CommonSlice
+  // );
+
+  // console.log("getGameListState", account_details);
+
+  //
 
   const getDetails = async () => {
     await dispatch(
@@ -16,6 +31,8 @@ const Available_Option = () => {
   useEffect(() => {
     getDetails();
   }, []);
+
+
 
   return (
     <>
@@ -37,100 +54,35 @@ const Available_Option = () => {
             width="5%"
           />
         </button>
-        <button
-          className="nav-link"
-          id="nav-imps-16067-tab"
-          data-id={16067}
-          data-toggle="tab"
-          data-target="#nav-imps-16067"
-          type="button"
-          role="tab"
-          aria-controls="nav-imps-16067"
-          aria-selected="false"
-          data-original-title=""
-          title=""
-        >
-          Imps
-          <img src="https://reddypanel.com/images/icon/imps.png" width="5%" />
-        </button>
+        {isLoading && (<div className="user-bank-details-loader">
+          <Loader lodersize={20} />
+        </div>)}
+        {
 
-        <button
-          className="nav-link"
-          id="nav-bank-account-16066-tab"
-          data-id={16066}
-          data-toggle="tab"
-          data-target="#nav-bank-account-16066"
-          type="button"
-          role="tab"
-          aria-controls="nav-bank-account-16066"
-          aria-selected="false"
-          data-original-title=""
-          title=""
-        >
-          Account
-          <img
-            src="https://reddypanel.com/images/icon/bank-account.png"
-            width="5%"
-          />
-        </button>
+          mergeArray?.map((row) => (
+            <div key={row?._id}>
+              <button
+                className="nav-link"
+                id="nav-imps-16067-tab"
+                data-id={16067}
+                data-toggle="tab"
+                data-target="#nav-imps-16067"
+                onClick={() => handleShowPaymentDetails(row)}
+                type="button"
+                role="tab"
+                aria-controls="nav-imps-16067"
+                aria-selected="false"
+                data-original-title=""
+                title=""
+              >
+                {row?.isBank === "true" ? row?.bankName : row?.upiName}
+                <img src={row?.isBank === "true" ? "https://reddypanel.com/images/icon/bank-account.png" : "https://reddypanel.com/images/icon/imps.png"} width="5%" />
+              </button>
+            </div>
+          ))
+        }
 
-        <button
-          className="nav-link"
-          id="nav-phonepe-16485-tab"
-          data-id={16485}
-          data-toggle="tab"
-          data-target="#nav-phonepe-16485"
-          type="button"
-          role="tab"
-          aria-controls="nav-phonepe-16485"
-          aria-selected="true"
-          data-original-title=""
-          title=""
-        >
-          Phonepe
-          <img
-            src="https://reddypanel.com/images/icon/phonepe.png"
-            width="5%"
-          />
-        </button>
-        <button
-          className="nav-link"
-          id="nav-phonepe-16485-tab"
-          data-id={16485}
-          data-toggle="tab"
-          data-target="#nav-phonepe-16485"
-          type="button"
-          role="tab"
-          aria-controls="nav-phonepe-16485"
-          aria-selected="true"
-          data-original-title=""
-          title=""
-        >
-          Phonepe
-          <img
-            src="https://reddypanel.com/images/icon/phonepe.png"
-            width="5%"
-          />
-        </button>
-        <button
-          className="nav-link"
-          id="nav-usdt-15538-tab"
-          data-id={15538}
-          data-toggle="tab"
-          data-target="#nav-usdt-15538"
-          type="button"
-          role="tab"
-          aria-controls="nav-usdt-15538"
-          aria-selected="false"
-          data-original-title=""
-          title=""
-        >
-          USDT
-          <img
-            src="https://reddypanel.com/images/icon/usdt-icon.png"
-            width="5%"
-          />
-        </button>
+
       </div>
     </>
   );

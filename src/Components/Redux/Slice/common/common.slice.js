@@ -31,7 +31,7 @@ export const Available_Admin_Acount_Details = createAsyncThunk(
     const { userId, token } = data;
     try {
       const res = await AVAILABLE_ADMIN_ACCOUNT_DETAILS(userId ,token);
-      return res;
+      return res?.data;
     } catch (error) {
       return error;
     }
@@ -43,6 +43,7 @@ const CommonSlice = createSlice({
   initialState: {
     getGameRuleState: [],
     getGameListState: [],
+    account_details: [],
     isLoading: false,
   },
   reducers: {},
@@ -52,7 +53,7 @@ const CommonSlice = createSlice({
         return {
           ...state,
           getGameRuleState: [],
-          account_details: [],
+
           isLoading: true,
         };
       })

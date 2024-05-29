@@ -52,12 +52,12 @@ const GameRuleAdd = () => {
         status: values.status,
         ...(state?._id ? { ruleId: state?._id } : { userId: user_details?.id }),
       };
-      console.log(apiData);
+    
       try {
         const res = state?._id
           ? await GameRuleUpdateApi(apiData, token)
           : await GameRuleAddApi(apiData, token);
-        console.log(res);
+      
         if (state?._id) {
           if (res?.statusCode === 200) {
             toast.success(res?.msg);

@@ -62,7 +62,7 @@ try {
         }
       } catch (error) {
         
-        console.log(error);
+   
       } finally {
         setTimeout(() => {
           setDisable(false);

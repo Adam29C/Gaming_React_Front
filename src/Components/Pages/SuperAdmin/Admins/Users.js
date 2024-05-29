@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Content from "../../../Layout/Content/Content";
 import Data_Table from "../../../Helpers/Datatable";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 import {
   GET_ALL_ADMINS,
   REMOVE_ADMINS,
@@ -11,6 +12,8 @@ import toast from "react-hot-toast";
 import { show } from "../../../Utils/Common_Date";
 import { Tooltip } from "bootstrap";
 import { useDispatch } from "react-redux";
+import { fDateTimeSuffix } from "../../../Helpers/Date_formet";
+import { SUPER_ADMIN_DEACTIVE_USER_API } from "../../../Service/admin.service";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -57,12 +60,27 @@ const Users = () => {
         </span>
       ),
     },
-
+    {
+      name: "Active/Deactive",
+      selector: (row) => (
+        <>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            defaultChecked={row?.isActive}
+            onChange={(e) =>
+              handleStatusUpdate(e.target.checked, row?.subAdminId)
+            }
+            className="custom-switch m-l-0"
+          />
+        </>
+      ),
+    },
     {
       name: "Create At",
       selector: (cell) => (
         <span data-toggle="tooltip" data-placement="top" title="Edit">
-          {show(cell)}
+          {fDateTimeSuffix(cell?.createdAt)}
         </span>
       ),
     },
@@ -97,6 +115,9 @@ const Users = () => {
     },
   ];
 
+
+
+
   const RemoveUsers = async (id) => {
     const confirmed = window.confirm("Do You Really Want To Remove This Game");
     if (confirmed) {
@@ -110,13 +131,30 @@ const Users = () => {
         toast.error(response.msg);
       }
     } else {
+    }
+  };
 
+  const handleStatusUpdate = async (value, id) => {
+    
+    let data = {
+      adminId: userId,
+      id: id,
+      isActive: value,
+    };
+
+    const response = await SUPER_ADMIN_DEACTIVE_USER_API(data, token);
+    if (response?.statusCode === 200) {
+      toast.success(response.msg);
+     
+    } else {
+      toast.error(response.msg);
     }
   };
 
   const handleAdd = () => {
     navigate("/super/user/add");
   };
+  
 
   return (
     <>
