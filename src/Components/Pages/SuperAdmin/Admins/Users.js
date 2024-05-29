@@ -97,6 +97,9 @@ const Users = () => {
     },
   ];
 
+
+
+
   const RemoveUsers = async (id) => {
     const confirmed = window.confirm("Do You Really Want To Remove This Game");
     if (confirmed) {
@@ -117,6 +120,7 @@ const Users = () => {
   const handleAdd = () => {
     navigate("/super/user/add");
   };
+  
 
   return (
     <>

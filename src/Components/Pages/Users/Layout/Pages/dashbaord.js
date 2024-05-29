@@ -5,174 +5,162 @@ import { getAllMatches } from "../../../../Redux/Slice/User/user.slice";
 import moment from "moment/moment";
 import { v4 } from "uuid";
 import { Generate_Token } from "../../../../Redux/Slice/Auth/auth.slice";
-
+import { get_Time_From_Unix_Dete_string } from "../../../../Helpers/Date_formet";
+import { Link } from "react-router-dom";
+import Loader from "../../../../Helpers/Loader";
 const MainContent = () => {
   const [token, setToken] = useState("");
-  const dispatch = useDispatch()
-  const {getAllMatchListState} =useSelector((state)=>state.UserSlice)
-  const data = getAllMatchListState?.data?.response?.items
+  const dispatch = useDispatch();
+  const { getAllMatchListState, isLoading } = useSelector(
+    (state) => state.UserSlice
+  );
+  const data = getAllMatchListState?.data?.response?.items;
 
 
-
-useEffect(() => {
-  const getToken = async () => {
-    const request1 = { deviceId: v4() };
-    try {
-      const res1 = await dispatch(Generate_Token(request1)).unwrap();
-      if (res1.statusCode === 200) {
-        const token = res1.data;
-        setToken(token);
-        await dispatch(getAllMatches(token)).unwrap();
+  useEffect(() => {
+    const getToken = async () => {
+      const request1 = { deviceId: v4() };
+      try {
+        const res1 = await dispatch(Generate_Token(request1)).unwrap();
+        if (res1.statusCode === 200) {
+          setToken(res1.data);
+          await dispatch(getAllMatches(res1.data)).unwrap();
+        }
+      } catch (error) {
+        console.error("Error:", error);
       }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+    };
 
-  getToken();
-}, [dispatch]);
+    getToken();
+  }, [dispatch]);
 
+  useEffect(() => {
+    if (!token) return;
+
+    let controller = new AbortController();
+
+    const getMatchList = async () => {
+      try {
+        controller.abort();
+        controller = new AbortController();
+        const signal = controller.signal;
+        await dispatch(getAllMatches(token), { signal }).unwrap();
+      } catch (error) {
+        console.error("Error fetching matches:", error);
+      }
+    };
+
+    const intervalId = setInterval(getMatchList, 5000);
+
+    return () => {
+      controller.abort();
+      clearInterval(intervalId);
+    };
+  }, [dispatch, token]);
 
   return (
-    <GameContent title="Cricket">
-      {data?.map((row, index) => (
-        <div _ngcontent-jgm-c70="" className="bet-table-row" key={index}>
-          <div _ngcontent-jgm-c70="" className="row">
-            <div _ngcontent-jgm-c70="" className="col-md-6">
-              <div _ngcontent-jgm-c70="" className="game-box">
-                <div _ngcontent-jgm-c70="" className="game-left-col">
-                  <div _ngcontent-jgm-c70="" className="game-name">
-                    <a _ngcontent-jgm-c70="" href="javascript:void(0)">
-                      <p _ngcontent-jgm-c70="" className="team-name text-left">
-                        {row?.title ? row?.title : " _ "}
-                      </p>
-                      <p
-                        _ngcontent-jgm-c70=""
-                        className="team-name text-left team-event"
-                      >
-                        {row?.short_title ? row?.short_title : "_"}
-                      </p>
-                    </a>
-                  </div>
-                  <div _ngcontent-jgm-c70="" className="game-date inplay">
-                    <span _ngcontent-jgm-c70="">Live</span>
-                  </div>
-                  {/**/}
-                  <div _ngcontent-jgm-c70="" className="game-date">
-                    <p _ngcontent-jgm-c70="" className="mb-0 day text-left">
-                      {/* 01 Mar <br/>
-                      04:30 PM */}
-                      {moment
-                        .unix(row?.timestamp_start)
-                        .format("DD MMM hh:mm A")}
-                    </p>
-                  </div>
-                </div>
-                <div _ngcontent-jgm-c70="" className="game-icons">
-                  <div
-                    _ngcontent-jgm-c70=""
-                    className="match-icons-main game-icons"
-                  >
-                    <a
-                      _ngcontent-jgm-c70=""
-                      href="javascript:void(0);"
-                      className="match-icons"
-                    >
-                      <img
-                        _ngcontent-jgm-c70=""
-                        // src="assets/images/fancy.svg"
-                        src={row?.teama?.logo_url}
-                        alt=""
-                      />
-                    </a>
-                    <a _ngcontent-jgm-c70="" href="javascript:void(0);">
-                      <img
-                        _ngcontent-jgm-c70=""
-                        // src="assets/images/fancy.svg"
-                        src={row?.teamb?.logo_url}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div _ngcontent-jgm-c70="" className="col-md-6 text-center">
-              <div _ngcontent-jgm-c70="" className="row g-0">
-                <div _ngcontent-jgm-c70="" className="col-md-4 col-4">
-                  <div _ngcontent-jgm-c70="" className="h-backLay">
-                    <div _ngcontent-jgm-c70="" className="back bl-box">
-                      <span
-                        _ngcontent-jgm-c70=""
-                        className="d-block bet-button-price"
-                      >
-                        {" "}
-                        - <em _ngcontent-jgm-c70="">-</em>
-                      </span>
-                    </div>
-                    <div _ngcontent-jgm-c70="" className="bl-box lay">
-                      <span
-                        _ngcontent-jgm-c70=""
-                        className="d-block bet-button-price"
-                      >
-                        {" "}
-                        - <em _ngcontent-jgm-c70="">-</em>
-                      </span>
+    <>
+      <GameContent title="Cricket">
+        {isLoading && <Loader lodersize={25} />}
+        {data &&
+          data
+            ?.filter((row) => row.status_str === "Live")
+            .map((row, index) => (
+              <div className="bet-table-row" key={index}>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="game-box">
+                      <div className="game-left-col">
+                        <div className="game-name">
+                          <Link to={`match-details/${row.match_id}`}>
+                            <p className="team-name text-left">
+                              {row?.title ? row?.title : " _ "}
+                            </p>
+                            <p className="team-name text-left team-event">
+                              ({row?.competition.title ? row?.competition.title: "_"})
+                            </p>
+                          </Link>
+                        </div>
+                        <div className="game-date inplay">
+                          <span>Live</span>
+                        </div>
+                        <div className="game-date">
+                          <p className="mb-0 day text-left">
+                            {get_Time_From_Unix_Dete_string(
+                              row?.timestamp_start
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="game-icons">
+                        <div className="match-icons-main game-icons">
+                          <a className="match-icons">
+                            <img src={row?.teama?.logo_url} alt="" />
+                          </a>
+                          <a>
+                            <img
+                              // src="assets/images/fancy.svg"
+                              src={row?.teamb?.logo_url}
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div _ngcontent-jgm-c70="" className="col-md-4 col-4">
-                  <div _ngcontent-jgm-c70="" className="h-backLay">
-                    <div _ngcontent-jgm-c70="" className="back bl-box">
-                      <span
-                        _ngcontent-jgm-c70=""
-                        className="d-block bet-button-price"
-                      >
-                        {" "}
-                        - <em _ngcontent-jgm-c70="">-</em>
-                      </span>
-                    </div>
-                    <div _ngcontent-jgm-c70="" className="bl-box lay">
-                      <span
-                        _ngcontent-jgm-c70=""
-                        className="d-block bet-button-price"
-                      >
-                        {" "}
-                        - <em _ngcontent-jgm-c70="">-</em>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div _ngcontent-jgm-c70="" className="col-md-4 col-4">
-                  <div _ngcontent-jgm-c70="" className="h-backLay">
-                    <div _ngcontent-jgm-c70="" className="back bl-box">
-                      <span
-                        _ngcontent-jgm-c70=""
-                        className="d-block bet-button-price"
-                      >
-                        {" "}
-                        - <em _ngcontent-jgm-c70="">-</em>
-                      </span>
-                    </div>
-                    <div _ngcontent-jgm-c70="" className="bl-box lay">
-                      <span
-                        _ngcontent-jgm-c70=""
-                        className="d-block bet-button-price"
-                      >
-                        {" "}
-                        - <em _ngcontent-jgm-c70="">-</em>
-                      </span>
+                  <div className="col-md-6 text-center">
+                    <div className="row g-0">
+                      <div className="col-md-4 col-4">
+                        <div className="h-backLay">
+                          <div className="back bl-box">
+                            <span className="d-block bet-button-price">
+                              - <em>-</em>
+                            </span>
+                          </div>
+                          <div className="bl-box lay">
+                            <span className="d-block bet-button-price">
+                              - <em>-</em>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-4 col-4">
+                        <div className="h-backLay">
+                          <div className="back bl-box">
+                            <span className="d-block bet-button-price">
+                              - <em>-</em>
+                            </span>
+                          </div>
+                          <div className="bl-box lay">
+                            <span className="d-block bet-button-price">
+                              - <em>-</em>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-4 col-4">
+                        <div className="h-backLay">
+                          <div className="back bl-box">
+                            <span className="d-block bet-button-price">
+                              - <em>-</em>
+                            </span>
+                          </div>
+                          <div className="bl-box lay">
+                            <span className="d-block bet-button-price">
+                              - <em>-</em>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      ))}
+            ))}
 
-      {/* </div> */}
-    </GameContent>
+        {/* </div> */}
+      </GameContent>
+    </>
   );
 };
 

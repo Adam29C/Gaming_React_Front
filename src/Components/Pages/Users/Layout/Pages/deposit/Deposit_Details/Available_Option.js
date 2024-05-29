@@ -1,12 +1,20 @@
 import React, { useEffect } from "react";
 import { Available_Admin_Acount_Details } from "../../../../../../Redux/Slice/common/common.slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Available_Option = () => {
   const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
+
+  const { account_details, isLoading } = useSelector(
+    (state) => state.CommonSlice
+  );
+
+  console.log("getGameListState", account_details);
+
+  //
 
   const getDetails = async () => {
     await dispatch(

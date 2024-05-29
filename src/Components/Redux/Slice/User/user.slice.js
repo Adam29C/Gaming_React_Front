@@ -67,34 +67,33 @@ export const getSeriesList = createAsyncThunk(
   }
 );
 
-
 // user get payment history
 export const getPaymentHistory = createAsyncThunk(
   "user/getPaymentHistory",
   async (data) => {
     try {
-      let { userId, token ,paymentstatus } = data;
+      let { userId, token, paymentstatus } = data;
       let getData = {
-        userId :userId ,
-        paymentstatus:paymentstatus
-      }
-   
-      const res = await PaymentHistory(getData, token)
-      return await res
+        userId: userId,
+        paymentstatus: paymentstatus,
+      };
+
+      const res = await PaymentHistory(getData, token);
+      return await res;
     } catch (error) {
       return error;
     }
   }
 );
 
-//get match details 
+//get match details
 export const getMatchDetails = createAsyncThunk(
   "user/getMatchDetails",
   async (data) => {
     try {
-let { id,token } = data;
-  const res = await MATCH_DETAILS_API(id, token)
-      return await res
+      let { id, token } = data;
+      const res = await MATCH_DETAILS_API(id, token);
+      return await res;
     } catch (error) {
       return error;
     }
@@ -109,7 +108,7 @@ const UserSlice = createSlice({
     getMatchListState: [],
     getPaymentHistorytState: {},
     isLoading: false,
-    getMatchDetailsState:{}
+    getMatchDetailsState: {},
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -117,8 +116,17 @@ const UserSlice = createSlice({
       .addCase(getUserProfile.fulfilled, (state, action) => {
         state.getUserProfileState = action.payload;
       })
+      .addCase(getAllMatches.pending, (state, action) => {
+        state.getAllMatchListState = [];
+        state.isLoading = true;
+      })
       .addCase(getAllMatches.fulfilled, (state, action) => {
         state.getAllMatchListState = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getAllMatches.rejected, (state, action) => {
+        state.getAllMatchListState = [];
+        state.isLoading = false;
       })
       .addCase(getMatchList.fulfilled, (state, action) => {
         state.getMatchListState = action.payload;
@@ -142,11 +150,15 @@ const UserSlice = createSlice({
         return { ...state, getMatchDetailsState: [], isLoading: true };
       })
       .addCase(getMatchDetails.fulfilled, (state, action) => {
-        return { ...state, getMatchDetailsState: action.payload, isLoading: false };
+        return {
+          ...state,
+          getMatchDetailsState: action.payload,
+          isLoading: false,
+        };
       })
       .addCase(getMatchDetails.rejected, (state, action) => {
         return { ...state, getMatchDetailsState: [], isLoading: false };
-      })
+      });
   },
 });
 

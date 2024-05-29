@@ -2243,7 +2243,7 @@ span.redeem {
   justify-content: center;
   display: flex;
   align-items: center;
-  background: #fff;
+  /* background: #fff; */
   opacity: 0.9;
 }
 
