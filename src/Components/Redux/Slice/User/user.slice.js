@@ -20,52 +20,52 @@ export const getUserProfile = createAsyncThunk(
   }
 );
 
-export const getAllMatches = createAsyncThunk(
-  "user/getAllMatches",
-  async (token) => {
-    try {
-      const res = await AllMatchesApi(token);
+// export const getAllMatches = createAsyncThunk(
+//   "user/getAllMatches",
+//   async (token) => {
+//     try {
+//       const res = await AllMatchesApi(token);
 
-      return await res;
-    } catch (error) {
-      return error;
-    }
-  }
-);
+//       return await res;
+//     } catch (error) {
+//       return error;
+//     }
+//   }
+// );
 
-export const getMatchList = createAsyncThunk(
-  "user/getMatchList",
-  async (data) => {
-    try {
-      let { id, token } = data;
-      const res = await MatchListApi(id, token);
-      return await res;
-    } catch (error) {
-      return error;
-    }
-  }
-);
+// export const getMatchList = createAsyncThunk(
+//   "user/getMatchList",
+//   async (data) => {
+//     try {
+//       let { id, token } = data;
+//       const res = await MatchListApi(id, token);
+//       return await res;
+//     } catch (error) {
+//       return error;
+//     }
+//   }
+// );
 
-export const getSeriesList = createAsyncThunk(
-  "user/getSeriesList",
-  async (token) => {
-    // const navigate = useNavigate();
+// export const getSeriesList = createAsyncThunk(
+//   "user/getSeriesList",
+//   async (token) => {
+//     // const navigate = useNavigate();
 
-    try {
-      const res = await SeriesListApi(token);
+//     try {
+//       const res = await SeriesListApi(token);
 
-      return res;
-    } catch (error) {
-      console.log("error", error);
+//       return res;
+//     } catch (error) {
+//       console.log("error", error);
 
-      // if (error.response && error.response.status === 500) {
-      //   navigate("/login"); // Replace '/error500' with your desired route
-      // }
+//       // if (error.response && error.response.status === 500) {
+//       //   navigate("/login"); // Replace '/error500' with your desired route
+//       // }
 
-      throw error; // Rethrow the error to let Redux Toolkit know that the action has failed
-    }
-  }
-);
+//       throw error; // Rethrow the error to let Redux Toolkit know that the action has failed
+//     }
+//   }
+// );
 
 // user get payment history
 export const getPaymentHistory = createAsyncThunk(
@@ -105,7 +105,7 @@ const UserSlice = createSlice({
   initialState: {
     getUserProfileState: {},
     getAllMatchListState: [],
-    getMatchListState: [],
+    // getMatchListState: [],
     getPaymentHistorytState: {},
     isLoading: false,
     getMatchDetailsState: {},
@@ -116,24 +116,12 @@ const UserSlice = createSlice({
       .addCase(getUserProfile.fulfilled, (state, action) => {
         state.getUserProfileState = action.payload;
       })
-      .addCase(getAllMatches.pending, (state, action) => {
-        state.getAllMatchListState = [];
-        state.isLoading = true;
-      })
-      .addCase(getAllMatches.fulfilled, (state, action) => {
-        state.getAllMatchListState = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(getAllMatches.rejected, (state, action) => {
-        state.getAllMatchListState = [];
-        state.isLoading = false;
-      })
-      .addCase(getMatchList.fulfilled, (state, action) => {
-        state.getMatchListState = action.payload;
-      })
-      .addCase(getSeriesList.fulfilled, (state, action) => {
-        state.getSeriesListState = action.payload;
-      })
+      // .addCase(getMatchList.fulfilled, (state, action) => {
+      //   state.getMatchListState = action.payload;
+      // })
+      // .addCase(getSeriesList.fulfilled, (state, action) => {
+      //   state.getSeriesListState = action.payload;
+      // })
       .addCase(getPaymentHistory.pending, (state, action) => {
         state.getPaymentHistorytState = [];
         state.isLoading = true;

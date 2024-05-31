@@ -20,6 +20,9 @@ import GameAdd from "../Pages/SuperAdmin/Games/GameAdd";
 import BankDetailsList from "../Pages/SuperAdmin/BankDetails/BankDetailsList";
 import BankDetailsAdd from "../Pages/SuperAdmin/BankDetails/BankDetailsAdd";
 
+import WithdrwalCreditRequest from "../Pages/SuperAdmin/WithdrwalCreditRequest/WithdrwalCreditRequest";
+
+
 const Admin = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -52,6 +55,8 @@ const Admin = () => {
         <Route exact path="/game/add" element={<GameAdd />} />
         <Route exact path="/bankdetails" element={<BankDetailsList />} />
         <Route exact path="/bankdetail/add" element={<BankDetailsAdd />} />
+        <Route exact path="/paymenthistory" element={<WithdrwalCreditRequest />} />
+
       </Routes>
     </>
   );

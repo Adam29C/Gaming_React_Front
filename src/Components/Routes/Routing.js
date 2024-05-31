@@ -14,7 +14,7 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import ProtectedRoutes from "./ProtectedRoute";
 import PublicRoutes from "./PublicRoutes";
 
-import Dashboard from "../Pages/Users/Layout/Pages/dashbaord";
+import Dashboard from "../Pages/Users/Layout/Pages/DashboardSection/Wraper";
 
 import NotFound from "../Pages/Auth/NotFound";
 import TokenExpiry from "../Pages/Auth/TokenExpiry";

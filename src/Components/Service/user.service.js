@@ -55,6 +55,18 @@ export async function MATCH_DETAILS_API(id, token) {
   }
 }
 
+// GET MATCH COMMENTY
+export async function GET_MATCH_COMMENTRY_AND_SCORE(id, token) {
+  try {
+    const res = await axios.get(`${baseurl}sports/getMatchScore/${id}`, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+
 // -----------------------------  THIRD PARTY API END ------------------------------
 
 // -----------------------------  USERS API'S  ------------------------------
@@ -233,4 +245,3 @@ export async function PaymentHistory(data, token) {
     return error;
   }
 }
-

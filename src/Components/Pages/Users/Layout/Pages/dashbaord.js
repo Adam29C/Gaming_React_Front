@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GameContent from "../content/GameContent";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllMatches } from "../../../../Redux/Slice/User/user.slice";
-import moment from "moment/moment";
+import { getAllMatches } from "../../../../Redux/Slice/User/gamingapi.slice";
 import { v4 } from "uuid";
 import { Generate_Token } from "../../../../Redux/Slice/Auth/auth.slice";
 import { get_Time_From_Unix_Dete_string } from "../../../../Helpers/Date_formet";
@@ -11,8 +10,9 @@ import Loader from "../../../../Helpers/Loader";
 const MainContent = () => {
   const [token, setToken] = useState("");
   const dispatch = useDispatch();
+  
   const { getAllMatchListState, isLoading } = useSelector(
-    (state) => state.UserSlice
+    (state) => state.GamingSlice
   );
   const data = getAllMatchListState?.data?.response?.items;
 

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Wraper from "../Pages/Users/Wraper/Wraper";
-import Dashboard from "../Pages/Users/Layout/Pages/dashbaord";
+import Dashboard from "../Pages/Users/Layout/Pages/DashboardSection/Wraper";
 import Deposit from "../Pages/Users/Layout/Pages/deposit/Deposit_Wraper";
 import Withdraw from "../Pages/Users/Layout/Pages/withdraw/WithdrawWraper";
 import UserProfile from "../Pages/Users/Layout/Pages/userprofile/UserProfile";

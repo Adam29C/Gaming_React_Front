@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  getMatchList,
-  getSeriesList,
-} from "../../../../Redux/Slice/User/user.slice";
+import { getMatchList,getSeriesList } from "../../../../Redux/Slice/User/gamingapi.slice";
 import { v4 } from "uuid";
 import { Generate_Token } from "../../../../Redux/Slice/Auth/auth.slice";
 import Model from "../../../../Helpers/Model";
 import { Rule } from "../Pages/rules/Rule";
 const Sidebar = (props) => {
   const { getSeriesListState, getMatchListState } = useSelector(
-    (state) => state.UserSlice
+    (state) => state.GamingSlice
   );
+
   const role = localStorage.getItem("roles");
   const [token, setToken] = useState("");
   const [show, setShow] = useState(false);
@@ -57,9 +55,7 @@ const Sidebar = (props) => {
     }
   };
 
-  
   const openSidebar = (e) => {
-  
     if (props.open) {
       document.body.classList.add("toggle-sidebar");
     } else {
@@ -99,15 +95,6 @@ const Sidebar = (props) => {
                 </span>
               </a>
             </li>
-
-            {/* {(role == 2 ) && (      <li className="nav-item">
-            {" "}
-            <Link to='/deposit' className="nav-link" aria-expanded="false">
-              <img src="/assets/images/deposit-icon.png" />
-              <span>Deposit</span>
-              <i className="bi bi-caret-down ms-auto" />
-            </Link>
-          </li>)} */}
 
             {role == 2 && (
               <>
@@ -206,10 +193,10 @@ const Sidebar = (props) => {
               <Link
                 _ngcontent-uit-c55=""
                 href="#"
-                onClick={(e) => { 
+                onClick={(e) => {
                   props.setOpen(!props.open);
                   openSidebar(e);
-                  setShow(true)
+                  setShow(true);
                 }}
                 className="nav-link final-link"
               >
@@ -217,8 +204,6 @@ const Sidebar = (props) => {
                 <span _ngcontent-uit-c55="">rules</span>
               </Link>
             </li>
-
-       
           </ul>
           <div
             id="carouselExampleIndicators"

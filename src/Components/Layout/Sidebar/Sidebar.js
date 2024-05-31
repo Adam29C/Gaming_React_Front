@@ -15,8 +15,7 @@ const Sidebar = () => {
     (state) => state.AdminSlice
   );
   const dispatch = useDispatch();
-  const canViewUser =
-    getSubAdminPermissionState.viewUser && getSubAdminPermissionState.viewUser;
+  const canViewUser = getSubAdminPermissionState.viewUser && getSubAdminPermissionState.viewUser;
   const [ShowSubMenu, setShowSubMenu] = useState(false);
 
   const { handleMouseLeave, handleMouseEnter } = useAppContext();

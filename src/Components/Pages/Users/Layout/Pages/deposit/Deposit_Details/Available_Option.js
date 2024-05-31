@@ -15,13 +15,6 @@ const Available_Option = ({handleShowPaymentDetails}) => {
   const mergeArray = [...bankList, ...upiList];
 
 
-  // const { account_details, isLoading } = useSelector(
-  //   (state) => state.CommonSlice
-  // );
-
-  // console.log("getGameListState", account_details);
-
-  //
 
   const getDetails = async () => {
     await dispatch(

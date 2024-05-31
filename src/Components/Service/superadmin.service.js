@@ -204,13 +204,36 @@ export async function REMOVE_BANK_DETAILS(data, token) {
   }
 }
 
-//super admin get dashboard count api 
+//super admin get dashboard count api
 export async function ADMIN_DASHBOARD_COUNT_API(id, token) {
   try {
     const res = await axios.get(
       `${baseurl}adminRouter/countDashboard?adminId=${id}`,
       { headers: header(token) }
     );
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+//GET WITHDRAWAL/ CREDIT REQUWEST
+export async function GET_CREDIT_WITHDRWAL_REQUEST(data, token) {
+  try {
+    const res = await axios.post(`${baseurl}adminRouter/paymentHistory`, data, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+//UPDATE WITHDRAWAL/ CREDIT REQUWEST
+export async function UPDATE_CREDIT_WITHDRWAL_REQUEST(data, token) {
+  try {
+    const res = await axios.post(`${baseurl}adminRouter/updatePaymentRequestStatus`, data, {
+      headers: header(token),
+    });
     return await res?.data;
   } catch (error) {
     return error;

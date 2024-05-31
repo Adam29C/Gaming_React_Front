@@ -21,7 +21,7 @@ const Headers = () => {
   useEffect(() => {
     const checkTokenExpiry = () => {
       const tokenExpiry = getTokenExpiryTime();
-     
+
       if (tokenExpiry && new Date() > tokenExpiry) {
         localStorage.removeItem("token");
         localStorage.removeItem("user_details");
@@ -46,7 +46,7 @@ const Headers = () => {
     localStorage.removeItem("user_details");
     localStorage.removeItem("roles");
     setTimeout(() => {
-      navigate("/"  , { replace: true });
+      navigate("/", { replace: true });
     }, 1000);
   };
   return (
@@ -99,7 +99,7 @@ const Headers = () => {
           </div>
           {/* Top Bar Nav */}
           <ul className="right-side-content d-flex align-items-center">
-     {/* Message Area */}
+            {/* Message Area */}
             {/* <li className="nav-item dropdown">
               <button
                 type="button"
@@ -170,8 +170,8 @@ const Headers = () => {
                 </div>
               </div>
             </li> */}
-                 {/* Message Area */}
-        <Notification/>
+            {/* Message Area */}
+            <Notification />
 
             <li className="nav-item dropdown">
               <button

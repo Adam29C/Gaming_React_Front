@@ -4,22 +4,15 @@ import { useParams } from "react-router-dom";
 import { Generate_Token } from "../../../../../Redux/Slice/Auth/auth.slice";
 import { v4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
-import { getMatchDetails } from "../../../../../Redux/Slice/User/user.slice";
+import { getMatchDetails } from "../../../../../Redux/Slice/User/gamingapi.slice";
 
 const MatchDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-
   const [token, setToken] = useState("");
 
-
-  const { getMatchDetailsState } = useSelector((state) => state.UserSlice);
-  
-
-  console.log("getMatchDetailsState" ,getMatchDetailsState);
-
-
+  const { getMatchDetailsState } = useSelector((state) => state.GamingSlice);
 
   // Generate token and set it in state
   useEffect(() => {
@@ -39,21 +32,22 @@ const MatchDetails = () => {
     generateTokenApi();
   }, []);
 
+  // Fetch Match Details
+  const fetchMatchDetails = async () => {
+    const apidata = {
+      token: token,
+      id: id,
+    };
+    try {
+      await dispatch(getMatchDetails(apidata)).unwrap();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   // Fetch match details after the token is set
   useEffect(() => {
     if (token) {
-      const fetchMatchDetails = async () => {
-        const apidata = {
-          token: token,
-          id: id,
-        };
-        try {
-          await dispatch(getMatchDetails(apidata)).unwrap();
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      };
-
       fetchMatchDetails();
     }
   }, [dispatch, token, id]);

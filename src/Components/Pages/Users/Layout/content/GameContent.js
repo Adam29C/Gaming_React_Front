@@ -1,13 +1,22 @@
-import React from 'react'
+import React from "react";
 
-const GameContent = ({title,children}) => {
+const GameContent = ({ title, showUpcoming, children }) => {
   return (
     <main _ngcontent-nsr-c57="" id="main" className="main">
       <router-outlet _ngcontent-nsr-c57="" />
       <app-dashboard _nghost-nsr-c73="">
+        {showUpcoming && (
+          <span _ngcontent-wvr-c73="" class="list-sport-title upcomingmatch">
+            <img
+              _ngcontent-wvr-c73=""
+              src="assets/images/events/menu-upcoming.png"
+              class="img-fluid game-icon-img"
+            />
+            Upcoming Events
+          </span>
+        )}
         <section _ngcontent-nsr-c73="" className="section listing_page">
           <div _ngcontent-nsr-c73="" className="row">
-           
             <div _ngcontent-nsr-c73="" className="col-lg-12 listing_page_12">
               <div
                 _ngcontent-nsr-c73=""
@@ -15,9 +24,7 @@ const GameContent = ({title,children}) => {
               >
                 <div _ngcontent-nsr-c73="" className="game-slider mb-2">
                   <div _ngcontent-nsr-c73="" className="coupon-card">
-
-
-                  <div _ngcontent-nsr-c73="" className="card">
+                    <div _ngcontent-nsr-c73="" className="card">
                       <div _ngcontent-nsr-c73="">
                         <div _ngcontent-nsr-c73="">
                           <app-sport-list
@@ -109,21 +116,20 @@ const GameContent = ({title,children}) => {
                                     </div>
                                   </div>
                                 </div>
-                                <div _ngcontent-jgm-c70="" className="bet-table-body"> {children}</div>
-                           
+                                <div
+                                  _ngcontent-jgm-c70=""
+                                  className="bet-table-body"
+                                >
+                                  {" "}
+                                  {children}
+                                </div>
                               </div>
                             </div>
                           </app-sport-list>
                         </div>
                       </div>
-                    
-                 
-                    
-                   
                     </div>
-                    
-                
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -131,7 +137,7 @@ const GameContent = ({title,children}) => {
         </section>
       </app-dashboard>
     </main>
-  )
-}
+  );
+};
 
-export default GameContent
+export default GameContent;
