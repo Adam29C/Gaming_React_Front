@@ -105,9 +105,9 @@ const Users = () => {
           toast.error(res.msg);
         }
       } else {
-        // if (!res.status) {
-        //   toast.error(res.msg);
-        // }
+        if (!res.status) {
+          toast.error(res.msg);
+        }
         if (!res.response.data.isVerified) {
           toast.error(res.response.data.msg);
           setTimeout(() => {

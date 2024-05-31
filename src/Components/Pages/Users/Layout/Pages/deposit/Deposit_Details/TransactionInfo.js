@@ -1,211 +1,115 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Formikform from "../../../../../../Helpers/Form";
+import { useFormik } from "formik";
+import { ACCOUNT_ADD_CREDIT_REQUEST } from '../../../../../../Service/common.service';
+import toast from 'react-hot-toast';
+import ToastButton from '../../../../../../Helpers/Toast';
+import * as valid_err from "../../../../../../Utils/Common_Msg";
 
-const TransactionInfo = ({amount}) => {
+const TransactionInfo = ({amount,displayData,setAmount,}) => {
+  const token = localStorage.getItem("token");
+  const userId = JSON.parse(localStorage.getItem("user_details")).id;
+
+  const formik = useFormik({
+    initialValues: {
+      utr: "",
+      image: "",
+      isBank: displayData?.isBank === "true" ? "true" : "false" ,
+      amount:amount,
+      status:""
+    },
+
+    validate: (values) => {
+
+      const errors = {};
+
+      if (!values.utr) {
+        errors.utr = valid_err.UTR_ERROR;
+      }
+
+      if (!values.image) {
+        errors.image = valid_err.UPLOAD_IMAGE_ERROR;
+      }
+
+      if (!values.status) {
+        errors.status = valid_err.TERMS_AND_CONDTION;
+      }
+
+      return errors;
+    },
+    onSubmit: async (values, { resetForm }) => {
+console.log(resetForm)
+console.log(values)
+      setAmount("")
+      try {
+        let formData = new FormData();
+        formData.append("userId", userId);
+
+        formData.append("utr", values.utr);
+        formData.append("image", values.image);
+        formData.append("amount", amount);
+        formData.append("isBank", values.isBank );
+        const response = await ACCOUNT_ADD_CREDIT_REQUEST(formData, token);
+
+
+        if (response?.statusCode == 200) {
+          toast.success(response?.msg);
+          resetForm()
+          setAmount("")
+        }
+        else {
+          toast.error(response.message);
+        }
+      } catch (error) {
+        toast.error(error.message);
+
+      }
+    },
+  });
+
+  const fields = [
+    {
+      name: "utr",
+      label: "Unique Transaction Reference",
+      type: "text",
+      label_size: 12,
+      col_size: 12,
+    },
+    {
+      name: "image",
+      label: "Upload Your Payment Proof",
+      type: "file",
+      label_size: 12,
+      col_size: 12,
+      
+    },
+    {
+      name: "amount",
+      label: "Amount",
+      type: "number",
+      label_size: 12,
+      col_size: 12,
+      disable:true
+    },
+    {
+      name: "status",
+      label: "I have read and agree with the terms of payment and withdrawal policy.",
+      type: "checkbox",
+      label_size: 12,
+      col_size: 12,
+      // check_box_true: formik.values.status,
+    },
+  ];
   return (
     <div className="col-md-6">
-    <form
-      id="phonepeForm16485"
-      method="post"
-      encType="multipart/form-data"
-      noValidate="novalidate"
-    >
-      <input
-        type="hidden"
-        name="_token"
-        defaultValue="fXgBiHJWpXsj77xPDQnNYDlFSEBsaVcaK86IPhYy"
+
+       <Formikform
+        fieldtype={fields.filter((field) => !field.showWhen)}
+        formik={formik}
+        btn_name="Submit"
+        btn_design
       />
-      <div className="modal-body">
-        <div className="form-group">
-          <label htmlFor="transactionId">
-            Unique Transaction
-            Reference
-            <small
-              style={{ color: "red" }}
-            >
-              *
-            </small>
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="transaction_id"
-            id="transactionId"
-            placeholder="6 to 12 Digit UTR Number"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="proofOfDeposit16485">
-            Upload Your Payment Proof
-            <small
-              style={{ color: "red" }}
-            >
-              [Required]
-            </small>
-          </label>
-          <input
-            type="file"
-            className="form-control"
-            name="deposit_proof"
-            id="proofOfDeposit16485"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleFormControlInput1">
-            Amount
-            <small
-              style={{ color: "red" }}
-            >
-              *
-            </small>
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            name="amount"
-            defaultValue={amount}
-            disabled
-            id="amount16485Input"
-            
-          />
-          <div
-            className="btn-group"
-            style={{
-              display: "none",
-            }}
-          >
-            <button
-              type="button"
-              className="amount-shortcut"
-              data-id={16485}
-              data-amount={500}
-              data-original-title=""
-              title=""
-            >
-              +500
-            </button>
-            <button
-              type="button"
-              className="amount-shortcut"
-              data-id={16485}
-              data-amount={1000}
-              data-original-title=""
-              title=""
-            >
-              +1000
-            </button>
-            <button
-              type="button"
-              className="amount-shortcut"
-              data-id={16485}
-              data-amount={5000}
-              data-original-title=""
-              title=""
-            >
-              +5,000
-            </button>
-            <button
-              type="button"
-              className="amount-shortcut"
-              data-id={16485}
-              data-amount={10000}
-              data-original-title=""
-              title=""
-            >
-              +10,000
-            </button>
-            <button
-              type="button"
-              className="amount-shortcut"
-              data-id={16485}
-              data-amount={50000}
-              data-original-title=""
-              title=""
-            >
-              +50,000
-            </button>
-            <button
-              type="button"
-              className="amount-shortcut"
-              data-id={16485}
-              data-amount={100000}
-              data-original-title=""
-              title=""
-            >
-              +1,00,000
-            </button>
-          </div>
-        </div>
-        <input
-          type="hidden"
-          id="accountId"
-          name="account_id"
-          defaultValue={16485}
-        />
-        <div className="custom-control custom-checkbox d-flex">
-          <input
-            type="checkbox"
-            className="custom-control-input"
-            name="terms_condition"
-            id="termsCheck16485"
-          />
-          <div>
-          <label
-            className="custom-control-label"
-            htmlFor="termsCheck16485"
-          >
-            I have read and agree with
-            <a
-              href="#"
-              data-toggle="modal"
-              data-target="#termsAndCondition"
-              className="terms-condition"
-            >
-              the terms of payment and
-              withdrawal policy.
-            </a>
-          </label>
-          </div>
-        </div>
-             {/* <div className='d-flex' >
-          <input
-            type="checkbox"
-           
-            name="terms_condition"
-            id="termsCheck16485"
-          />
-         <div>
-         <label
-          
-          htmlFor="termsCheck16485"
-        >
-          I have read and agree with
-          <a
-            href="#"
-            data-toggle="modal"
-            data-target="#termsAndCondition"
-           
-          >
-            the terms of payment and
-            withdrawal policy.
-          </a>
-        </label>
-         </div>
-        </div> */}
-      </div>
-      <div className="modal-footer">
-        <button
-          disabled=""
-          type="submit"
-          id="depositBtn"
-          className="btn btn-info depositBtn"
-          data-id={16485}
-          data-original-title=""
-          title=""
-        >
-          Submit
-        </button>
-      </div>
-    </form>
+       <ToastButton />
   </div>
   )
 }

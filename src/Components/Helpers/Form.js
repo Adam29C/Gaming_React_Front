@@ -30,7 +30,7 @@ const ReusableForm = ({
   before_text_field,
   after_text_field,
   before_submit,
-
+  btn_design,
   Disable_Submit,
   disable_button,
 }) => {
@@ -43,6 +43,7 @@ const ReusableForm = ({
   const handleFileChange = (event, index, name) => {
     const file = event.target.files[0];
     if (file) {
+      console.log(file,"check file")
       const newPreviews = [...previews]; // Create a copy of the previews array
       newPreviews[index] = URL.createObjectURL(file); // Set the preview for the specific index
       setPreviews(newPreviews); // Update the previews array
@@ -373,7 +374,7 @@ const ReusableForm = ({
                 </>
               ) : field.type === "file" ? (
                 <>
-                  <div className="col-lg-6">
+                  <div className={`col-lg-${field.col_size}`}>
                     <div className="row d-flex">
                       <div
                         className={`col-lg-${title === "addgroup" ? 6 : 12}`}
@@ -401,22 +402,23 @@ const ReusableForm = ({
                         {formik.errors[field.name]}
                       </div>
                     )}
-                    
-                      <img
-                        src={
-                          formik.getFieldProps(`${field.name}_base64`).value ||
-                          formik.getFieldProps(field.name).value
-                        }
-                        // style={{
-                        //   height: "150px",
-                        //   objectFit: "contain",
-                        // }}
-                       
-                        name={field.name}
-                        id={field.name}
-                        alt={`Preview ${index}`}
-                        className="superadmin-preview-img"
-                      />
+                    { formik.getFieldProps(`${field?.name}_base64`)?.value ||
+                          formik.getFieldProps(field?.name)?.value ? (     <img
+                            src={
+                              formik.getFieldProps(`${field.name}_base64`).value ||
+                              formik.getFieldProps(field.name).value
+                            }
+                            // style={{
+                            //   height: "150px",
+                            //   objectFit: "contain",
+                            // }}
+                           
+                            name={field.name}
+                            id={field.name}
+                            alt={`Preview ${index}`}
+                            className="superadmin-preview-img"
+                          />) : ""}
+                 
                     </div>
                    
                   </div>
@@ -484,7 +486,7 @@ const ReusableForm = ({
               style={{ background: "#4e3897" }}
               className={`btn btn-primary mt-2 ${button_Size} ${
                 location.pathname === "resetpassword" ? "col-md-11" : ""
-              }`}
+              } ${btn_design && "btn_design" }`}
               type="submit"
               disabled={Disable_Submit}
             >

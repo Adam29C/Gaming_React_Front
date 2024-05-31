@@ -40,8 +40,9 @@ export const MIN_AMOUNT_ERROR = "Please Enter Min Amount ";
 export const MAX_AMOUNT_ERROR = "Please Enter Max Amount  ";
 export const AMOUNT_GRATER_ZERO_ERROR = "Less Then Zero Not Allow  ";
 export const AMOUNT_MIN_GRATER_MAX_ERROR = "Min Amount Should Be Grater Max Amount ";
-
-
+export const UTR_ERROR = "Please enter your UTR ID";
+export const UPLOAD_IMAGE_ERROR = "Please Upload Payment Proof.";
+export const TERMS_AND_CONDTION = "Please check terms and condition";
 export const EMPTY_IMAGE_ERROR = "Please Select Image  ";
 
 

@@ -104,7 +104,7 @@ const Users = () => {
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Delete"
-                onClick={() => RemoveUsers(row.subAdminId)}
+                onClick={() => RemoveUsers(cell?.subAdminId)}
               >
                 <i class="ti-trash fs-5 mx-1"></i>
               </span>
@@ -119,14 +119,21 @@ const Users = () => {
 
 
   const RemoveUsers = async (id) => {
+    let data ={
+      adminId: userId,
+       id: id 
+    }
+    console.log(id)
     const confirmed = window.confirm("Do You Really Want To Remove This Game");
     if (confirmed) {
-      const response = await dispatch(
-        REMOVE_ADMINS({ adminId: userId, id: id }, token)
+      const response = await (
+        REMOVE_ADMINS(data, token)
       );
+      console.log(response)
 
-      if (response?.data?.statusCode == 200) {
-        toast.success(response?.data?.msg);
+      if (response?.statusCode == 200) {
+        toast.success(response?.msg);
+        getRules();
       } else {
         toast.error(response.msg);
       }

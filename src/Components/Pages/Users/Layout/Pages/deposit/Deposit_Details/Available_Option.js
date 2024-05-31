@@ -1,29 +1,16 @@
 import React, { useEffect } from "react";
-import { Available_Admin_Acount_Details } from "../../../../../../Redux/Slice/common/common.slice";
-import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../../../../../Helpers/Loader";
-const Available_Option = ({handleShowPaymentDetails}) => {
-  const dispatch = useDispatch();
 
+import Loader from "../../../../../../Helpers/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { Available_Admin_Acount_Details } from "../../../../../../Redux/Slice/common/common.slice";
+const Available_Option = ({ handleShowPaymentDetails, mergeArray ,displayData}) => {
+const dispatch = useDispatch()
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
-  const { account_details, isLoading } = useSelector((state) => state.CommonSlice)
+  const { isLoading } = useSelector((state) => state.CommonSlice)
 
-  const bankList = account_details?.bankList || [];
-  const upiList = account_details?.upiList || [];
-
-  const mergeArray = [...bankList, ...upiList];
-
-
-  // const { account_details, isLoading } = useSelector(
-  //   (state) => state.CommonSlice
-  // );
-
-  // console.log("getGameListState", account_details);
-
-  //
-
-  const getDetails = async () => {
+  
+const getDetails = async () => {
     await dispatch(
       Available_Admin_Acount_Details({ userId: userId, token: token })
     );
@@ -31,6 +18,8 @@ const Available_Option = ({handleShowPaymentDetails}) => {
   useEffect(() => {
     getDetails();
   }, []);
+
+
 
 
 
@@ -62,7 +51,7 @@ const Available_Option = ({handleShowPaymentDetails}) => {
           mergeArray?.map((row) => (
             <div key={row?._id}>
               <button
-                className="nav-link"
+                className={`nav-link ${displayData._id === row?._id ? 'active' : ""}`}
                 id="nav-imps-16067-tab"
                 data-id={16067}
                 data-toggle="tab"
