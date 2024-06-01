@@ -44,6 +44,7 @@ export const UTR_ERROR = "Please enter your UTR ID";
 export const UPLOAD_IMAGE_ERROR = "Please Upload Payment Proof.";
 export const TERMS_AND_CONDTION = "Please check terms and condition";
 export const EMPTY_IMAGE_ERROR = "Please Select Image  ";
+export const UPLOAD_IMAGE_VALID ="Please enter valid file type (Jpeg,jpg,png file)"
 
 
 

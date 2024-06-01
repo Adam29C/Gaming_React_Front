@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 export const Email_regex = (email) => {
   const emailRegex =
     /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|ymail|rediffmail|hotmail|outlook|aol|icloud|protonmail|example)\.(com|co\.in|in|net|org|edu|gov|uk|us|info|biz|io|...)[a-zA-Z]{0,}$/;
@@ -35,3 +37,20 @@ export const ValidYoutubeUrl = (url) => {
 
   return youtubeRegex.test(url);
 };
+
+
+export const Image_Regexp = (value)=>{
+  return yup.mixed().test(
+    "fileType",
+    "Please enter a valid file type (jpeg, jpg, png)",
+    (value) => {
+      if (!value) return true; // Allow empty values (optional file upload)
+      if (value?.type) {
+        return ["image/jpeg", "image/jpg", "image/png"].includes(value?.type);
+      } else {
+        let val = value?.split(".").pop().toLowerCase(); // Get the file extension
+        return ["jpeg", "jpg", "png"].includes(val);
+      }
+    }
+  );
+}

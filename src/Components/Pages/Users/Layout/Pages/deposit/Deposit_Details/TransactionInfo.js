@@ -5,17 +5,25 @@ import { ACCOUNT_ADD_CREDIT_REQUEST } from '../../../../../../Service/common.ser
 import toast from 'react-hot-toast';
 import ToastButton from '../../../../../../Helpers/Toast';
 import * as valid_err from "../../../../../../Utils/Common_Msg";
+import { useNavigate } from 'react-router-dom';
+import { Image_Regexp } from '../../../../../../Utils/Valid_Rejex';
 
 const TransactionInfo = ({amount,displayData,setAmount,}) => {
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
+  const navigate = useNavigate()
+console.log(amount,"amount")
+
+const isValidImage = (value) => {
+  return Image_Regexp(value);
+};
 
   const formik = useFormik({
     initialValues: {
       utr: "",
       image: "",
       isBank: displayData?.isBank === "true" ? "true" : "false" ,
-      amount:amount,
+      amount:amount ? amount : "",
       status:""
     },
 
@@ -29,7 +37,12 @@ const TransactionInfo = ({amount,displayData,setAmount,}) => {
 
       if (!values.image) {
         errors.image = valid_err.UPLOAD_IMAGE_ERROR;
+      }else if(!isValidImage(values.image)){
+errors.image = valid_err.UPLOAD_IMAGE_VALID
       }
+      // else if(!isValidImage(values.image))(
+      //   errors.image = valid_err.UPLOAD_IMAGE_VALID;
+      // )
 
       if (!values.status) {
         errors.status = valid_err.TERMS_AND_CONDTION;
@@ -53,9 +66,14 @@ console.log(values)
 
 
         if (response?.statusCode == 200) {
+          console.log(response?.statusCode,"response?.statusCode")
           toast.success(response?.msg);
           resetForm()
+        
           setAmount("")
+          setTimeout(()=>{
+navigate("/")
+          },2000)
         }
         else {
           toast.error(response.message);
@@ -66,7 +84,7 @@ console.log(values)
       }
     },
   });
-
+  console.log(formik.values,"formik values")
   const fields = [
     {
       name: "utr",

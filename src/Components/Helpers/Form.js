@@ -174,6 +174,7 @@ const ReusableForm = ({
                             <div class="form-check custom-checkbox mb-2">
                               <input
                                 type={field.type}
+                                
                                 className="form-check-input"
                                 id={field.label}
                                 {...formik.getFieldProps(field.name)}

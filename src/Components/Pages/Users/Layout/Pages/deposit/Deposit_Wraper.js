@@ -113,6 +113,7 @@ const Deposit = () => {
                             handleTransactionSubmit={handleTransactionSubmit}
                             setAmount={setAmount}
                             error={error}
+                            amount={amount}
                           />
                         </div>
                       ) : (

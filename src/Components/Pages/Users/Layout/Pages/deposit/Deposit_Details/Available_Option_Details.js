@@ -96,7 +96,7 @@ const Available_Option_Details = ({ displayData }) => {
                     ISSUES CLICK HERE
                   </b>
                   &nbsp;&nbsp;
-                  <i className="fa-brands fa-whatsapp my-float" />
+                  <i className="fa-brands fa-whatsapp my-float withdraw-whp-icon" />
                 </p>
               </div>
             </div>

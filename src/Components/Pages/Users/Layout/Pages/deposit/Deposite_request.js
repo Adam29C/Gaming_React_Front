@@ -1,7 +1,7 @@
 import React from "react";
 import Rules from "./Rules";
 
-const Deposite_request = ({handleTransactionSubmit,setAmount,error}) => {
+const Deposite_request = ({handleTransactionSubmit,amount,setAmount,error}) => {
 
 
 
@@ -27,6 +27,7 @@ const Deposite_request = ({handleTransactionSubmit,setAmount,error}) => {
                         id="amount"
                         placeholder="Enter amount"
                         onChange={(e) => setAmount(e.target.value)}
+                        value={amount}
 
                       />
                            
