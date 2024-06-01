@@ -64,7 +64,7 @@ const Sidebar = () => {
                       >
                         <Link to={item.route}>
                           <i className={item.Icon} />
-                          <span>{item.name}</span>
+                          <span>&nbsp;{item.name}</span>
                         </Link>
                       </li>
                     ) : (

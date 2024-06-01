@@ -231,7 +231,7 @@ export async function GET_CREDIT_WITHDRWAL_REQUEST(data, token) {
 //UPDATE WITHDRAWAL/ CREDIT REQUWEST
 export async function UPDATE_CREDIT_WITHDRWAL_REQUEST(data, token) {
   try {
-    const res = await axios.post(`${baseurl}adminRouter/updatePaymentRequestStatus`, data, {
+    const res = await axios.put(`${baseurl}adminRouter/updatePaymentRequestStatus`, data, {
       headers: header(token),
     });
     return await res?.data;
