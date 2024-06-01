@@ -40,17 +40,12 @@ export const ValidYoutubeUrl = (url) => {
 
 
 export const Image_Regexp = (value)=>{
-  return yup.mixed().test(
-    "fileType",
-    "Please enter a valid file type (jpeg, jpg, png)",
-    (value) => {
-      if (!value) return true; // Allow empty values (optional file upload)
-      if (value?.type) {
-        return ["image/jpeg", "image/jpg", "image/png"].includes(value?.type);
-      } else {
-        let val = value?.split(".").pop().toLowerCase(); // Get the file extension
+  console.log(value,"values check in regex")
+  if(value?.type){
+    return  ["image/jpeg", "image/jpg", "image/png"].includes(value?.type);
+  }else {
+    let val = value?.split(".").pop().toLowerCase(); // Get the file extension
         return ["jpeg", "jpg", "png"].includes(val);
-      }
-    }
-  );
+  }
+  
 }

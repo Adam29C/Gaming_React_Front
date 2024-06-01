@@ -37,7 +37,8 @@ const isValidImage = (value) => {
 
       if (!values.image) {
         errors.image = valid_err.UPLOAD_IMAGE_ERROR;
-      }else if(!isValidImage(values.image)){
+      }
+      if(!isValidImage(values.image)){
 errors.image = valid_err.UPLOAD_IMAGE_VALID
       }
       // else if(!isValidImage(values.image))(
