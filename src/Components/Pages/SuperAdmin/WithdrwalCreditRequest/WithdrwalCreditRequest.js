@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Content from "../../../Layout/Content/Content";
 import Data_Table from "../../../Helpers/Datatable";
-import { Link, useLocation, useParams } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ToastButton from "../../../Helpers/Toast";
 import {
@@ -30,6 +30,14 @@ const WithdrwalCreditRequest = () => {
   const dispatch = useDispatch();
 
   const columns = [
+    {
+      name: "Name ",
+      selector: (row) => row?.userName,
+    },
+    {
+      name: "Contact Number",
+      selector: (row) => row?.mobileNumber,
+    },
     {
       name: "Transaction ID",
       selector: (row) => row?.utr,
