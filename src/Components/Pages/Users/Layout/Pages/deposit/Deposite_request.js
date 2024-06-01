@@ -1,7 +1,7 @@
 import React from "react";
 import Rules from "./Rules";
 
-const Deposite_request = ({handleTransactionSubmit,setAmount,error}) => {
+const Deposite_request = ({handleTransactionSubmit,amount,setAmount,error}) => {
 
 
 
@@ -16,9 +16,9 @@ const Deposite_request = ({handleTransactionSubmit,setAmount,error}) => {
               style={{ marginTop: 10 }}
             >
               <div className="card-body">
-                <form id="amountForm" method="post" >
+                <div id="amountForm"  >
                   <div className="form-group">
-                    <label>Amount</label>
+                    <label className="d-flex">Amount</label>
                     <div className="input-group">
                       <input
                         type="number"
@@ -27,6 +27,7 @@ const Deposite_request = ({handleTransactionSubmit,setAmount,error}) => {
                         id="amount"
                         placeholder="Enter amount"
                         onChange={(e) => setAmount(e.target.value)}
+                        value={amount}
 
                       />
                            
@@ -34,7 +35,7 @@ const Deposite_request = ({handleTransactionSubmit,setAmount,error}) => {
                       <div className="input-group-append">
                         <button
                           type="button"
-                          onClick={()=>handleTransactionSubmit()}
+                          onClick={(e)=>handleTransactionSubmit(e)}
                           className="input-group-text amountBtn"
                           data-wp-add=""
                           id="basic-addon2"
@@ -46,7 +47,7 @@ const Deposite_request = ({handleTransactionSubmit,setAmount,error}) => {
                     </div>
                   </div>
                  {error && <div style={{ color: 'red', marginTop: '5px',textAlign:"left" }}>{error}</div>}
-                </form>
+                </div>
               </div>
             </div>
           </div>

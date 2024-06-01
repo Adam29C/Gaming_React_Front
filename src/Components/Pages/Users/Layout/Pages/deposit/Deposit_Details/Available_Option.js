@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
-import { Available_Admin_Acount_Details } from "../../../../../../Redux/Slice/common/common.slice";
-import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../../../../../Helpers/Loader";
-const Available_Option = ({handleShowPaymentDetails}) => {
-  const dispatch = useDispatch();
 
+import Loader from "../../../../../../Helpers/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { Available_Admin_Acount_Details } from "../../../../../../Redux/Slice/common/common.slice";
+const Available_Option = ({
+  handleShowPaymentDetails,
+  mergeArray,
+  displayData,
+}) => {
+  const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
-  const { account_details, isLoading } = useSelector((state) => state.CommonSlice)
-
-  const bankList = account_details?.bankList || [];
-  const upiList = account_details?.upiList || [];
-
-  const mergeArray = [...bankList, ...upiList];
-
-
+  const { isLoading } = useSelector((state) => state.CommonSlice);
 
   const getDetails = async () => {
     await dispatch(
@@ -24,8 +21,6 @@ const Available_Option = ({handleShowPaymentDetails}) => {
   useEffect(() => {
     getDetails();
   }, []);
-
-
 
   return (
     <>
@@ -47,35 +42,41 @@ const Available_Option = ({handleShowPaymentDetails}) => {
             width="5%"
           />
         </button>
-        {isLoading && (<div className="user-bank-details-loader">
-          <Loader lodersize={20} />
-        </div>)}
-        {
-
-          mergeArray?.map((row) => (
-            <div key={row?._id}>
-              <button
-                className="nav-link"
-                id="nav-imps-16067-tab"
-                data-id={16067}
-                data-toggle="tab"
-                data-target="#nav-imps-16067"
-                onClick={() => handleShowPaymentDetails(row)}
-                type="button"
-                role="tab"
-                aria-controls="nav-imps-16067"
-                aria-selected="false"
-                data-original-title=""
-                title=""
-              >
-                {row?.isBank === "true" ? row?.bankName : row?.upiName}
-                <img src={row?.isBank === "true" ? "https://reddypanel.com/images/icon/bank-account.png" : "https://reddypanel.com/images/icon/imps.png"} width="5%" />
-              </button>
-            </div>
-          ))
-        }
-
-
+        {isLoading && (
+          <div className="user-bank-details-loader">
+            <Loader lodersize={20} />
+          </div>
+        )}
+        {mergeArray?.map((row) => (
+          <div key={row?._id}>
+            <button
+              className={`nav-link ${
+                displayData._id === row?._id ? "active" : ""
+              }`}
+              id="nav-imps-16067-tab"
+              data-id={16067}
+              data-toggle="tab"
+              data-target="#nav-imps-16067"
+              onClick={() => handleShowPaymentDetails(row)}
+              type="button"
+              role="tab"
+              aria-controls="nav-imps-16067"
+              aria-selected="false"
+              data-original-title=""
+              title=""
+            >
+              {row?.isBank === "true" ? row?.bankName : row?.upiName}
+              <img
+                src={
+                  row?.isBank === "true"
+                    ? "https://reddypanel.com/images/icon/bank-account.png"
+                    : "https://reddypanel.com/images/icon/imps.png"
+                }
+                width="5%"
+              />
+            </button>
+          </div>
+        ))}
       </div>
     </>
   );

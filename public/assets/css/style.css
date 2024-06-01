@@ -1557,3 +1557,8 @@
 .profile-circle-text {
   color: white;
 }
+
+
+.form-control[type=file] {
+  margin-top: -6px;
+}

@@ -35,7 +35,7 @@ const Transaction_Table = () => {
         >
           <thead>
             <tr>
-              <th>Transaction No</th>
+              <th>Utr No</th>
               <th>Amount</th>
               <th>Status</th>
               <th>Date</th>
@@ -57,16 +57,17 @@ const Transaction_Table = () => {
             ) : (
               getPaymentHistorytState?.paymentInfo?.map((transaction) => {
                 const {
-                  accountId,
+                  _id,
                   amount,
                   status,
                   createdAt,
-                  reason,
+                  description,
+                  utr
                 } = transaction;
                 return( 
-                <tr key={accountId}>
+                <tr key={_id}>
                   <td>
-                    {accountId ? accountId : " _ "}
+                    {utr ? utr : " _ "}
                   </td>
                   <td>{amount ? amount : " _ "}</td>
                   <td>{status ? status : " _ "}</td>
@@ -75,7 +76,7 @@ const Transaction_Table = () => {
                       createdAt ? createdAt : " _ "
                     ).format("DD-MM-YYYY")}
                   </td>
-                  <td>{reason ? reason : " _ "}</td>
+                  <td>{description ? description : " _ "}</td>
                 </tr>
                 )
                 

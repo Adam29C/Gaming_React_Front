@@ -12,7 +12,7 @@ import {
   ADD_ADMIN_ACCOUNT_DETAILS,
   UPDATE_ADMIN_ACCOUNT_DETAILS,
 } from "../../../Service/superadmin.service";
-import { No_Negetive_Input_regex } from "../../../Utils/Valid_Rejex";
+import { Image_Regexp, No_Negetive_Input_regex } from "../../../Utils/Valid_Rejex";
 const GameRuleAdd = () => {
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
@@ -21,6 +21,10 @@ const GameRuleAdd = () => {
   const location = useLocation();
   const { state } = location;
 
+  const isValidImage = (value) => {
+    return Image_Regexp(value);
+  };
+  
   const formik = useFormik({
     initialValues: {
       upiId: state?.upiId ? state?.upiId : "",
@@ -48,9 +52,15 @@ const GameRuleAdd = () => {
         errors.isBank = valid_err.EMPTY_SELECT_BANK_ERROR;
       }
       if (values.isBank === "false") {
+        // if (values.image === "") {
+        //   errors.image = valid_err.EMPTY_IMAGE_ERROR;
+        // }
         if (values.image === "") {
           errors.image = valid_err.EMPTY_IMAGE_ERROR;
+        } else if (!isValidImage(values.image)) {
+          errors.image = valid_err.UPLOAD_IMAGE_VALID;
         }
+  
         if (values.upiName === "") {
           errors.upiName = valid_err.EMPTY_UPI_NAME_ERROR;
         }

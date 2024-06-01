@@ -48,16 +48,31 @@ export async function GET_ALL_ADMINS(data, token) {
   }
 }
 //game rule list status change api
+// export async function REMOVE_ADMINS(data, token) {
+//   try {
+//     const res = await axios.delete(
+//       `${baseurl}adminRouter/deleteSubAdmin`,
+//       data,
+//       { headers: header(token) }
+//     );
+//     return await res?.data;
+//   } catch (error) {
+//     return error;
+//   }
+// }
+
 export async function REMOVE_ADMINS(data, token) {
+  console.log(data)
   try {
-    const res = await axios.delete(
-      `${baseurl}adminRouter/deleteSubAdmin`,
-      data,
-      { headers: header(token) }
-    );
-    return await res?.data;
+    const res = await axios.request({
+      url: `${baseurl}adminRouter/deleteSubAdmin`,
+      method: "DELETE",
+      headers: header(token),
+      data: data,
+    });
+    return res?.data;
   } catch (error) {
-    return error;
+    return error?.response?.data || error;
   }
 }
 

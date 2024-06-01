@@ -984,7 +984,7 @@ a {
 .bankingUi form label {
   text-align: left;
   display: inherit;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   margin: 0;
 }
@@ -1021,7 +1021,9 @@ a {
 }
 .bankingUi form .form-check input {
   display: block;
-  height: auto;
+  /* height: auto; */
+  height: 15px;
+  width: 15px;
 }
 .bankingUi form .custom-control-label {
   font-size: 13px;
@@ -1184,3 +1186,20 @@ border: none;
    width: 100px;
 }
 
+.btn_design{
+  width: 100%;
+}
+
+.btn_design:hover{
+  background: var(--theme-secondary-color) !important;
+  color: white !important;
+  border: none;
+}
+
+
+.bankingUi input[type="file"] {
+  /* border: none; */
+  padding:15px;
+  /* height: auto !important; */
+ 
+}

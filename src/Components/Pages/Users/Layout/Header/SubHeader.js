@@ -15,7 +15,7 @@ const SubHeader = () => {
           </Link>
         </li>
         <li _ngcontent-nsr-c54="">
-          <a _ngcontent-nsr-c54="" href="/inplay" routerlinkactive="nmm-active">
+          <a _ngcontent-nsr-c54="" href="#" routerlinkactive="nmm-active">
             <img _ngcontent-nsr-c54="" src="/assets/images/menu-inplay.png" />
             in-play
           </a>
@@ -23,7 +23,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/4"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img _ngcontent-nsr-c54="" src="/assets/images/events/menu-4.png" />
@@ -33,7 +33,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/1"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img _ngcontent-nsr-c54="" src="/assets/images/events/menu-1.png" />
@@ -43,7 +43,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/2"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img _ngcontent-nsr-c54="" src="/assets/images/events/menu-2.png" />
@@ -53,7 +53,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/2378961"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img
@@ -66,7 +66,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/7"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img _ngcontent-nsr-c54="" src="/assets/images/events/menu-7.png" />
@@ -76,7 +76,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/4339"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img
@@ -89,7 +89,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/99994"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img
@@ -102,7 +102,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/99999"
+            href="#"
             routerlinkactive="nmm-active"
             className="hightlight-menu"
           >
@@ -114,7 +114,7 @@ const SubHeader = () => {
           </a>
         </li>
         <li _ngcontent-nsr-c54="" className="nav-item">
-          <a _ngcontent-nsr-c54="" href="#(0)" routerlinkactive="nmm-active">
+          <a _ngcontent-nsr-c54=""  href="#" routerlinkactive="nmm-active">
             <img
               _ngcontent-nsr-c54=""
               src="/assets/images/events/menu-99991.png"
@@ -125,7 +125,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/99998"
+            href="#"
             routerlinkactive="nmm-active"
             className="hightlight-menu"
           >
@@ -139,7 +139,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/99990"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img
@@ -152,7 +152,7 @@ const SubHeader = () => {
         <li _ngcontent-nsr-c54="" className="nav-item">
           <a
             _ngcontent-nsr-c54=""
-            href="/sports/99997"
+            href="#"
             routerlinkactive="nmm-active"
           >
             <img

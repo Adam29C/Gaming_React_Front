@@ -8,7 +8,7 @@ const Dashboard = () => {
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
   const ROLES = JSON.parse(localStorage.getItem("roles"));
   const [data, setData] = useState({});
-
+console.log(data)
   const getSubAdminDashboardCount = async () => {
     const res = await SUB_ADMIN_DASHBOARD_COUNT_API(userId, token);
     setData(res?.data);
@@ -26,20 +26,20 @@ const Dashboard = () => {
                 <Widget
                   sm={"col-sm-6 col-xl-3 mb-30"}
                   color="bg-purple "
-                  title="Total Admins"
-                  value="0"
+                  title="Total Users"
+                  value={data?.totalCount ? data?.totalCount : 0}
                 />
                 <Widget
                   sm={"col-sm-6 col-xl-3 mb-30"}
                   color="bg-success"
-                  title="Verified Admins"
-                  value="0"
+                  title="Verified Users"
+                  value={data?.verifiedCount ? data?.verifiedCount : 0}
                 />
                 <Widget
                   sm={"col-sm-6 col-xl-3 mb-30"}
                   color="bg-danger"
-                  title="Not Verified Admins"
-                  value="0"
+                  title="Not Verified Users"
+                  value={data?.notVerifiedCount ? data?.verifiedCount : 0}
                 />
               </div>
       </Content>
