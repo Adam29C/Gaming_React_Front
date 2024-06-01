@@ -1,3 +1,5 @@
+const rule = 0
+
 
 export const superadmin_sidebar = [
   {

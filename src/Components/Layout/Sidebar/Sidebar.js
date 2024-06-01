@@ -16,6 +16,8 @@ const Sidebar = () => {
   );
   const dispatch = useDispatch();
   const canViewUser = getSubAdminPermissionState.viewUser && getSubAdminPermissionState.viewUser;
+ 
+
   const [ShowSubMenu, setShowSubMenu] = useState(false);
 
   const { handleMouseLeave, handleMouseEnter } = useAppContext();
@@ -27,11 +29,24 @@ const Sidebar = () => {
     handleMouseEnter();
   };
 
+  const filterAdminSidebar = (admin_sidebar) => {
+    return admin_sidebar?.filter((item, index) => {
+     if (index === 0) return true; 
+      if (item.name === "All Users") {
+        return canViewUser;
+      }
+     return true; 
+     });
+  };
+
+
+
   let sidebarTabs;
   if (parseInt(ROLES) == 0) {
     sidebarTabs = superadmin_sidebar;
-  } else if (parseInt(ROLES) == 1) {
-    sidebarTabs = admin_sidebar;
+  } else if (parseInt(ROLES) == 1 ) {
+    // console.log(admin_sidebar,"admin_sidebar")
+    sidebarTabs = filterAdminSidebar(admin_sidebar);
   }
 
   const getPermission = async () => {
