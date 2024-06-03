@@ -45,7 +45,6 @@ const Sidebar = () => {
   if (parseInt(ROLES) == 0) {
     sidebarTabs = superadmin_sidebar;
   } else if (parseInt(ROLES) == 1 ) {
-    // console.log(admin_sidebar,"admin_sidebar")
     sidebarTabs = filterAdminSidebar(admin_sidebar);
   }
 

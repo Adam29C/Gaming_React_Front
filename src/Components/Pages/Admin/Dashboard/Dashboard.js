@@ -8,7 +8,6 @@ const Dashboard = () => {
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
   const ROLES = JSON.parse(localStorage.getItem("roles"));
   const [data, setData] = useState({});
-console.log(data)
   const getSubAdminDashboardCount = async () => {
     const res = await SUB_ADMIN_DASHBOARD_COUNT_API(userId, token);
     setData(res?.data);

@@ -22,7 +22,6 @@ const Wraper = () => {
 
 
 
-  console.log("datadata" ,data);
   useEffect(() => {
     const getToken = async () => {
       const request1 = { deviceId: v4() };
@@ -32,7 +31,6 @@ const Wraper = () => {
           setToken(res1.data);
         }
       } catch (error) {
-        console.error("Error:", error);
       }
     };
 
@@ -59,7 +57,6 @@ const Wraper = () => {
           });
         }
       } catch (error) {
-        console.error("Error fetching matches:", error);
       }
     };
 

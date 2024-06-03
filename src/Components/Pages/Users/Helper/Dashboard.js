@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const Dashboard = ({ data, isLoading, showUpcoming , matchDetails }) => {
 
 
-  console.log("matchDetailsmatchDetails" ,matchDetails?.live_odds);
   return (
     <div>
       <GameContent title="Cricket" showUpcoming={showUpcoming}>

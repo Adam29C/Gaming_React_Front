@@ -136,7 +136,6 @@ const WithdrwalCreditRequest = () => {
       setGetList(res.data);
       setisLoading(false);
     }
-    console.log(res.status);
   };
 
   useEffect(() => {

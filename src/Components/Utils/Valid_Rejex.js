@@ -39,7 +39,6 @@ export const ValidYoutubeUrl = (url) => {
 
 
 export const Image_Regexp = (value)=>{
-  console.log(value,"values check in regex")
   if(value?.type){
     return  ["image/jpeg", "image/jpg", "image/png"].includes(value?.type);
   }else {

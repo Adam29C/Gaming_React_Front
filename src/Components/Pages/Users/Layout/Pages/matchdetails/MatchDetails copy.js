@@ -23,7 +23,6 @@ const MatchDetails = () => {
           setToken(tokendata);
         }
       } catch (error) {
-        console.error("Error:", error);
       }
     };
 
@@ -41,7 +40,6 @@ const MatchDetails = () => {
         try {
           await dispatch(getMatchDetails(apidata)).unwrap();
         } catch (error) {
-          console.error("Error:", error);
         }
       };
 

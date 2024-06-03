@@ -123,13 +123,11 @@ const Users = () => {
       adminId: userId,
        id: id 
     }
-    console.log(id)
     const confirmed = window.confirm("Do You Really Want To Remove This Game");
     if (confirmed) {
       const response = await (
         REMOVE_ADMINS(data, token)
       );
-      console.log(response)
 
       if (response?.statusCode == 200) {
         toast.success(response?.msg);

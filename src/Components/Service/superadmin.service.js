@@ -62,7 +62,6 @@ export async function GET_ALL_ADMINS(data, token) {
 // }
 
 export async function REMOVE_ADMINS(data, token) {
-  console.log(data)
   try {
     const res = await axios.request({
       url: `${baseurl}adminRouter/deleteSubAdmin`,

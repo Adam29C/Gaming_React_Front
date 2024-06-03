@@ -5,7 +5,7 @@ import "react-data-table-component-extensions/dist/index.css";
 import Loader from "./Loader";
 import { Tooltip, OverlayTrigger, Form } from "react-bootstrap";
 
-const Data_Table = ({ columns, data, tableStyle, isLoading }) => {
+const Data_Table = ({ columns, data, tableStyle, isLoading,showFilter  }) => {
   const adminStyles = {
     rows: {
       background: "#4E3896",
@@ -69,6 +69,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading }) => {
         data={data}
         print={false}
         export={false}
+        filter={showFilter}
       >
         <DataTable
           noHeader

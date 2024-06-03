@@ -43,7 +43,6 @@ const ReusableForm = ({
   const handleFileChange = (event, index, name) => {
     const file = event.target.files[0];
     if (file) {
-      console.log(file,"check file")
       const newPreviews = [...previews]; // Create a copy of the previews array
       newPreviews[index] = URL.createObjectURL(file); // Set the preview for the specific index
       setPreviews(newPreviews); // Update the previews array

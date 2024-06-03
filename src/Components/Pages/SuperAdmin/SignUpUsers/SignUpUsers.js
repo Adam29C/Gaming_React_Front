@@ -136,18 +136,14 @@ const Users = () => {
   };
 
   const handleStatusUpdate = async (value, id) => {
-    // console.log(id)
     let data = {
       adminId: userId,
       id: id,
       isActive: value,
     };
-// console.log(data)
     const response = await SUPER_ADMIN_DEACTIVE_USER_API(data, token);
-    // console.log(response)
     if (response?.statusCode === 200) {
       toast.success(response.msg);
-      // dispatch(getGameRule(token));
     } else {
       toast.error(response.msg);
     }

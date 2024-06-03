@@ -83,7 +83,6 @@ const Deposit = () => {
 
           setCurrentData(res?.data);
         } catch (error) {
-          console.error("Error fetching second API data:", error);
         }
       }
     };

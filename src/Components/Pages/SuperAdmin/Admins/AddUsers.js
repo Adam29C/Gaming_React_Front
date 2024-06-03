@@ -81,7 +81,6 @@ const Add_User = () => {
       };
 
       const response = await ADD_ADMINS(req, token);
-      // console.log(response?.response?.data?.statusCode)
       if (response.status === 409) {
         toast.error(response.data.msg);
       } else if (response.status) {
@@ -91,7 +90,6 @@ const Add_User = () => {
         }, 1000);
       } else {
         toast.error(response?.response?.data?.msg);
-        // console.log(response)
         
       }
     }

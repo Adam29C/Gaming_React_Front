@@ -1203,3 +1203,40 @@ border: none;
   /* height: auto !important; */
  
 }
+
+
+
+.custom-select {
+  background-color: #f0f0f0; 
+  color:black; 
+  /* border: 1px solid #ccc;  */
+  border: none;
+  border-radius: 4px; 
+ 
+}
+
+.custom-select:focus {
+  outline: none;
+  border-color:#4e3897; 
+  box-shadow: 0 0 5px rgba(132, 79, 255, 0.404); 
+}
+
+.custom-datepicker{
+  outline: none;
+ border: none;
+ padding: 5px;
+ border-radius: 5px;
+}
+
+.custom-datepicker:focus{
+  border-color:#4e3897; 
+  box-shadow: 0 0 5px rgba(132, 79, 255, 0.404); 
+}
+
+.payment_history h6{
+  color: black;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    margin-left: 20px;
+}

@@ -27,7 +27,6 @@ const MainContent = () => {
           await dispatch(getAllMatches(res1.data)).unwrap();
         }
       } catch (error) {
-        console.error("Error:", error);
       }
     };
 
@@ -46,7 +45,6 @@ const MainContent = () => {
         const signal = controller.signal;
         await dispatch(getAllMatches(token), { signal }).unwrap();
       } catch (error) {
-        console.error("Error fetching matches:", error);
       }
     };
 

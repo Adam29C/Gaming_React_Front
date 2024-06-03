@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import Loader from "../../../../../Helpers/Loader";
+import { fa_time } from "../../../../../Helpers/Date_formet";
 
 const Withdraw = ({ abbb }) => {
   const dispatch = useDispatch();
@@ -86,11 +87,11 @@ const Withdraw = ({ abbb }) => {
                       >
                         <thead>
                           <tr>
-                          <th>Transaction No</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Date</th>
-              <th>Reason</th>
+                            <th>Date</th>
+                            <th>Transaction No</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                             <th>Reason</th>
                           </tr>
                         </thead>
                         <tbody id="withdrawTableData">
@@ -101,7 +102,8 @@ const Withdraw = ({ abbb }) => {
                                 <Loader lodersize={20} />
                               </td>
                             </tr>
-                          ) : getPaymentHistorytState?.paymentInfo?.length ===0 ? (
+                          ) : getPaymentHistorytState?.paymentInfo?.length ===
+                            0 ? (
                             <tr id="no_data_found">
                               <td colSpan={5}>No data found!</td>
                             </tr>
@@ -109,32 +111,28 @@ const Withdraw = ({ abbb }) => {
                             getPaymentHistorytState?.paymentInfo?.map(
                               (transaction) => {
                                 const {
-                                  accountId,
+                                  utr,
                                   amount,
                                   status,
                                   createdAt,
-                                  reason,
+                                  description,
+                                  _id,
                                 } = transaction;
 
                                 return (
-                                  <tr key={accountId}>
-                                  <td>
-                                    {accountId ? accountId : " _ "}
-                                  </td>
-                                  <td>{amount ? amount : " _ "}</td>
-                                  <td>{status ? status : " _ "}</td>
-                                  <td>
-                                    {moment(
-                                      createdAt ? createdAt : " _ "
-                                    ).format("DD-MM-YYYY")}
-                                  </td>
-                                  <td>{reason ? reason : " _ "}</td>
-                                </tr>
+                                  <tr key={_id}>
+                                     <td>
+                                    {createdAt ? fa_time(createdAt)  : " _ "}
+                                   </td>
+                                    <td>{utr ? utr : " _ "}</td>
+                                    <td>{amount ? amount : " _ "}</td>
+                                    <td>{status ? status : " _ "}</td>
+                                   <td>{description ? description : " _ "}</td>
+                                  </tr>
                                 );
                               }
                             )
                           )}
-                         
                         </tbody>
                       </table>
                     </div>
