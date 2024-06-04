@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { show } from "../../../Utils/Common_Date";
 import { Tooltip } from "bootstrap";
 import { useDispatch } from "react-redux";
-import { fDateTimeSuffix } from "../../../Helpers/Date_formet";
+import { fDateTimeSuffix, fa_time } from "../../../Helpers/Date_formet";
 import { SUPER_ADMIN_DEACTIVE_USER_API } from "../../../Service/admin.service";
 
 const Users = () => {
@@ -24,14 +24,17 @@ const Users = () => {
 
   const [GetData, setGetData] = useState([]);
   const [ShowEdit, setShowEdit] = useState(false);
-
+  const [isLoading,setIsLoading]=useState(false)
   const getRules = async () => {
+    setIsLoading(true)
     const response = await GET_ALL_ADMINS(userId, token);
-
-    if (response.statusCode == 200) {
+   
+    if (response.statusCode === 200) {
       setGetData(response.list);
+      setIsLoading(false)
     } else {
       toast.error(response.msg);
+      
     }
   };
 
@@ -80,7 +83,7 @@ const Users = () => {
       name: "Create At",
       selector: (cell) => (
         <span data-toggle="tooltip" data-placement="top" title="Edit">
-          {fDateTimeSuffix(cell?.createdAt)}
+          {cell?.createdAt ? fa_time(cell?.createdAt) : " _ "}
         </span>
       ),
     },
@@ -123,7 +126,7 @@ const Users = () => {
       adminId: userId,
        id: id 
     }
-    const confirmed = window.confirm("Do You Really Want To Remove This Game");
+    const confirmed = window.confirm("Do You Really Want To Remove This Admin");
     if (confirmed) {
       const response = await (
         REMOVE_ADMINS(data, token)
@@ -169,7 +172,7 @@ const Users = () => {
         addtitle="Add User"
         handleAdd={handleAdd}
       >
-        <Data_Table columns={columns} data={GetData && GetData} />
+        <Data_Table columns={columns} data={GetData && GetData} isLoading={isLoading} />
       </Content>
       <ToastButton />
     </>

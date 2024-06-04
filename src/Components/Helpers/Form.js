@@ -33,6 +33,8 @@ const ReusableForm = ({
   btn_design,
   Disable_Submit,
   disable_button,
+  disabledSubmit,
+  isLoading
 }) => {
   const location = useLocation();
 
@@ -450,7 +452,7 @@ const ReusableForm = ({
                         {field.showButton ? (
                           <button
                             style={{ background: "#4e3897",width:"100px" }}
-                            className="btn btn-primary ms-3 col-4"
+                            className="btn border-0 btn-primary ms-3 col-4"
                             onClick={(e) => {
                               e.preventDefault();
                               VerifyMobileN();
@@ -488,7 +490,8 @@ const ReusableForm = ({
                 location.pathname === "resetpassword" ? "col-md-11" : ""
               } ${btn_design && "btn_design" }`}
               type="submit"
-              disabled={Disable_Submit}
+              disabled={disabledSubmit ? disabledSubmit : isLoading ? isLoading : ""}
+             
             >
               {/* <Loader /> */}
               {btn_name}

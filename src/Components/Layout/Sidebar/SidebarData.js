@@ -77,6 +77,13 @@ export const superadmin_sidebar = [
     route: "/super/paymenthistory?debit",
     Data: [],
   },
+  {
+    id: 8,
+    name: "All Transactions",
+    Icon: "fa fa-money",
+    route: "/super/alltransactions",
+    Data: [],
+  },
 ];
 
 export const admin_sidebar = [

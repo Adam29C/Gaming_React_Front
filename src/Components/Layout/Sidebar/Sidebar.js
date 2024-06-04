@@ -31,7 +31,8 @@ const Sidebar = () => {
 
   const filterAdminSidebar = (admin_sidebar) => {
     return admin_sidebar?.filter((item, index) => {
-     if (index === 0) return true; 
+     if (index === "Admin Dashboard") return true; 
+ 
       if (item.name === "All Users") {
         return canViewUser;
       }

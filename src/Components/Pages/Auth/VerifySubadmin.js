@@ -24,13 +24,13 @@ import * as valid_err from "../../Utils/Common_Msg";
 const Users = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { isLoading } = useSelector((state) => state.AuthSlice);
+  const [disabledSubmit, setDisabledSubmit] = useState(true);
   const [OTP, setOTP] = useState("");
   const [Token, setToken] = useState("");
   const [ShowOTP, setShowOTP] = useState(false);
   const [Disabled, setDisabled] = useState(false);
-  const [DisabledOtp, setDisabledOtp] = useState(false);
-  const [OTP_input_Value, set_OTP_input_Value] = useState("");
+
 
   const isValidContact = (mobile) => {
     return Mobile_regex(mobile);
@@ -99,15 +99,16 @@ const Users = () => {
         mobileNumber: formik.values.mobileNumber,
         otp: parseInt(OTP),
       };
-      const response = await dispatch(
-        Verify_OTP({ request: req, token: Token && Token })
+      const response = await dispatch(Verify_OTP({ request: req, token: Token && Token })
       )
         .unwrap()
         .then((response) => {
           if (response.status === 400) {
             toast.error(response.data.msg);
+            
           } else if (response.status) {
             toast.success(response.msg);
+            setDisabledSubmit(false)
             setTimeout(() => {
               navigate("/login");
             }, 1000);
@@ -165,6 +166,8 @@ const Users = () => {
           button_Size="col-12"
           btn_Class="btn btn-primary btn-block"
           Disable_Button={Disabled}
+          disabledSubmit={disabledSubmit}
+          isLoading={isLoading}
           additional_field={
             <>
               {ShowOTP ? (

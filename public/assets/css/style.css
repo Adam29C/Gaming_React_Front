@@ -1562,3 +1562,12 @@
 .form-control[type=file] {
   margin-top: -6px;
 }
+
+
+.admin-list-title{
+  padding: 20px 0 15px 0;
+  font-size: 21px;
+  font-weight: 500;
+  font-family: "Titillium Web", sans-serif;
+line-height: 22px;
+}

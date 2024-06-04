@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import UserContent from "../../content/UserContent";
-import DataTable from "react-data-table-component";
 import Data_Table from "../../../../../Helpers/Datatable";
 import { useDispatch, useSelector } from "react-redux";
 import { getPaymentHistory } from "../../../../../Redux/Slice/User/user.slice";
-import { fDateTimeSuffix, fa_time } from "../../../../../Helpers/Date_formet";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { fa_time } from "../../../../../Helpers/Date_formet";
+import Date_picker from "../../../../../Helpers/Date_picker";
 
 const PaymentHistory = () => {
   const token = localStorage.getItem("token");
@@ -84,15 +82,8 @@ const PaymentHistory = () => {
             </>
           </select>
         </div>
-        <div className="d-flex">
-          <h6 className="m-2">Select a date:</h6>
-          <DatePicker
-            selected={selectDate}
-            onChange={(e) => setSelectDate(e)}
-            maxDate={new Date()}
-            className="custom-datepicker"
-          />
-        </div>
+      
+        <Date_picker selectDate={selectDate} setSelectDate={setSelectDate}/>
       </div>
 
       <Data_Table
@@ -102,8 +93,7 @@ const PaymentHistory = () => {
         tableStyle={false}
         showFilter={false}
       />
-      {/* <div className="user-data-table-main"></div>
-      <DataTable className="user-data-table" columns={columns} data={data} customStyles={customStyles}/> */}
+      
     </UserContent>
   );
 };

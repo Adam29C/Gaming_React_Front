@@ -15,7 +15,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading,showFilter  }) => {
       style: {
         // background: "#4E3896",
         color: "#000000",
-        backgroundColor: "#4BB6B9",
+        backgroundColor: "#4bb6b9",
         fontSize: "15px",
         fontWeight: "600",
       },

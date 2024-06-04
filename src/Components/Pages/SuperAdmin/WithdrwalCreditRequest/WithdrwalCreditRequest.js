@@ -1,33 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Content from "../../../Layout/Content/Content";
 import Data_Table from "../../../Helpers/Datatable";
-import {  useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import ToastButton from "../../../Helpers/Toast";
 import {
   GET_CREDIT_WITHDRWAL_REQUEST,
   UPDATE_CREDIT_WITHDRWAL_REQUEST,
 } from "../../../Service/superadmin.service";
-import { fDateTimeSuffix } from "../../../Helpers/Date_formet";
+import { fa_time } from "../../../Helpers/Date_formet";
 import Model from "../../../Helpers/Model";
 import toast from "react-hot-toast";
 const WithdrwalCreditRequest = () => {
   const location = useLocation();
   const getSearch = location.search.slice(1, 8);
-
+console.log(location.search)
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
-
   const [GetList, setGetList] = useState([]);
   const [isLoading, setisLoading] = useState(false);
   const [Refresh, setRefresh] = useState(false);
   const [GetDiscription, setGetDiscription] = useState("");
-
   const [show, setShow] = useState(false);
   const [updateData, setUpdateData] = useState();
   const [updateStatus, setUpdateStatus] = useState();
-
-  const dispatch = useDispatch();
 
   const columns = [
     {
@@ -54,7 +49,6 @@ const WithdrwalCreditRequest = () => {
           <select
             className="form-select"
             aria-label="Default select example"
-            // selected={"approve"}
             onChange={(e) => {
               handleStatusUpdate(e.target.value, row);
               setUpdateData(row);
@@ -101,30 +95,10 @@ const WithdrwalCreditRequest = () => {
       name: "Created At",
       selector: (cell) => (
         <span data-toggle="tooltip" data-placement="top" title="Edit">
-          {fDateTimeSuffix(cell?.createdAt)}
+          {fa_time(cell?.createdAt)}
         </span>
       ),
     },
-    // {
-    //   name: "actions",
-    //   selector: (cell, row) => (
-    //     <div style={{ width: "120px" }}>
-    //       <div>
-    //         <Link onClick={() => handleUpdate(cell)}>
-    //           <span data-toggle="tooltip" data-placement="top" title="Edit">
-    //             <i class="ti-marker-alt fs-5 mx-1 "></i>
-    //           </span>
-    //         </Link>
-
-    //         <Link href="#" onClick={() => ChangeStatus(cell?._id)}>
-    //           <span data-toggle="tooltip" data-placement="top" title="Delete">
-    //             <i class="ti-trash fs-5 mx-1 "></i>
-    //           </span>
-    //         </Link>
-    //       </div>
-    //     </div>
-    //   ),
-    // },
   ];
 
   const GetWithdrawalCreditRequest = async () => {
