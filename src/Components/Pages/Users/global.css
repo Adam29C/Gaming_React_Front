@@ -1203,3 +1203,49 @@ border: none;
   /* height: auto !important; */
  
 }
+
+
+
+.custom-select {
+  background-color: #f0f0f0; 
+  color:black; 
+  /* border: 1px solid #ccc;  */
+  border: none;
+  border-radius: 5px; 
+  width: 150px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 500;
+ 
+}
+
+.custom-select:focus {
+  outline: none;
+  border-color:#4e3897; 
+  box-shadow: 0 0 5px rgba(132, 79, 255, 0.404); 
+}
+
+.custom-datepicker{
+  background-color: #f0f0f0; 
+  outline: none;
+ border: none;
+ padding: 3px;
+ border-radius: 5px;
+ height: 30px;
+ width: 150px;
+ font-size: 14px;
+ font-weight: 500;
+}
+
+.custom-datepicker:focus{
+  border-color:#4e3897; 
+  box-shadow: 0 0 5px rgba(132, 79, 255, 0.404); 
+}
+
+.payment_history h6{
+  color: black;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    margin-left: 20px;
+}

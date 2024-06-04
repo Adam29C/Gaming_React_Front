@@ -77,7 +77,7 @@ const Users = () => {
       };
 
       const res = await dispatch(Login(request)).unwrap();
-
+console.log(res)
       if (res.status) {
         toast.success(res.msg);
         localStorage.setItem("user_details", JSON.stringify(res.details));
@@ -143,6 +143,7 @@ const Users = () => {
         <Formikform
           fieldtype={fields.filter((field) => !field.showWhen)}
           formik={formik}
+          isLoading={isLoading}
           btn_name={
             isLoading ? (
               <div class="d-flex justify-content-center align-items-center">

@@ -25,7 +25,6 @@ const MatchDetails = () => {
           setToken(tokendata);
         }
       } catch (error) {
-        console.error("Error:", error);
       }
     };
 

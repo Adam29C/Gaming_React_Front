@@ -4,6 +4,7 @@ import { getPaymentHistory } from "../../../../../Redux/Slice/User/user.slice";
 import { PaymentHistory } from "../../../../../Service/user.service";
 import moment from "moment";
 import Loader from "../../../../../Helpers/Loader";
+import { fa_time } from "../../../../../Helpers/Date_formet";
 
 const Transaction_Table = () => {
   const dispatch = useDispatch();
@@ -35,10 +36,10 @@ const Transaction_Table = () => {
         >
           <thead>
             <tr>
+              <th>Date</th>
               <th>Utr No</th>
               <th>Amount</th>
               <th>Status</th>
-              <th>Date</th>
               <th>Reason</th>
             </tr>
           </thead>
@@ -56,32 +57,18 @@ const Transaction_Table = () => {
               </tr>
             ) : (
               getPaymentHistorytState?.paymentInfo?.map((transaction) => {
-                const {
-                  _id,
-                  amount,
-                  status,
-                  createdAt,
-                  description,
-                  utr
-                } = transaction;
-                return( 
-                <tr key={_id}>
-                  <td>
-                    {utr ? utr : " _ "}
-                  </td>
-                  <td>{amount ? amount : " _ "}</td>
-                  <td>{status ? status : " _ "}</td>
-                  <td>
-                    {moment(
-                      createdAt ? createdAt : " _ "
-                    ).format("DD-MM-YYYY")}
-                  </td>
-                  <td>{description ? description : " _ "}</td>
-                </tr>
-                )
-                
-               
-})
+                const { _id, amount, status, createdAt, description, utr } =
+                  transaction;
+                return (
+                  <tr key={_id}>
+                    <td>{createdAt ? fa_time(createdAt) : " _ "}</td>
+                    <td>{utr ? utr : " _ "}</td>
+                    <td>{amount ? amount : " _ "}</td>
+                    <td>{status ? status : " _ "}</td>
+                    <td>{description ? description : " _ "}</td>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>

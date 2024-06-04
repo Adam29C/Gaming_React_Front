@@ -72,11 +72,13 @@ export const getPaymentHistory = createAsyncThunk(
   "user/getPaymentHistory",
   async (data) => {
     try {
-      let { userId, token, paymentstatus } = data;
+      let { userId, token, paymentstatus,date } = data;
       let getData = {
         userId: userId,
         paymentstatus: paymentstatus,
+        date:date
       };
+      
 
       const res = await PaymentHistory(getData, token);
       return await res;

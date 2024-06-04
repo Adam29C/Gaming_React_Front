@@ -24,12 +24,13 @@ import * as valid_err from "../../Utils/Common_Msg";
 const Users = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLoading } = useSelector((state) => state.AuthSlice);
 
   const [OTP, setOTP] = useState("");
   const [Token, setToken] = useState("");
   const [ShowOTP, setShowOTP] = useState(false);
   const [Disabled, setDisabled] = useState(false);
-  const [DisabledOtp, setDisabledOtp] = useState(false);
+  const [disabledSubmit, setDisabledSubmit] = useState(true);
   const [OTP_input_Value, set_OTP_input_Value] = useState("");
 
   const isValidContact = (mobile) => {
@@ -203,6 +204,7 @@ const Users = () => {
         } else if (response.status) {
           toast.success(response.msg);
           setShowOTP(false);
+          setDisabledSubmit(false)
         } else if (!response.status) {
           toast.error(response.msg);
         }
@@ -245,6 +247,8 @@ const Users = () => {
           button_Size="col-12"
           btn_Class="btn btn-primary btn-block"
           Disable_Button={Disabled}
+          disabledSubmit={disabledSubmit}
+          isLoading={isLoading}
           additional_field={
             <>
               {ShowOTP ? (

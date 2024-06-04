@@ -20,6 +20,7 @@ const GameRuleList = () => {
   const [BankDetails, setgetBankDetails] = useState([]);
   const [UPIDetails, setUPIDetails] = useState([]);
   const [Refresh, setRefresh] = useState(false);
+  const [isLoading,setIsLoading]=useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -63,20 +64,7 @@ const GameRuleList = () => {
       name: "Max Amount",
       selector: (row) => row.maxAmount,
     },
-    // {
-    //   name: "Status",
-    //   selector: (row) => (
-    //     <>
-    //       <Form.Check
-    //         type="switch"
-    //         id="custom-switch"
-    //         defaultChecked={row?.status}
-    //         onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
-    //         className="custom-switch"
-    //       />
-    //     </>
-    //   ),
-    // },
+
     {
       name: "actions",
       selector: (cell, row) => (
@@ -88,7 +76,7 @@ const GameRuleList = () => {
               </span>
             </Link>
 
-            <Link href="#" onClick={() => handleDeleteGameRule(cell)}>
+            <Link href="#" onClick={() => handleDeleteBankDetails(cell)}>
               <span data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="ti-trash fs-5 mx-1"></i>
               </span>
@@ -129,20 +117,7 @@ const GameRuleList = () => {
       name: "Max Amount",
       selector: (row) => row.maxAmount,
     },
-    // {
-    //   name: "Status",
-    //   selector: (row) => (
-    //     <>
-    //       <Form.Check
-    //         type="switch"
-    //         id="custom-switch"
-    //         defaultChecked={row?.status}
-    //         onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
-    //         className="custom-switch"
-    //       />
-    //     </>
-    //   ),
-    // },
+
     {
       name: "actions",
       selector: (cell, row) => (
@@ -154,7 +129,7 @@ const GameRuleList = () => {
               </span>
             </Link>
 
-            <Link href="#" onClick={() => handleDeleteGameRule(cell)}>
+            <Link href="#" onClick={() => handleDeleteBankDetails(cell)}>
               <span data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="ti-trash fs-5 mx-1"></i>
               </span>
@@ -166,9 +141,11 @@ const GameRuleList = () => {
   ];
 
   const getBanksDetails = async () => {
+    setIsLoading(true)
     const response = await All_ACCOUNT_LIST(userId, token);
 
     if (response.statusCode === 200) {
+      setIsLoading(false)
     
       setgetBankDetails(response.data.bankList);
       setUPIDetails(response.data.upiList);
@@ -178,9 +155,10 @@ const GameRuleList = () => {
     getBanksDetails();
   }, [Refresh]);
 
-  const handleDeleteGameRule = async (rowData) => {
+  const handleDeleteBankDetails = async (rowData) => {
+    console.log(rowData)
     const confirmed = window.confirm(
-      "Do You Really Want To Remove This  Game Rule"
+    `Do You Really Want To Remove This ${rowData.isBank == "true" ? "Bank Details" : "Upi Details"}`
     );
     if (confirmed) {
       const request = {
@@ -202,20 +180,8 @@ const GameRuleList = () => {
     } 
   };
 
-  const handleStatusUpdate = async (value, id) => {
-    let data = {
-      ruleId: id,
-      status: value,
-    };
 
-    const response = await GameRuleListStatus(data, token);
-    if (response?.statusCode === 200) {
-      toast.success(response.msg);
-      dispatch(getGameRule(token));
-    } else {
-      toast.error(response.msg);
-    }
-  };
+
   const handleAdd = () => {
     navigate("/super/bankdetail/add");
   };
@@ -227,9 +193,9 @@ const GameRuleList = () => {
         handleAdd={handleAdd}
         col_size={12}
       >
-        <Data_Table columns={columns} data={BankDetails && BankDetails} />
-        <h4>UPI List</h4>
-        <Data_Table columns={UpiColumns} data={UPIDetails && UPIDetails} />
+        <Data_Table isLoading={isLoading} columns={columns} data={BankDetails && BankDetails} />
+        <h3 className="admin-list-title mb-4 ">UPI Details</h3>
+        <Data_Table isLoading={isLoading} columns={UpiColumns} data={UPIDetails && UPIDetails} />
         <ToastButton />
       </Content>
     </>

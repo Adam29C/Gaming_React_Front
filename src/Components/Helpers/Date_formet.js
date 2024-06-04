@@ -13,13 +13,13 @@ export function fDateTime(date) {
 }
 
 export function fDateTimeSuffix(date) {
-  return format(new Date(date), "dd:MM:yyyy hh:mm:ss");
+  return format(new Date(date), "dd:MM:yyyy hh:mm:ss a");
 }
 export function f_time(date) {
   return format(new Date(date), "yyyy-MM-dd");
 }
 export function fa_time(date) {
-  return format(new Date(date), "yyyy/MM/dd");
+  return format(new Date(date), "dd/MM/yyyy");
 }
 
 export function get_thre_digit_month(date) {

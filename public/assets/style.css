@@ -2163,7 +2163,7 @@ span.flag-thumb-cu {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1) !important;
   border-radius: .5rem;
-  width: calc(100% - 1rem);
+  /* width: calc(100% - 1rem); */
   margin-left: .5rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -16417,3 +16417,9 @@ border-bottom-style: 0px;
     width: 55px;
   }
 }
+
+.form-select {
+  font-size: 0.9rem !important;
+}
+
+

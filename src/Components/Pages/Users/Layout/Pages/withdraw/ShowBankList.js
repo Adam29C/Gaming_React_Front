@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 const ShowWithdrawList = () => {
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
   const token = localStorage.getItem("token");
-
+const navigate = useNavigate()
   const [GetList, setGetList] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
@@ -72,8 +72,8 @@ const ShowWithdrawList = () => {
 
     const req = {
       userId: userId,
-      amount: EnterAmount,
-      isBank: details.isBank,
+      amount: parseInt(EnterAmount),
+      isBank:Boolean(details.isBank),
       accountId: details._id,
     };
     const response = await GenerateWithdrawalRequest(req, token);
@@ -81,6 +81,7 @@ const ShowWithdrawList = () => {
     if (response.statusCode == 200) {
       toast.success(response.msg);
       setEnterAmount("")
+      navigate("/")
 
     } else {
       toast.error(response.response.data.msg);

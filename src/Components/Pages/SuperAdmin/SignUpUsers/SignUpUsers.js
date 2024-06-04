@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import { show } from "../../../Utils/Common_Date";
 import { Tooltip } from "bootstrap";
 import { useDispatch } from "react-redux";
-import { fDateTimeSuffix } from "../../../Helpers/Date_formet";
+import { fDateTimeSuffix, fa_time } from "../../../Helpers/Date_formet";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -24,14 +24,17 @@ const Users = () => {
 
   const [GetData, setGetData] = useState([]);
   const [ShowEdit, setShowEdit] = useState(false);
+  const [isLoading,setIsLoading]=useState(false)
 
 
 
   const getRules = async () => {
+    setIsLoading(true)
     const response = await SIGN_UP_USERLIST(userId, token);
 
     if (response.statusCode == 200) {
       setGetData(response.data);
+      setIsLoading(false)
     } else {
       toast.error(response.msg);
     }
@@ -83,7 +86,7 @@ const Users = () => {
       name: "Create At",
       selector: (cell) => (
         <span data-toggle="tooltip" data-placement="top" title="Edit">
-          {fDateTimeSuffix(cell?.createdAt)}
+          {fa_time(cell?.createdAt)}
         </span>
       ),
     },
@@ -119,7 +122,7 @@ const Users = () => {
   ];
 
   const RemoveUsers = async (id) => {
-    const confirmed = window.confirm("Do You Really Want To Remove This Game");
+    const confirmed = window.confirm("Do You Really Want To Remove This User");
     if (confirmed) {
       const response = await dispatch(
         REMOVE_ADMINS({ adminId: userId, id: id }, token)
@@ -136,18 +139,14 @@ const Users = () => {
   };
 
   const handleStatusUpdate = async (value, id) => {
-    // console.log(id)
     let data = {
       adminId: userId,
       id: id,
       isActive: value,
     };
-// console.log(data)
     const response = await SUPER_ADMIN_DEACTIVE_USER_API(data, token);
-    // console.log(response)
     if (response?.statusCode === 200) {
       toast.success(response.msg);
-      // dispatch(getGameRule(token));
     } else {
       toast.error(response.msg);
     }
@@ -166,7 +165,7 @@ const Users = () => {
         addtitle="Add User"
         handleAdd={handleAdd}
       >
-        <Data_Table columns={columns} data={GetData && GetData} />
+        <Data_Table isLoading={isLoading} columns={columns} data={GetData && GetData} />
       </Content>
       <ToastButton />
     </>

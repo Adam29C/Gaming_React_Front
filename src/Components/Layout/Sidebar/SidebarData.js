@@ -1,3 +1,5 @@
+
+
 export const superadmin_sidebar = [
   {
     id: 1,
@@ -62,13 +64,13 @@ export const superadmin_sidebar = [
       },
     ],
   },
-  // {
-  //   id: 7,
-  //   name: "Withdrawal Request",
-  //   Icon: "fa fa-money",
-  //   route: "/super/paymenthistory?debit",
-  //   Data: [],
-  // },
+  {
+    id: 8,
+    name: "All Transactions",
+    Icon: "fa fa-money",
+    route: "/super/alltransactions",
+    Data: [],
+  },
 ];
 
 export const admin_sidebar = [
