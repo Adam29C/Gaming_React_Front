@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Content from "../../../Layout/Content/Content";
 import Data_Table from "../../../Helpers/Datatable";
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ToastButton from "../../../Helpers/Toast";
 import {
@@ -188,8 +188,8 @@ const WithdrwalCreditRequest = () => {
   return (
     <>
       <Content
-        title="Game"
-        // addtitle="Add Game"
+        title={getSearch == "credit" ? "Credit Request" : "Withdrawal Request"}
+        // addtitle="Ad}d Game"
         col_size={12}
       >
         <Data_Table

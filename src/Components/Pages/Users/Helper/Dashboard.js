@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GameContent from "../../../Pages/Users/Layout/content/GameContent";
 import Loader from "../../../Helpers/Loader";
 import { get_Time_From_Unix_Dete_string } from "../../../Helpers/Date_formet";
 import { Link } from "react-router-dom";
 
-const Dashboard = ({ data, isLoading, showUpcoming , matchDetails }) => {
+const Dashboard = ({
+  data,
+  isLoading,
+  showUpcoming,
+  matchDetails,
+  getMatchDetailsFun,
+}) => {
+  const getOddsData = matchDetails && matchDetails?.live_odds;
 
+  useEffect(() => {
+    data &&
+      data.forEach((row) => {
+        getMatchDetailsFun(row.match_id);
+      });
+  }, [data, getMatchDetailsFun]);
 
-  console.log("matchDetailsmatchDetails" ,matchDetails?.live_odds);
   return (
     <div>
       <GameContent title="Cricket" showUpcoming={showUpcoming}>
@@ -64,12 +76,24 @@ const Dashboard = ({ data, isLoading, showUpcoming , matchDetails }) => {
                       <div className="h-backLay">
                         <div className="back bl-box">
                           <span className="d-block bet-button-price">
-                            - <em>-</em>
+                            {getOddsData?.matchodds?.teama &&
+                              getOddsData?.matchodds?.teama?.back}
+                            <em>
+                              {" "}
+                              {getOddsData?.matchodds?.teama &&
+                                getOddsData?.matchodds?.teama?.back_volume}
+                            </em>
                           </span>
                         </div>
                         <div className="bl-box lay">
                           <span className="d-block bet-button-price">
-                            - <em>-</em>
+                            {getOddsData?.matchodds?.teama &&
+                              getOddsData?.matchodds?.teama?.lay}{" "}
+                            <em>
+                              {" "}
+                              {getOddsData?.matchodds?.teama &&
+                                getOddsData?.matchodds?.teama?.lay_volume}
+                            </em>
                           </span>
                         </div>
                       </div>

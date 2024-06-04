@@ -39,7 +39,6 @@ export async function GET_ALL_ADMINS(data, token) {
   try {
     const res = await axios.get(
       `${baseurl}adminRouter/subAdminList?adminId=${data}`,
-
       { headers: header(token) }
     );
     return await res?.data;

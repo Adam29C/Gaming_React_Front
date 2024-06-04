@@ -52,7 +52,7 @@ const Sidebar = () => {
         <nav onMouseEnter={mouseEnter} onMouseLeave={MouserExit}>
           <ul className="sidebar-menu tree" data-widget="tree">
             {sidebarTabs &&
-              sidebarTabs.map((item) => {
+              sidebarTabs.map((item , index) => {
                 return (
                   <>
                     {item.Data.length === 0 ? (
@@ -60,7 +60,9 @@ const Sidebar = () => {
                       <li
                         className={
                           location.pathname === item.route ? ` active` : ""
+
                         }
+                        key={item.id}
                       >
                         <Link to={item.route}>
                           <i className={item.Icon} />
@@ -70,10 +72,12 @@ const Sidebar = () => {
                     ) : (
                       <li
                         className={`${ShowSubMenu ? "menu-open" : ""} treeview`}
+                        key={index}
                       >
                         <a
                           href="#"
                           onClick={() => setShowSubMenu(!ShowSubMenu)}
+                        
                         >
                           <i className={item.Icon} /> &nbsp;
                           <span>{item.name}</span>

@@ -16,13 +16,11 @@ const Wraper = () => {
   const { getAllMatchListState, getMatchDetailsState, isLoading } = useSelector(
     (state) => state.GamingSlice
   );
+
+  const [matchDetails, setmatchDetails] = useState('')
   const data = getAllMatchListState?.data?.response?.items;
-  const matchDetails = getMatchDetailsState.data?.response;
+  // const matchDetails = getMatchDetailsState.data?.response;
 
-
-
-
-  console.log("datadata" ,data);
   useEffect(() => {
     const getToken = async () => {
       const request1 = { deviceId: v4() };
@@ -73,7 +71,21 @@ const Wraper = () => {
   }, [dispatch, token]);
 
   const getMatchDetailsFun = async (id) => {
-    await dispatch(getMatchDetails({ id: id, token: token })).unwrap();
+    // await dispatch(getMatchDetails({ id: id, token: token })).unwrap();
+
+    if (matchDetails[id]) return;
+
+    try {
+      const response = await dispatch(getMatchDetails({ id, token })).unwrap();
+      if (response.statusCode === 200) {
+        setmatchDetails((prevDetails) => ({
+          ...prevDetails,
+          [id]: response.data.response.live_odds,
+        }));
+      }
+    } catch (error) {
+      console.error("Error fetching match details:", error);
+    }
   };
 
   return (
