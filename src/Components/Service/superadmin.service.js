@@ -252,3 +252,17 @@ export async function UPDATE_CREDIT_WITHDRWAL_REQUEST(data, token) {
     return error;
   }
 }
+
+
+
+//SHOW ALL TRANSACTION LIST
+export async function SHOW_ALL_TRANSACTION_LIST(data, token) {
+  try {
+    const res = await axios.post(`${baseurl}adminRouter/transectionAndBankingList`, data, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
