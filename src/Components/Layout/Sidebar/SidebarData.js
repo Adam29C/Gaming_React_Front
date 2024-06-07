@@ -41,14 +41,21 @@ export const superadmin_sidebar = [
   },
 
   {
-    id: 6,
+    id: 5,
     name: "Banking Details",
     Icon: "fa fa-credit-card-alt",
     route: "/super/bankdetails",
     Data: [],
   },
   {
-    id: 5,
+    id: 6,
+    name: "All Payment Request",
+    Icon: "fa fa-credit-card-alt",
+    route: "/super/allpaymentrequest",
+    Data: [],
+  },
+  {
+    id: 7,
     name: "Payment Request",
     Icon: "fa fa-money",
     Data: [

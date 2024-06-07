@@ -53,7 +53,7 @@ const TransactionInfo = ({ amount, displayData, setAmount }) => {
         formData.append("image", values.image);
         formData.append("amount", amount);
         formData.append("isBank", values.isBank);
-        formData.append("depositId",displayData?._id);
+        formData.append("depositWithdrawId",displayData?._id);
         const response = await ACCOUNT_ADD_CREDIT_REQUEST(formData, token);
         if (response?.statusCode == 200) {
           toast.success(response?.msg);

@@ -156,7 +156,7 @@ const GameRuleList = () => {
   }, [Refresh]);
 
   const handleDeleteBankDetails = async (rowData) => {
-    console.log(rowData)
+
     const confirmed = window.confirm(
     `Do You Really Want To Remove This ${rowData.isBank == "true" ? "Bank Details" : "Upi Details"}`
     );

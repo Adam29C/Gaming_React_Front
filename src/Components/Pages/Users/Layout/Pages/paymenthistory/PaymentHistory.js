@@ -12,7 +12,7 @@ const PaymentHistory = () => {
   const { getPaymentHistorytState, isLoading } = useSelector(
     (state) => state.UserSlice
   );
-  const [selectDate, setSelectDate] = useState(new Date());
+  const [selectDate, setSelectDate] = useState(null);
   const [selectStatus, setSelectStatus] = useState("all");
 
   const dispatch = useDispatch();

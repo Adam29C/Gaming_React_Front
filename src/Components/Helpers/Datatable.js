@@ -47,11 +47,6 @@ const Data_Table = ({ columns, data, tableStyle, isLoading,showFilter  }) => {
     },
   };
 
-  const TooltipCell = ({ value }) => (
-    <OverlayTrigger placement="top" overlay={<Tooltip>{value}</Tooltip>}>
-      <div className="truncated-cell">{value}</div>
-    </OverlayTrigger>
-  );
 
   const columns1 = [
     {
@@ -74,6 +69,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading,showFilter  }) => {
         <DataTable
           noHeader
           // defaultSortField="id"
+          className="custom-datatable"
           defaultSortAsc={false}
           pagination
           highlightOnHover

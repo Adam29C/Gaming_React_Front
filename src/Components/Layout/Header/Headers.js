@@ -64,14 +64,14 @@ const Headers = () => {
           </div>
           {/* Left Side Nav */}
           <ul className="left-side-navbar d-flex align-items-center">
-            <li className="hide-phone app-search">
+            {/* <li className="hide-phone app-search">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Search..."
               />
               <span className="bx bx-search-alt" />
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="right-side-navbar d-flex align-items-center justify-content-end">

@@ -71,7 +71,7 @@ const Sidebar = () => {
                 return (
                   <>
                     {item.Data.length === 0 ? (
-                      // {canViewUser ? ():""}
+                    
                       <li
                         className={
                           location.pathname === item.route ? ` active` : ""

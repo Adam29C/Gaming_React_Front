@@ -22,6 +22,7 @@ import BankDetailsAdd from "../Pages/SuperAdmin/BankDetails/BankDetailsAdd";
 
 import WithdrwalCreditRequest from "../Pages/SuperAdmin/WithdrwalCreditRequest/WithdrwalCreditRequest";
 import AllTransactionsList from "../Pages/SuperAdmin/Alltransactions/AllTransactionsList";
+import AllPaymentRequest from "../Pages/SuperAdmin/allpaymentrequest/AllPaymentRequest";
 
 
 const Admin = () => {
@@ -58,6 +59,7 @@ const Admin = () => {
         <Route exact path="/bankdetail/add" element={<BankDetailsAdd />} />
         <Route exact path="/paymenthistory" element={<WithdrwalCreditRequest />} />
         <Route exact path="/alltransactions" element={<AllTransactionsList />} />
+        <Route exact path="/allpaymentrequest" element={<AllPaymentRequest />} />
 
       </Routes>
     </>

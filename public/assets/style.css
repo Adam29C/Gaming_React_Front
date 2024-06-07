@@ -16423,3 +16423,8 @@ border-bottom-style: 0px;
 }
 
 
+.custom-datatable .lnOUep {
+  overflow: none; 
+  white-space: nowrap;
+  text-overflow: none; 
+}

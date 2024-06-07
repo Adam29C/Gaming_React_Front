@@ -68,6 +68,7 @@ const navigate = useNavigate()
   // SUBMIT REQUEST
 
   const SubmitWithdraw = async (e, details) => {
+    console.log(details,100)
     e.preventDefault();
 
     const req = {

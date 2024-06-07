@@ -258,7 +258,37 @@ export async function UPDATE_CREDIT_WITHDRWAL_REQUEST(data, token) {
 //SHOW ALL TRANSACTION LIST
 export async function SHOW_ALL_TRANSACTION_LIST(data, token) {
   try {
+    const res = await axios.post(`${baseurl}adminRouter/transectionDetailsBankingById`, data, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+
+//get bank and user list for all transaction list
+export async function BANK_USER_LIST_ALLTRANSACTION(id, token) {
+  let data = {
+    adminId:id
+  }
+  try {
     const res = await axios.post(`${baseurl}adminRouter/transectionAndBankingList`, data, {
+      headers: header(token),
+    });
+    return await res?.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+
+//get all payment request list
+export async function GET_ALL_PAYMENT_REQUEST_API(data, token) {
+
+  try {
+    const res = await axios.post(`${baseurl}adminRouter/approveRejectpaymentHistory`, data, {
       headers: header(token),
     });
     return await res?.data;

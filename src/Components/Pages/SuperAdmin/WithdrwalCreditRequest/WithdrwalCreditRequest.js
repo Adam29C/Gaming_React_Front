@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 const WithdrwalCreditRequest = () => {
   const location = useLocation();
   const getSearch = location.search.slice(1, 8);
-console.log(location.search)
+
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("user_details")).id;
   const [GetList, setGetList] = useState([]);
@@ -55,39 +55,15 @@ console.log(location.search)
               setUpdateData(row);
             }}
           >
-            {row.status === "pending" ? (
-              <>
-                <option value="pending" disabled>
+          
+    
+                <option value="pending" disbled selected>
                   Pending
                 </option>
                 <option value="approve">Accept</option>
                 <option value="decline">Reject</option>
-              </>
-            ) : row.status === "approve" ? (
-              <>
-                <option value="pending" disabled>
-                  Pending
-                </option>
-                <option value="approve">Accept</option>
-                <option value="decline">Reject</option>
-              </>
-            ) : row.status === "decline" ? (
-              <>
-                <option value="pending" disabled>
-                  Pending
-                </option>
-                <option value="approve" disabled>
-                  Accept
-                </option>
-                <option value="decline">Reject</option>
-              </>
-            ) : (
-              <>
-                <option value="pending">Pending</option>
-                <option value="approve">Accept</option>
-                <option value="decline">Reject</option>
-              </>
-            )}
+            
+         
           </select>
         </>
       ),
@@ -176,7 +152,7 @@ console.log(location.search)
         <Model show={show} setShow={setShow}>
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Decline Request Resson</h5>
+              <h5 className="modal-title">Decline Request Reason</h5>
               <button
                 type="button"
                 className="close"
