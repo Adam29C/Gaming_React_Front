@@ -89,10 +89,12 @@ const UserProfile = () => {
                 >
                   <Link
                     href="#"
-                    onClick={() => handleTabChange("Change Password")}
+                    data-bs-toggle="tab"
                     role="tab"
+                    aria-controls="nav-overview"
+                    aria-selected={activeTab === "Change Password"}
+                    onClick={() => handleTabChange("Change Password")}
                     className="nav-link"
-                    aria-selected="false"
                   >
                     Change Password
                   </Link>

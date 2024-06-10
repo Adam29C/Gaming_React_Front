@@ -65,7 +65,8 @@ const Sidebar = () => {
     <>
       <div className="side-menu-area">
         <nav onMouseEnter={mouseEnter} onMouseLeave={MouserExit}>
-          <ul className="sidebar-menu tree" data-widget="tree">
+<div className="sidebar-scroll-wrapper">
+<ul className="sidebar-menu tree" data-widget="tree">
             {sidebarTabs &&
               sidebarTabs.map((item , index) => {
                 return (
@@ -122,6 +123,7 @@ const Sidebar = () => {
                 );
               })}
           </ul>
+</div>
         </nav>
       </div>
     </>

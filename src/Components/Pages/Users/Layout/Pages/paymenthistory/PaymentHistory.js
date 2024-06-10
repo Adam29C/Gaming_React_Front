@@ -14,17 +14,22 @@ const PaymentHistory = () => {
   );
   const [selectDate, setSelectDate] = useState(null);
   const [selectStatus, setSelectStatus] = useState("all");
-
   const dispatch = useDispatch();
 
   const getPaymentHistoryData = () => {
-    let data = {
+   
+
+    let apiData = {
       userId: userId,
       paymentstatus: selectStatus,
-      token,
-      date: fa_time(selectDate),
+      token 
+      
     };
-    dispatch(getPaymentHistory(data));
+    if(selectDate !== null ){
+      apiData.date = fa_time(selectDate)
+    }
+
+    dispatch(getPaymentHistory(apiData));
   };
   useEffect(() => {
     getPaymentHistoryData();

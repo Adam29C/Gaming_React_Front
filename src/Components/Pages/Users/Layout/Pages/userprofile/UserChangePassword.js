@@ -7,6 +7,7 @@ import { ChangePasswordApi } from "../../../../../Service/admin.service";
 import toast from "react-hot-toast";
 
 const UserChangePassword = () => {
+  
   const token = localStorage.getItem("token");
   const user_details = JSON.parse(localStorage.getItem("user_details"))
 

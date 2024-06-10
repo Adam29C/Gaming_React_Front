@@ -78,6 +78,7 @@ export const superadmin_sidebar = [
     route: "/super/alltransactions",
     Data: [],
   },
+  
 ];
 
 export const admin_sidebar = [

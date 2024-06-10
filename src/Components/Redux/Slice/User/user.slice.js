@@ -76,7 +76,7 @@ export const getPaymentHistory = createAsyncThunk(
       let getData = {
         userId: userId,
         paymentstatus: paymentstatus,
-        date:date
+        date:date && date
       };
       
 

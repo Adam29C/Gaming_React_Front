@@ -16428,3 +16428,12 @@ border-bottom-style: 0px;
   white-space: nowrap;
   text-overflow: none; 
 }
+
+
+.sidebar-scroll-wrapper {
+  height: calc(100vh - 100px); 
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color:#4bb6b9 transparent;
+}

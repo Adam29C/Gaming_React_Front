@@ -132,9 +132,11 @@ body {
 }
 
 @media (max-width: 991px) {
+
 }
 
 @media (max-width: 320px) {
+
 }
 
 @-webkit-keyframes spin {
@@ -715,6 +717,15 @@ ul.ks-cboxtags[_ngcontent-nsr-c70]
 }
 
 @media (max-width: 767px) {
+  .payment_history{
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .payment_history div{
+    margin-top: 5px;
+  }
   ul.ks-cboxtags[_ngcontent-nsr-c70]
     li[_ngcontent-nsr-c70]
     label[_ngcontent-nsr-c70] {
@@ -1230,6 +1241,8 @@ border: none;
   outline: none;
  border: none;
  padding: 3px;
+
+ 
  border-radius: 5px;
  height: 30px;
  width: 150px;
@@ -1241,6 +1254,7 @@ border: none;
   border-color:#4e3897; 
   box-shadow: 0 0 5px rgba(132, 79, 255, 0.404); 
 }
+
 
 .payment_history h6{
   color: black;
