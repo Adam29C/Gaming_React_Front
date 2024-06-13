@@ -65,6 +65,7 @@ const Users = () => {
 
     if (selectStatusState !== "all") {
       tempData = tempData?.filter(row => row?.isActive === selectStatusState);
+      // tempData = tempData?.filter(row => console.log(row?.isActive === selectStatusState ? row : ""));
     }
 
     if (selectDate) {
@@ -106,7 +107,8 @@ const Users = () => {
           <Form.Check
             type="switch"
             id="custom-switch"
-            defaultChecked={row?.isActive}
+            checked={row?.isActive}
+            // defaultChecked={row?.isActive}
             onChange={(e) =>
               handleStatusUpdate(e.target.checked, row?.subAdminId)
             }

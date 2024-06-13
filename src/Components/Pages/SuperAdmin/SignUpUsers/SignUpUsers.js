@@ -52,17 +52,17 @@ const Users = () => {
     
   useEffect(() => {
     let tempData = GetData;
-  
     let verifiedState = verified == "verified" ? true :  verified == "not Verified" ? false : "all"
     let selectStatusState = selectStatus == "active" ? true :  selectStatus == "deactive" ? false : "all"
-  
+    
+    console.log(selectStatusState)
 
     if (verifiedState !== "all") {
       tempData = tempData?.filter(row => row?.isVerified  === verifiedState);
     }
 
     if (selectStatusState !== "all") {
-      tempData = tempData?.filter(row =>  console.log(row?.isActive) );
+      tempData = tempData?.filter(row =>row?.isActive === selectStatusState);
     }
 
     if (selectDate) {
@@ -104,7 +104,8 @@ const Users = () => {
           <Form.Check
             type="switch"
             id="custom-switch"
-            defaultChecked={row?.isActive && row?.isActive}
+            // defaultChecked={row?.isActive && row?.isActive}
+             checked={row?.isActive}
             onChange={(e) =>
               handleStatusUpdate(e.target.checked, row?.userId)
             }
@@ -197,7 +198,7 @@ const Users = () => {
         // addtitle="Add User"
         // handleAdd={handleAdd}
       >
-                  <div className="d-flex  mt-2 payment_history">
+        <div className="d-flex  mt-2 payment_history">
         <div className="d-flex mr-2">
           <h6 className="m-2">verified:</h6>
           <select
@@ -208,8 +209,8 @@ const Users = () => {
           >
             <>
               <option value="all">All</option>
-              <option value="credit">Verified</option>
-              <option value="debit">Not Verified</option>
+              <option value="verified">verified</option>
+              <option value="not Verified">not Verified</option>
             </>
           </select>
         </div>
@@ -223,8 +224,8 @@ const Users = () => {
           >
             <>
               <option value="all">All</option>
-              <option value="approve">active</option>
-              <option value="decline">deactive</option>
+              <option value="active">active</option>
+              <option value="deactive">deactive</option>
             </>
           </select>
         </div>
