@@ -68,15 +68,17 @@ const navigate = useNavigate()
   // SUBMIT REQUEST
 
   const SubmitWithdraw = async (e, details) => {
-    console.log(details,100)
+  
     e.preventDefault();
 
     const req = {
       userId: userId,
       amount: parseInt(EnterAmount),
-      isBank:Boolean(details.isBank),
+      isBank:details.isBank == "true" ? Boolean(details.isBank) : Boolean(!details.isBank),
       accountId: details._id,
+      depositWithdrawId:details.isBank == "true" ? details?.accountNumber : details?.upiId
     };
+    console.log(req,1000)
     const response = await GenerateWithdrawalRequest(req, token);
 
     if (response.statusCode == 200) {

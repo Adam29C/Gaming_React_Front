@@ -14,6 +14,7 @@ import { Tooltip } from "bootstrap";
 import { useDispatch } from "react-redux";
 import { fDateTimeSuffix, fa_time } from "../../../Helpers/Date_formet";
 import { SUPER_ADMIN_DEACTIVE_USER_API } from "../../../Service/admin.service";
+import Date_picker from "../../../Helpers/Date_picker";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -25,12 +26,20 @@ const Users = () => {
   const [GetData, setGetData] = useState([]);
   const [ShowEdit, setShowEdit] = useState(false);
   const [isLoading,setIsLoading]=useState(false)
+  const [selectDate, setSelectDate] = useState(null);
+  const [verified, setVerified] = useState("all");
+  const [selectStatus, setSelectStatus] = useState("all");
+  const [filteredData, setFilteredData] = useState([]);
+
+
+
   const getRules = async () => {
     setIsLoading(true)
     const response = await GET_ALL_ADMINS(userId, token);
    
     if (response.statusCode === 200) {
       setGetData(response.list);
+      setFilteredData(response.list)
       setIsLoading(false)
     } else {
       toast.error(response.msg);
@@ -41,6 +50,33 @@ const Users = () => {
   useEffect(() => {
     getRules();
   }, []);
+
+  
+  useEffect(() => {
+    let tempData = GetData;
+  
+    let verifiedState = verified == "verified" ? true :  verified == "not Verified" ? false : "all"
+    let selectStatusState = selectStatus == "active" ? true :  selectStatus == "deactive" ? false : "all"
+   
+
+    if (verifiedState !== "all") {
+      tempData = tempData?.filter(row => row?.isVerified  === verifiedState);
+    }
+
+    if (selectStatusState !== "all") {
+      tempData = tempData?.filter(row => row?.isActive === selectStatusState);
+    }
+
+    if (selectDate) {
+      const selectedDate = fa_time(selectDate)
+      tempData = tempData?.filter(row => {
+        const rowDate = fa_time(row?.createdAt)
+        return rowDate === selectedDate;
+      });
+    }
+
+    setFilteredData(tempData);
+  }, [verified,selectDate,selectStatus, GetData]);
 
   const columns = [
     {
@@ -172,14 +208,47 @@ const Users = () => {
         addtitle="Add User"
         handleAdd={handleAdd}
       >
-        <Data_Table columns={columns} data={GetData && GetData} isLoading={isLoading} />
+          <div className="d-flex  mt-2 payment_history">
+        <div className="d-flex mr-2">
+          <h6 className="m-2">verified:</h6>
+          <select
+            className="form-select custom-select"
+            aria-label="Default select example"
+            selected={"all"}
+            onChange={(e) => setVerified(e.target.value)}
+          >
+            <>
+              <option value="all">All</option>
+              <option value="verified">verified</option>
+              <option value="not Verified">not Verified</option>
+            </>
+          </select>
+        </div>
+        <div className="d-flex mr-2">
+          <h6 className="m-2">Status:</h6>
+          <select
+            className="form-select custom-select"
+            aria-label="Default select example"
+            selected={"all"}
+            onChange={(e) => setSelectStatus(e.target.value)}
+          >
+            <>
+              <option value="all">All</option>
+              <option value="active">active</option>
+              <option value="deactive">deactive</option>
+            </>
+          </select>
+        </div>
+        <Date_picker selectDate={selectDate} setSelectDate={setSelectDate} />
+      </div>
+        <Data_Table  showFilter={false} columns={columns} data={filteredData && filteredData} isLoading={isLoading} />
       </Content>
       <ToastButton />
     </>
   );
 };
 
-export default Users;
+export default Users; 
 
 export const tooltip = (
   <Tooltip id="tooltip">

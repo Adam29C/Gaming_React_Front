@@ -77,7 +77,7 @@ const Headers = () => {
         <div className="right-side-navbar d-flex align-items-center justify-content-end">
           {/* Mobile Trigger */}
           <div className="right-side-trigger" id="rightSideTrigger">
-            <i className="bx bx-menu-alt-right" />
+            {/* <i className="bx bx-menu-alt-right" /> */}
           </div>
           {/* Top Bar Nav */}
           <ul className="right-side-content d-flex align-items-center">

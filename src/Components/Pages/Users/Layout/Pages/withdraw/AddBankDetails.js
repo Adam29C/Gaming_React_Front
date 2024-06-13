@@ -83,6 +83,7 @@ const WithdrawModel = ({ show, setShow }) => {
         password: values.password,
       };
 
+ 
       let abc = values.isBank === "true" ? req : req1;
 
       const response = await AddAccountDetails(
