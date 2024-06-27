@@ -65,7 +65,6 @@ const Users = () => {
 
     if (selectStatusState !== "all") {
       tempData = tempData?.filter(row => row?.isActive === selectStatusState);
-      // tempData = tempData?.filter(row => console.log(row?.isActive === selectStatusState ? row : ""));
     }
 
     if (selectDate) {
